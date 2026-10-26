@@ -2626,6 +2626,42 @@ class MusicBot(TeamTalk5.TeamTalk):
             lines.append("%d. %s" % (idx, t))
         self._send("\n".join(lines) + "\nradio <номер> — запуск")
 
+    def _mow_cmd(self):
+        """Моя волна — персональный поток Яндекс.Музыки."""
+        if not YM_TOKEN:
+            self._send("Токен Яндекс.Музыки не настроен. Добавьте services.ym.token в config.json.")
+            return
+        try:
+            from yandex_music import Client
+        except Exception:
+            self._send("Библиотека yandex-music не установлена. Выполните: pip install yandex-music")
+            return
+        try:
+            client = Client(YM_TOKEN).init()
+            # Моя волна — rotor station user:onyourwave
+            station = client.rotor_station_tracks("user:onyourwave")
+            if not station or not station.sequence:
+                self._send("Моя волна недоступна. Проверьте токен Яндекс.Музыки.")
+                return
+            tracks = station.sequence
+            self._send("🌊 Моя волна — загружаю %d треков..." % len(tracks))
+            # очищаем очередь и добавляем треки
+            self.queue.clear()
+            for item in tracks:
+                tr = item.track
+                if not tr:
+                    continue
+                title = " - ".join(tr.artists_name()) + " - " + tr.title
+                self.queue.append(("ymtrack:%s" % tr.track_id, title, False))
+            if self.queue:
+                key, label, _ = self.queue.popleft()
+                self._play_ym(key, label)
+            else:
+                self._send("Моя волна: треки не найдены.")
+        except Exception as e:
+            self._send("Моя волна: ошибка — %s" % str(e)[:150])
+            log("mow err: %s" % str(e))
+
     def _remember_last(self, key, label, is_radio):
         """Запомнить последнее воспроизведение (переживает перезапуск)."""
         try:
@@ -3039,6 +3075,11 @@ class MusicBot(TeamTalk5.TeamTalk):
             self._send("\n".join(self._playlist_page_lines(page)))
             return
 
+        # --- моя волна: /mow ---
+        if cmd == "mow":
+            self._mow_cmd()
+            return
+
         # --- радио: радио / радио <N> / радио <текст> ---
         if cmd.startswith("radio") or cmd == "r":
             arg = text.split(None, 1)[1].strip() if " " in text else ""
@@ -3158,6 +3199,7 @@ class MusicBot(TeamTalk5.TeamTalk):
             "/playlist — список плейлиста постранично\n"
             "/u <ссылка> — воспроизвести ссылку напрямую\n"
             "/radio — станции; /radio <номер> — запуск станции\n"
+            "/mow — Моя волна (Яндекс.Музыка)\n"
             "/fav — избранное (f + — добавить текущий, f + <ссылка>, f <номер>, f - <номер>)\n"
             "/v <1-100> — громкость; /sf <сек> — перемотка вперёд; /sb <сек> — назад\n"
             "/cm — ответы в канал: вкл/выкл; /vo — озвучка названий треков: вкл/выкл\n"
