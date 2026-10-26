@@ -1,0 +1,20 @@
+# Конфиг с паролями
+config.json
+
+# Бэкапы
+*.bak*
+__pycache__/
+*.pyc
+
+# Кэш
+cache/
+inbox/
+hometun/
+
+# Баны
+bans.json
+
+# Временные
+*.tmp
+*.log
+.venv/
