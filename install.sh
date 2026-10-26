@@ -52,6 +52,16 @@ BOT_CHANNEL=${BOT_CHANNEL:-/}
 read -rsp "Пароль канала (пусто = нет): " BOT_CHAN_PASS; echo
 
 echo
+echo "--- Яндекс.Музыка (опционально) ---"
+read -rp "Токен Яндекс.Музыки (Enter = не использовать): " YM_TOKEN
+YM_TOKEN=${YM_TOKEN:-}
+
+echo
+echo "--- YouTube куки (опционально) ---"
+read -rp "Путь к файлу куки YouTube (Enter = пропустить): " YT_COOKIES
+YT_COOKIES=${YT_COOKIES:-}
+
+echo
 echo "--- Telegram (опционально, Enter = пропустить) ---"
 read -rp "Токен Telegram-бота []: " TG_TOKEN
 TG_TOKEN=${TG_TOKEN:-}
@@ -127,8 +137,8 @@ cat > "$INSTALL_DIR/config.json" <<EOF
     "playlist_limit": 5000
   },
   "services": {
-    "yt": { "cookiefile_path": "" },
-    "ym": { "token": "" }
+    "yt": { "cookiefile_path": "$YT_COOKIES" },
+    "ym": { "token": "$YM_TOKEN" }
   },
   "telegram": {
     "token": "$TG_TOKEN",
