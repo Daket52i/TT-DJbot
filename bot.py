@@ -3,6 +3,8 @@
 реле сообщений и файлов в Telegram, защита от ботнетов, регистрация учёток."""
 import array
 import ctypes
+import hashlib
+import http.client
 import json
 import os
 import queue
@@ -16,9 +18,11 @@ import sys
 import threading
 import time
 import traceback
+import urllib.error
 import urllib.parse
 import urllib.request
 import uuid
+import wave
 import bisect
 import glob
 import ipaddress
@@ -53,11 +57,14 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 # YouTube тоже ходит через мост (YT_PROXY). yandex-music, rutube и пр. — напрямую.
 TG_PROXY = os.environ.get("TG_PROXY", "").strip()
 YT_PROXY = os.environ.get("YT_PROXY", "").strip()
+TG_API_TIMEOUT = float(os.environ.get("TG_API_TIMEOUT", "12"))
+TG_API_ATTEMPTS = max(1, int(os.environ.get("TG_API_ATTEMPTS", "3")))
 # Домашний туннель (см. hometun/README.md): когда он поднят, YouTube качается
 # через него (домашний интернет), иначе — обычным каналом. Формат как у yt-dlp,
 # например socks5://127.0.0.1:1080
 YT_TUNNEL = os.environ.get("YT_TUNNEL", "").strip()
 _TG_OPENER = None
+_TG_LOCAL = threading.local()
 
 
 def _yt_proxy():
@@ -282,8 +289,15 @@ ACC_WATCH_NOTICE_TEXT  = ("Права твоей учётной записи и�
 # Приветствие при входе пользователя на сервер: просьба ознакомиться с правилами
 # (welcome.rules_text в config.json; пусто — стандартная строка).
 WELCOME_RULES = str(_cfg("welcome.rules_text", None, "") or "").strip()
+WELCOME_RULES_EN = str(_cfg("welcome.rules_text_en", None, "") or "").strip()
 # Сетевое приветствие при входе (можно выключить: welcome.enabled=false).
 WELCOME_ENABLED = bool(_cfg("welcome.enabled", None, True))
+# Голосовое приветствие через Silero: русский/английский по нику.
+WELCOME_VOICE_ENABLED = bool(_cfg("welcome.voice_enabled", None, True))
+WELCOME_VOICE_RU = str(_cfg("welcome.voice_ru", None, "baya") or "baya").strip()
+WELCOME_VOICE_EN = str(_cfg("welcome.voice_en", None, "en_0") or "en_0").strip()
+WELCOME_VOICE_GAIN = max(0.0, min(1.0, float(_cfg("welcome.voice_gain", None, 1.0) or 1.0)))
+SILERO_LIB = "/usr/local/lib/radio-tts"
 
 # Кэш гео-резолва (ip -> (время, «город, страна · провайдер»)): один и тот же
 # адрес не дёргаем повторно, у бесплатного ip-api.com лимит запросов в минуту.
@@ -420,6 +434,22 @@ if YT_PO_TOKEN is None:
 # Max tracks loaded from a playlist (YouTube / Yandex Music). High default so big
 # playlists («Мне нравится» ≈ тысячи треков) load fully; override via config.
 PLAYLIST_LIMIT = int(_cfg("runtime.playlist_limit", None, 5000))
+# Max results returned by /play search (YouTube or Yandex Music).
+SEARCH_LIMIT = max(1, int(_cfg("runtime.search_limit", None, 700) or 700))
+
+TV_DIR = os.path.join(BASE_DIR, "tv")
+TV_VIDEO_BITRATE = max(64, int(_cfg("tv.video_bitrate", None, 512) or 512))
+TV_LIST_PAGE = max(5, int(_cfg("tv.list_page", None, 20) or 20))
+RADIO_LIST_PAGE = max(5, int(_cfg("radio.list_page", None, 15) or 15))
+TV_PRIORITY = (
+    "Первый канал (Казань)", "Россия 1 (Казань)", "НТВ (Казань)",
+    "ТНВ Татарстан", "ТНТ (Казань)", "СТС (Казань)", "ТВ3 (Казань)",
+    "Пятый канал (Казань)", "Рен ТВ (Казань)", "Россия 24 (Казань)",
+    "ТНВ Планета", "Шаян ТВ", "Татарстан 24", "Майдан ТВ",
+    "Домашний (Казань)", "Звезда (Казань)", "Карусель (Казань)",
+    "ОТР (Казань)", "Пятница! (Казань)", "ТВЦ (Казань)", "Че! (Казань)",
+    "Ю (Казань)", "Эфир ТВ",
+)
 
 # Voice transmission: raw PCM fed to TT_InsertAudioBlock as STREAMTYPE_VOICE.
 # Стерео: серверные каналы стоят на Opus 48000/2ch, так что шлём 2 канала.
@@ -550,6 +580,17 @@ class MusicBot(TeamTalk5.TeamTalk):
         self.radio = self._load_radio()
         if self.radio:
             log("radio loaded: %d stations" % len(self.radio))
+        self.tv = self._load_tv()
+        if self.tv:
+            log("tv loaded: %d channels" % len(self.tv))
+        self._tv_active = False
+        self._tv_starting = False
+        self._tv_fallback = False
+        self._tv_url = None
+        self._tv_title = None
+        self._tv_started_at = 0.0
+        self._tv_grace_until = 0.0
+        self._tv_run = 0
         self.nickname = NICKNAME
         self.status_msg = ""
         try:
@@ -563,6 +604,10 @@ class MusicBot(TeamTalk5.TeamTalk):
         self.channel_msg = self._load_channel_msg()  # mirror replies to channel (cm)
         self.voice_announce = self._load_voice_announce()  # voice-announce track titles (vo)
         self._announce_pending = None  # (path, offset) of real track waiting behind a title announcement
+        self._welcome_voice_path = None
+        self._welcome_overlay = None
+        self._welcome_overlay_lock = threading.Lock()
+        self._welcome_tts_lock = threading.Lock()
         # dl: upload current track to the channel as a server file (TT_DoSendFile)
         self._dl_cmd_id = None  # command id of the active upload (from TT_DoSendFile)
         self._dl_remote = None  # remote file name
@@ -653,12 +698,22 @@ class MusicBot(TeamTalk5.TeamTalk):
         except Exception as e:
             log("voice_announce save err: %s" % e)
 
-    def _scale_pcm(self, chunk):
+    def _scale_pcm(self, chunk, gain=None):
         """Apply volume with a smooth ramp toward the target (no ffmpeg restart).
 
         Each call is one 20 ms block; self.cur_vol steps ~2% toward self.volume,
         so a full-scale change eases in over ~1 second instead of snapping.
+        A fixed gain (welcome voice) is applied without changing music volume.
         """
+        if gain is not None:
+            cur = max(0.0, min(1.0, float(gain)))
+            if cur >= 0.999:
+                return chunk
+            a = array.array("h")
+            a.frombytes(chunk)
+            for i in range(len(a)):
+                a[i] = int(a[i] * cur)
+            return a.tobytes()
         target = self.volume / 100.0
         cur = self.cur_vol
         if cur < target:
@@ -699,6 +754,9 @@ class MusicBot(TeamTalk5.TeamTalk):
     def updateStreamingMediaFileToChannel(self, playback):
         return TeamTalk5._UpdateStreamingMediaFileToChannel(self._tt, byref(playback), None)
 
+    def stopStreamingMediaFileToChannel(self):
+        return TeamTalk5._StopStreamingMediaFileToChannel(self._tt)
+
     def insertAudioBlock(self, block):
         return TeamTalk5._InsertAudioBlock(self._tt, block)
 
@@ -718,15 +776,56 @@ class MusicBot(TeamTalk5.TeamTalk):
     # ----- telegram relay (own bot, forwards files into the channel) -----
     def _tg_api(self, method, **params):
         url = "https://api.telegram.org/bot%s/%s" % (TG_TOKEN, method)
+        path = "/bot%s/%s" % (TG_TOKEN, method)
+        http_timeout = float(params.pop("_http_timeout", TG_API_TIMEOUT))
+        attempts = max(1, int(params.pop("_attempts", TG_API_ATTEMPTS)))
         data = urllib.parse.urlencode(params).encode()
-        req = urllib.request.Request(url, data=data, method="POST")
-        with _tg_urlopen(req, timeout=60) as r:
-            return json.loads(r.read().decode())
+        last = None
+        for attempt in range(attempts):
+            try:
+                if TG_PROXY:
+                    req = urllib.request.Request(url, data=data, method="POST")
+                    with _tg_urlopen(req, timeout=http_timeout) as r:
+                        return json.loads(r.read().decode())
+                conn = getattr(_TG_LOCAL, "conn", None)
+                if conn is None:
+                    conn = http.client.HTTPSConnection("api.telegram.org", 443, timeout=http_timeout)
+                    _TG_LOCAL.conn = conn
+                conn.timeout = http_timeout
+                if conn.sock is not None:
+                    conn.sock.settimeout(http_timeout)
+                conn.request("POST", path, body=data,
+                             headers={"Content-Type": "application/x-www-form-urlencoded"})
+                resp = conn.getresponse()
+                raw = resp.read()
+                if resp.status >= 400:
+                    conn.close()
+                    _TG_LOCAL.conn = None
+                    raise urllib.error.HTTPError(
+                        url, resp.status, raw.decode("utf-8", "replace")[:300], resp.headers, None)
+                if resp.will_close:
+                    conn.close()
+                    _TG_LOCAL.conn = None
+                return json.loads(raw.decode())
+            except urllib.error.HTTPError as e:
+                if e.code < 500:
+                    raise
+                last = e
+            except Exception as e:
+                last = e
+            conn = getattr(_TG_LOCAL, "conn", None)
+            if conn is not None:
+                conn.close()
+                _TG_LOCAL.conn = None
+            if attempt + 1 < attempts:
+                time.sleep(0.8 * (attempt + 1))
+        raise last
 
     def _tg_poll(self):
         while True:
             try:
-                res = self._tg_api("getUpdates", timeout=25, offset=self._tg_offset)
+                res = self._tg_api("getUpdates", timeout=10, offset=self._tg_offset,
+                                   _http_timeout=15, _attempts=2)
                 for upd in res.get("result", []):
                     self._tg_offset = upd.get("update_id", 0) + 1
                     self._tg_handle_update(upd)
@@ -1535,7 +1634,8 @@ class MusicBot(TeamTalk5.TeamTalk):
             "u <ссылка> — играть по ссылке напрямую\n"
             "v <1-100> — громкость, sf <сек> — перемотка (sf -5 — назад, sb <сек> — назад)\n"
             "playlist — список плейлиста постранично\n"
-            "radio — радиостанции (radio <номер> — запуск)\n"
+            "radio — радиостанции (radio <номер> — запуск, radio l <стр> — страница)\n"
+            "tv — ТВ-каналы (tv <номер> — включить, tv l <стр> — страница, tv <текст> — поиск, tv stop — стоп)\n"
             "fav — избранное (f +, f + <ссылка>, f <номер>, f - <номер>)\n"
             "sv yt / sv ym — сервис\n"
             "cm — отвечать в канал/личку\n"
@@ -1572,6 +1672,7 @@ class MusicBot(TeamTalk5.TeamTalk):
             {"command": "volume", "description": "Громкость: /volume <1-100>"},
             {"command": "favorites", "description": "Избранное: /favorites"},
             {"command": "radio", "description": "Радиостанции"},
+            {"command": "tv", "description": "ТВ-каналы: /tv <номер>"},
         ]
         # /admin, /unadmin, /delsub, /unsub намеренно НЕ в меню: назначение/снятие
         # админа и отписка делаются в списке подписчиков /subs (кнопки). По тексту
@@ -1587,13 +1688,16 @@ class MusicBot(TeamTalk5.TeamTalk):
         try:
             # общее меню по умолчанию — без админских команд
             self._tg_api("setMyCommands", commands=json.dumps(public))
-            # админам — полное меню в личных чатах
-            for aid in self._tg_admin_ids():
-                self._tg_api("setMyCommands", commands=json.dumps(public + admin),
-                             scope=json.dumps({"type": "chat", "chat_id": aid}))
-            log("tg commands registered (%d admin scopes)" % len(self._tg_admin_ids()))
         except Exception as e:
             log("tg setMyCommands err: %s" % str(e)[:120])
+        # админам — полное меню в личных чатах; ошибка одного чата не мешает остальным
+        for aid in self._tg_admin_ids():
+            try:
+                self._tg_api("setMyCommands", commands=json.dumps(public + admin),
+                             scope=json.dumps({"type": "chat", "chat_id": aid}))
+            except Exception as e:
+                log("tg setMyCommands admin %s err: %s" % (aid, str(e)[:120]))
+        log("tg commands registered (%d admin scopes)" % len(self._tg_admin_ids()))
 
     def _tg_download(self, file_id):
         try:
@@ -1729,8 +1833,9 @@ class MusicBot(TeamTalk5.TeamTalk):
                     last_err = tail
         return None, "", last_err
 
-    def _ym_search_list(self, query):
-        """Search Yandex Music; return list of {"key","title"} (up to 10)."""
+    def _ym_search_list(self, query, limit=10):
+        """Search Yandex Music; return up to `limit` {"key","title"} items."""
+        limit = max(1, int(limit))
         if not YM_TOKEN:
             return []
         try:
@@ -1740,15 +1845,28 @@ class MusicBot(TeamTalk5.TeamTalk):
             return []
         try:
             client = Client(YM_TOKEN).init()
-            res = client.search(query, type_="track", page=0)
-            if not res or not res.tracks or not res.tracks.results:
-                return []
             items = []
-            for tr in res.tracks.results:
-                title = " - ".join(tr.artists_name()) + " - " + tr.title
-                items.append({"key": "ymtrack:%s" % tr.track_id, "title": title})
-                if len(items) >= 10:
+            seen = set()
+            page = 0
+            while len(items) < limit and page < 100:
+                res = client.search(query, type_="track", page=page)
+                if not res or not res.tracks or not res.tracks.results:
                     break
+                results = res.tracks.results
+                new_items = 0
+                for tr in results:
+                    key = "ymtrack:%s" % tr.track_id
+                    if key in seen:
+                        continue
+                    seen.add(key)
+                    title = " - ".join(tr.artists_name()) + " - " + tr.title
+                    items.append({"key": key, "title": title})
+                    new_items += 1
+                    if len(items) >= limit:
+                        break
+                if not new_items:
+                    break
+                page += 1
             return items
         except Exception as e:
             log("ym search err: %s" % e)
@@ -1772,12 +1890,13 @@ class MusicBot(TeamTalk5.TeamTalk):
         except Exception as e:
             return None, "Яндекс.Музыка: %s" % str(e)[:150]
 
-    def _yt_search_list(self, query):
-        """Return list of {"key","title"} for the first *video* results, skipping
+    def _yt_search_list(self, query, limit=10):
+        """Return up to `limit` {"key","title"} video results, skipping
         channels/playlists that a bare ytsearch would otherwise dive into."""
+        limit = max(1, int(limit))
         cmd = list(YTDLP) + [
             "--flat-playlist",
-            "--playlist-items", "1-10",
+            "--playlist-items", "1-%d" % limit,
             "--no-warnings",
             "--print", "%(title)s\t%(url)s",
         ]
@@ -1789,9 +1908,9 @@ class MusicBot(TeamTalk5.TeamTalk):
         ck = _fresh_cookies()
         if ck:
             cmd += ["--cookies", ck]
-        cmd += ["--", "ytsearch10:" + query]
+        cmd += ["--", "ytsearch%d:" % limit + query]
         try:
-            rc, out, err = self._run_ydl(cmd, timeout=90)
+            rc, out, err = self._run_ydl(cmd, timeout=300 if limit > 100 else 90)
         except subprocess.TimeoutExpired:
             return []
         finally:
@@ -1807,7 +1926,7 @@ class MusicBot(TeamTalk5.TeamTalk):
             t, u = parts[0].strip(), parts[1].strip()
             if re.search(r"youtube\.com/watch\?v=|youtu\.be/", u):
                 items.append({"key": u, "title": t or u})
-            if len(items) >= 10:
+            if len(items) >= limit:
                 break
         return items
 
@@ -2098,19 +2217,70 @@ class MusicBot(TeamTalk5.TeamTalk):
         except Exception as e:
             log("status err: %s" % e)
 
-    def _start_voice(self, path, offset_ms=0):
+    def _welcome_overlay_get(self):
+        with self._welcome_overlay_lock:
+            return self._welcome_overlay
+
+    def _welcome_overlay_set(self, path):
+        with self._welcome_overlay_lock:
+            self._welcome_overlay = (path, WELCOME_VOICE_GAIN)
+
+    def _welcome_overlay_done(self, path):
+        with self._welcome_overlay_lock:
+            if self._welcome_overlay and self._welcome_overlay[0] == path:
+                self._welcome_overlay = None
+
+    def _open_welcome_overlay(self):
+        item = self._welcome_overlay_get()
+        if not item:
+            return None
+        path, gain = item
+        try:
+            wf = wave.open(path, "rb")
+            if (wf.getsampwidth() != 2 or wf.getframerate() != VOICE_RATE
+                    or wf.getnchannels() not in (1, 2)):
+                wf.close()
+                self._welcome_overlay_done(path)
+                log("welcome voice overlay unsupported format: %s" % path)
+                return None
+            return path, gain, wf
+        except Exception as e:
+            self._welcome_overlay_done(path)
+            log("welcome voice overlay open err: %s" % str(e)[:150])
+            return None
+
+    def _mix_welcome(self, chunk, raw, gain, channels):
+        music = array.array("h")
+        music.frombytes(chunk)
+        voice = array.array("h")
+        voice.frombytes(raw)
+        g = float(gain)
+        if channels == 1:
+            for i in range(min(len(voice), VOICE_CHUNK)):
+                v = int(voice[i] * g)
+                j = i * 2
+                for k in (j, j + 1):
+                    s = music[k] + v
+                    music[k] = -32768 if s < -32768 else 32767 if s > 32767 else s
+        else:
+            for i in range(min(len(music), len(voice))):
+                s = music[i] + int(voice[i] * g)
+                music[i] = -32768 if s < -32768 else 32767 if s > 32767 else s
+        return music.tobytes()
+
+    def _start_voice(self, path, offset_ms=0, gain=None):
         self._stop_voice()
         run = self._voice_run  # поколение уже увеличено в _stop_voice
         self.voice_stop.clear()
         self.voice_offset_base = int(offset_ms)
         self.voice_started_at = time.time()
         t = threading.Thread(
-            target=self._voice_worker, args=(path, int(offset_ms), run), daemon=True
+            target=self._voice_worker, args=(path, int(offset_ms), run, gain), daemon=True
         )
         self.voice_thread = t
         t.start()
 
-    def _voice_worker(self, path, offset_ms, run):
+    def _voice_worker(self, path, offset_ms, run, gain=None):
         """Play audio to TeamTalk as voice.
 
         With PULSE_SINK set, ffmpeg plays the track into that PulseAudio sink
@@ -2155,6 +2325,9 @@ class MusicBot(TeamTalk5.TeamTalk):
         stream_id = int(time.time() * 1000) & 0xFFFF
         finished = False
         buf = b""
+        overlay_path = None
+        overlay_gain = 1.0
+        overlay_wf = None
         block_dur = VOICE_CHUNK / float(VOICE_RATE)  # 0.02 s per 20 ms block
         next_slot = time.monotonic()
         drain_until = None  # pulse mode: tail-drain deadline after player exits
@@ -2186,7 +2359,46 @@ class MusicBot(TeamTalk5.TeamTalk):
                     next_slot = time.monotonic()  # behind: don't compound backlog
                 chunk = buf[:VOICE_CHUNK_BYTES]
                 buf = buf[VOICE_CHUNK_BYTES:]
-                chunk = self._scale_pcm(chunk)
+                chunk = self._scale_pcm(chunk, gain)
+                item = self._welcome_overlay_get()
+                if item and item[0] != overlay_path:
+                    if overlay_wf is not None:
+                        try:
+                            overlay_wf.close()
+                        except Exception:
+                            pass
+                    opened = self._open_welcome_overlay()
+                    if opened:
+                        overlay_path, overlay_gain, overlay_wf = opened
+                    else:
+                        overlay_path = None
+                        overlay_gain = 1.0
+                        overlay_wf = None
+                elif not item and overlay_path:
+                    if overlay_wf is not None:
+                        try:
+                            overlay_wf.close()
+                        except Exception:
+                            pass
+                    overlay_wf = None
+                    overlay_path = None
+                if overlay_wf is not None:
+                    ch = overlay_wf.getnchannels()
+                    raw_voice = overlay_wf.readframes(VOICE_CHUNK)
+                    need = VOICE_CHUNK * 2 * ch
+                    ended = len(raw_voice) < need
+                    if len(raw_voice) < need:
+                        raw_voice += b"\x00" * (need - len(raw_voice))
+                    if raw_voice:
+                        chunk = self._mix_welcome(chunk, raw_voice, overlay_gain, ch)
+                    if ended:
+                        try:
+                            overlay_wf.close()
+                        except Exception:
+                            pass
+                        overlay_wf = None
+                        self._welcome_overlay_done(overlay_path)
+                        overlay_path = None
                 raw = (ctypes.c_char * VOICE_CHUNK_BYTES).from_buffer_copy(chunk)
                 ab = TeamTalk5.AudioBlock()
                 ab.nStreamID = stream_id
@@ -2210,7 +2422,7 @@ class MusicBot(TeamTalk5.TeamTalk):
                     chunk = buf[i:i + VOICE_CHUNK_BYTES]
                     if len(chunk) < VOICE_CHUNK_BYTES:
                         chunk += b"\x00" * (VOICE_CHUNK_BYTES - len(chunk))
-                    chunk = self._scale_pcm(chunk)
+                    chunk = self._scale_pcm(chunk, gain)
                     raw = (ctypes.c_char * VOICE_CHUNK_BYTES).from_buffer_copy(chunk)
                     ab = TeamTalk5.AudioBlock()
                     ab.nStreamID = stream_id
@@ -2223,6 +2435,13 @@ class MusicBot(TeamTalk5.TeamTalk):
                         self.insertAudioBlock(ab)
                     except Exception as e:
                         log("insertAudioBlock err: %s" % e)
+            if overlay_wf is not None:
+                try:
+                    overlay_wf.close()
+                except Exception:
+                    pass
+            if overlay_path:
+                self._welcome_overlay_done(overlay_path)
             try:
                 self.insertAudioBlockEnd()
             except Exception:
@@ -2238,6 +2457,7 @@ class MusicBot(TeamTalk5.TeamTalk):
                 self.api_q.put(("voice_finished", run, path))
 
     def _stop_voice(self):
+        self._stop_tv()
         self._voice_run += 1  # инвалидировать поколение: устаревшие voice_finished игнорируются
         self.voice_stop.set()
         t = self.voice_thread
@@ -2330,6 +2550,9 @@ class MusicBot(TeamTalk5.TeamTalk):
         return self.cur_offset_ms
 
     def _pause(self):
+        if self._tv_active or self._tv_starting:
+            self._send("ТВ-поток нельзя поставить на паузу. Останови: /tv stop.")
+            return
         if not self.playing or self.paused:
             return
         self.cur_offset_ms = self._elapsed_ms()
@@ -2351,10 +2574,20 @@ class MusicBot(TeamTalk5.TeamTalk):
         self.volume = v
         # No ffmpeg restart needed: _scale_pcm applies the new gain to the next
         # audio block, so volume changes take effect instantly for any source.
+        if self._tv_active or self._tv_starting:
+            try:
+                ok = self.updateStreamingMediaFileToChannel(
+                    self._tv_playback(TT_MEDIAPLAYBACK_OFFSET_IGNORE))
+                log("tv volume update: %d%% ok=%s" % (v, ok))
+            except Exception as e:
+                log("tv volume update err: %s" % str(e)[:120])
         self._send("Громкость: %d%%" % v)
 
     def _seek(self, delta_s):
         """Seek the current track by delta_s seconds (negative = backwards)."""
+        if self._tv_active or self._tv_starting:
+            self._send("Прямой ТВ-поток нельзя перемотать.")
+            return
         if not self.playing or not self.current_orig:
             self._send("Воспроизведение неактивно.")
             return
@@ -2437,9 +2670,9 @@ class MusicBot(TeamTalk5.TeamTalk):
     def _search_worker(self, query):
         try:
             if self.service == "ym":
-                items = self._ym_search_list(query)
+                items = self._ym_search_list(query, SEARCH_LIMIT)
             else:
-                items = self._yt_search_list(query)
+                items = self._yt_search_list(query, SEARCH_LIMIT)
             self.api_q.put(("search_done", query, items))
         except Exception as e:
             log("search err: %s" % e)
@@ -2565,16 +2798,14 @@ class MusicBot(TeamTalk5.TeamTalk):
         for fn in sorted(os.listdir(base)):
             if not fn.lower().endswith(".m3u"):
                 continue
-            full = os.path.join(base, fn)
-            title, url = self._parse_m3u(full, fn)
-            if url:
+            for title, url in self._parse_m3u(os.path.join(base, fn), fn):
                 stations.append((title, url))
         return stations
 
     def _parse_m3u(self, path, fallback_name):
-        """Return (title, stream_url) from an m3u file, or (fallback, None)."""
+        """Return [(title, stream_url)] from an m3u file; supports multi-entry."""
+        entries = []
         title = os.path.splitext(fallback_name)[0]
-        url = None
         try:
             with open(path, encoding="utf-8", errors="ignore") as f:
                 for ln in f:
@@ -2586,31 +2817,287 @@ class MusicBot(TeamTalk5.TeamTalk):
                         if m and m.group(1).strip():
                             title = m.group(1).strip()
                     elif ln.startswith("http://") or ln.startswith("https://"):
-                        url = ln
-                        break
+                        entries.append((title, ln))
+                        title = os.path.splitext(fallback_name)[0]
         except Exception as e:
             log("m3u parse err %s: %s" % (path, e))
-        return title, url
+        return entries
+
+    def _tv_norm(self, title):
+        return re.sub(r"\s+", " ", (title or "").lower().replace("ё", "е")).strip()
+
+    def _load_tv(self):
+        """Load TV playlists; duplicate titles keep the last (fallback) URL."""
+        channels = {}
+        if os.path.isdir(TV_DIR):
+            for fn in sorted(os.listdir(TV_DIR)):
+                if not fn.lower().endswith((".m3u", ".m3u8")):
+                    continue
+                path = os.path.join(TV_DIR, fn)
+                title = os.path.splitext(fn)[0]
+                try:
+                    with open(path, encoding="utf-8-sig", errors="ignore") as f:
+                        for ln in f:
+                            ln = ln.strip()
+                            if not ln:
+                                continue
+                            if ln.upper().startswith("#EXTINF"):
+                                m = re.search(r",\s*(.+?)\s*$", ln)
+                                if m and m.group(1).strip():
+                                    title = m.group(1).strip()
+                            elif ln.startswith(("http://", "https://")):
+                                key = self._tv_norm(title)
+                                if key:
+                                    channels[key] = (title, ln)
+                                title = os.path.splitext(fn)[0]
+                except Exception as e:
+                    log("tv parse err %s: %s" % (path, e))
+        if not channels:
+            return []
+        ordered = []
+        for title in TV_PRIORITY:
+            item = channels.pop(self._tv_norm(title), None)
+            if item:
+                ordered.append(item)
+        ordered.extend(channels.values())
+        return ordered
+
+    def _tv_playback(self, offset_ms=0):
+        playback = MediaFilePlayback()
+        playback.uOffsetMSec = offset_ms
+        playback.bPaused = False
+        playback.audioPreprocessor.nPreprocessor = (
+            TeamTalk5.AudioPreprocessorType.TEAMTALK_AUDIOPREPROCESSOR
+        )
+        playback.audioPreprocessor.ttpreprocessor.nGainLevel = max(
+            TeamTalk5.SoundLevel.SOUND_GAIN_MIN,
+            min(TeamTalk5.SoundLevel.SOUND_GAIN_MAX, int(self.volume) * 10),
+        )
+        playback.audioPreprocessor.ttpreprocessor.bMuteLeftSpeaker = False
+        playback.audioPreprocessor.ttpreprocessor.bMuteRightSpeaker = False
+        return playback
+
+    def _tv_codec(self):
+        codec = TeamTalk5.VideoCodec()
+        codec.nCodec = TeamTalk5.Codec.WEBM_VP8_CODEC
+        codec.webm_vp8.nRcTargetBitrate = TV_VIDEO_BITRATE
+        codec.webm_vp8.nEncodeDeadline = TeamTalk5.WEBM_VPX_DL_REALTIME
+        return codec
+
+    def _tv_list_lines(self, page=1):
+        if not self.tv:
+            return ["ТВ-каналы не найдены. Добавь .m3u/.m3u8 в %s." % TV_DIR]
+        total = len(self.tv)
+        pages = max(1, (total + TV_LIST_PAGE - 1) // TV_LIST_PAGE)
+        page = max(1, min(pages, int(page or 1)))
+        start = (page - 1) * TV_LIST_PAGE
+        end = min(total, start + TV_LIST_PAGE)
+        lines = ["ТВ: %d каналов (стр. %d из %d)" % (total, page, pages)]
+        for i in range(start, end):
+            lines.append("%d. %s" % (i + 1, self.tv[i][0][:70]))
+        lines.append("tv <номер> — включить; tv l <стр> — список; tv <текст> — поиск")
+        return lines
+
+    def _tv_cmd(self, arg):
+        arg = (arg or "").strip()
+        if not self.tv:
+            self._send("ТВ-каналы не настроены: положи .m3u/.m3u8 в %s." % TV_DIR)
+            return
+        if not arg:
+            self._send("\n".join(self._tv_list_lines(1)))
+            return
+        low = arg.lower()
+        if low in ("stop", "off", "выкл", "стоп"):
+            log("tv stop requested active=%s starting=%s title=%r" % (
+                self._tv_active, self._tv_starting, self._tv_title))
+            if self._tv_active or self._tv_starting:
+                self._stop_voice()
+                self.playing = False
+                self.paused = False
+                self.current = None
+                self.current_orig = None
+                self.cur_source = None
+                self.cur_offset_ms = 0
+                self._set_status(self.status_msg)
+                self._send("ТВ остановлено.")
+            else:
+                self._send("ТВ не включено.")
+            return
+        if low in ("help", "?", "справка"):
+            self._send("\n".join(self._tv_list_lines(1)))
+            return
+        m = re.match(r"^(?:l|list|page|список|стр|страница)\s*(\d*)$", low)
+        if m:
+            self._send("\n".join(self._tv_list_lines(int(m.group(1) or 1))))
+            return
+        if arg.isdigit():
+            idx = int(arg) - 1
+            if idx < 0 or idx >= len(self.tv):
+                self._send("Нет канала под номером %d (всего %d)." % (idx + 1, len(self.tv)))
+                return
+            title, url = self.tv[idx]
+            self._play_tv(title, url)
+            return
+        q = self._tv_norm(arg)
+        found = [(i + 1, t) for i, (t, _u) in enumerate(self.tv) if q and q in self._tv_norm(t)]
+        if not found:
+            self._send("Канал «%s» не найден. tv — список." % arg[:80])
+            return
+        lines = ["Нашёл:"]
+        for idx, title in found[:10]:
+            lines.append("%d. %s" % (idx, title[:70]))
+        lines.append("tv <номер> — включить")
+        self._send("\n".join(lines))
+
+    def _play_tv(self, title, url):
+        self._stop_voice()
+        pending = []
+        while True:
+            try:
+                item = self.api_q.get_nowait()
+            except queue.Empty:
+                break
+            if item[0] not in ("advance", "tv_started", "tv_finished", "tv_timeout"):
+                pending.append(item)
+        for item in pending:
+            self.api_q.put(item)
+        self.auto_list = False
+        self.auto_playlist = False
+        self.queue.clear()
+        self.downloading.clear()
+        self.playing = False
+        self.paused = False
+        self.current = None
+        self.current_orig = None
+        self.cur_source = None
+        self.cur_offset_ms = 0
+        self._tv_active = False
+        self._tv_starting = True
+        self._tv_fallback = False
+        self._tv_url = url
+        self._tv_title = title
+        self._tv_started_at = time.time()
+        self._tv_run += 1
+        run = self._tv_run
+        self._send("Включаю ТВ: %s (видео и звук)…" % title)
+        self._set_status("TV: %s" % title)
+        ok = False
+        started = time.time()
+        try:
+            playback = self._tv_playback()
+            ok = self.startStreamingMediaFileToChannelEx(url, playback, self._tv_codec())
+        except Exception as e:
+            log("tv start err: %s" % str(e)[:200])
+        log("tv start returned %s in %.1fs" % (ok, time.time() - started))
+        if not ok:
+            log("tv start rejected: %s" % title)
+            url, title = self._tv_url, self._tv_title
+            self._tv_active = False
+            self._tv_starting = False
+            self._tv_url = None
+            self._tv_title = None
+            self.current = None
+            self._set_status(self.status_msg)
+            self._send("Видеопоток не запустился. Включаю только звук.")
+            if url:
+                self._play_radio(url, title, remember=False)
+            return
+        self.playing = True
+        self.current = (url, title)
+        self._tv_grace_until = time.time() + 2.0
+        threading.Thread(target=self._tv_watchdog, args=(title, run), daemon=True).start()
+        threading.Thread(target=self._tv_stats_log, args=(title, run), daemon=True).start()
+
+    def _tv_watchdog(self, title, run):
+        """If the media-file stream hasn't reached MFS_STARTED, fall back to audio."""
+        time.sleep(12)
+        if self._tv_run == run and self._tv_starting and self._tv_title == title:
+            self.api_q.put(("tv_timeout", title))
+
+    def _tv_stats_log(self, title, run):
+        time.sleep(5)
+        if self._tv_run != run or not (self._tv_active and self._tv_title == title):
+            return
+        try:
+            st = TeamTalk5.ClientStatistics()
+            TeamTalk5._GetClientStatistics(self._tt, byref(st))
+            log("tv stats: video_bytes_sent=%d audio_bytes_sent=%d" % (
+                int(st.nMediaFileVideoBytesSent), int(st.nMediaFileAudioBytesSent)))
+        except Exception as e:
+            log("tv stats err: %s" % str(e)[:120])
+
+    def _stop_tv(self):
+        if not (self._tv_active or self._tv_starting):
+            return
+        self._tv_active = False
+        self._tv_starting = False
+        self._tv_url = None
+        self._tv_title = None
+        self._tv_started_at = 0.0
+        self._tv_run += 1
+        try:
+            self.stopStreamingMediaFileToChannel()
+        except Exception as e:
+            log("tv stop err: %s" % str(e)[:150])
+
+    def _tv_finished(self, reason, stop_stream=False):
+        log("tv finished event: reason=%s active=%s starting=%s title=%r" % (
+            reason, self._tv_active, self._tv_starting, self._tv_title))
+        if not (self._tv_active or self._tv_starting):
+            return
+        url, title = self._tv_url, self._tv_title
+        if stop_stream:
+            try:
+                self.stopStreamingMediaFileToChannel()
+            except Exception as e:
+                log("tv stop err: %s" % str(e)[:120])
+        self._tv_active = False
+        self._tv_starting = False
+        self._tv_url = None
+        self._tv_title = None
+        self._tv_started_at = 0.0
+        self._tv_run += 1
+        self.playing = False
+        self.paused = False
+        self.current = None
+        self.current_orig = None
+        self.cur_source = None
+        self._set_status(self.status_msg)
+        if url and not self._tv_fallback:
+            self._tv_fallback = True
+            self._send("Видеопоток остановился (%s). Включаю только звук." % reason)
+            self._play_radio(url, title, remember=False)
+        else:
+            self._send("ТВ остановлено.")
 
     def _radio_cmd(self, arg):
-        """Radio station browser: плоский список → запуск по номеру."""
+        """Radio station browser: страницы, запуск по номеру, поиск."""
         if not self.radio:
             self._send("Нет папки radio/ с m3u. Положи станции и перезапусти.")
             return
+        total = len(self.radio)
+        pages = max(1, (total + RADIO_LIST_PAGE - 1) // RADIO_LIST_PAGE)
+        arg = (arg or "").strip()
+        page = None
+        parts = arg.split()
         if not arg:
-            lines = ["Радио (%d станций):" % len(self.radio)]
-            for i, (t, _u) in enumerate(self.radio, 1):
-                lines.append("%d. %s" % (i, t))
-                if i >= 15:
-                    lines.append("… и ещё %d" % (len(self.radio) - 15))
-                    break
-            lines.append("radio <номер> — запуск")
+            page = 1
+        elif parts[0].lower() in ("l", "list", "page", "список"):
+            page = int(parts[1]) if len(parts) > 1 and parts[1].isdigit() else 1
+            page = max(1, min(pages, page))
+        if page is not None:
+            start = (page - 1) * RADIO_LIST_PAGE
+            end = min(total, start + RADIO_LIST_PAGE)
+            lines = ["Радио (%d станций, стр. %d/%d):" % (total, page, pages)]
+            for i in range(start, end):
+                lines.append("%d. %s" % (i + 1, self.radio[i][0]))
+            lines.append("radio <номер> — запуск; radio l <стр> — страница")
             self._send("\n".join(lines))
             return
         if arg.isdigit():
             idx = int(arg) - 1
-            if idx < 0 or idx >= len(self.radio):
-                self._send("Нет станции под номером %d (всего %d)." % (idx + 1, len(self.radio)))
+            if idx < 0 or idx >= total:
+                self._send("Нет станции под номером %d (всего %d)." % (idx + 1, total))
                 return
             title, url = self.radio[idx]
             self._play_radio(url, title)
@@ -2621,7 +3108,7 @@ class MusicBot(TeamTalk5.TeamTalk):
         if not found:
             self._send("Станция «%s» не найдена." % arg)
             return
-        lines = ["Нашёл:"]
+        lines = ["Нашёл (%d):" % len(found)]
         for idx, t in found[:10]:
             lines.append("%d. %s" % (idx, t))
         self._send("\n".join(lines) + "\nradio <номер> — запуск")
@@ -2701,7 +3188,7 @@ class MusicBot(TeamTalk5.TeamTalk):
         except Exception as e:
             log("resume last err: %s" % e)
 
-    def _play_radio(self, url, title):
+    def _play_radio(self, url, title, remember=True):
         """Play an internet radio stream directly (no download)."""
         self.auto_list = False
         self.auto_playlist = False
@@ -2713,7 +3200,8 @@ class MusicBot(TeamTalk5.TeamTalk):
         self.current = None
         self.current_orig = None
         self.cur_source = (url, title, True)
-        self._remember_last(url, title, True)
+        if remember:
+            self._remember_last(url, title, True)
         self.cur_offset_ms = 0
         self._send("Играет радио: %s" % title)
         self._set_status("Radio: %s" % title)
@@ -2724,7 +3212,7 @@ class MusicBot(TeamTalk5.TeamTalk):
         "v", "volume", "sf", "sb", "sub", "cm", "vo", "rs", "restart", "sv", "svc",
         "cn", "cs", "s", "stop", "skip", "queue", "q", "status", "now",
         "dl", "download", "lf", "n", "next", "b", "back", "prev", "playlist",
-        "radio", "r", "f", "fav", "favorites", "play", "p", "pause", "resume",
+        "radio", "r", "tv", "f", "fav", "favorites", "play", "p", "pause", "resume",
         "channel", "u", "link", "url",
     ])
 
@@ -3080,6 +3568,11 @@ class MusicBot(TeamTalk5.TeamTalk):
             self._mow_cmd()
             return
 
+        if cmd == "tv" or cmd.startswith("tv "):
+            arg = text.split(None, 1)[1].strip() if " " in text else ""
+            self._tv_cmd(arg)
+            return
+
         # --- радио: радио / радио <N> / радио <текст> ---
         if cmd.startswith("radio") or cmd == "r":
             arg = text.split(None, 1)[1].strip() if " " in text else ""
@@ -3176,7 +3669,14 @@ class MusicBot(TeamTalk5.TeamTalk):
             self._send("\n".join(lines))
 
     def _status_cmd(self):
-        if self.playing and self.current:
+        if self._tv_active or self._tv_starting:
+            lines = ["Сейчас ТВ: %s" % (self._tv_title or "…")]
+            if self._tv_starting:
+                lines.append("Запуск видеопотока…")
+            else:
+                lines.append("Время: %s" % _fmt_ms((time.time() - self._tv_started_at) * 1000))
+            lines.append("Остановить: /tv stop.")
+        elif self.playing and self.current:
             lines = ["Сейчас играет: %s" % self.current[1]]
             lines.append("Время: %s" % _fmt_ms(self._elapsed_ms()))
             if self.paused:
@@ -3198,7 +3698,8 @@ class MusicBot(TeamTalk5.TeamTalk):
             "/n — следующий трек; /b — предыдущий\n"
             "/playlist — список плейлиста постранично\n"
             "/u <ссылка> — воспроизвести ссылку напрямую\n"
-            "/radio — станции; /radio <номер> — запуск станции\n"
+            "/radio — станции; /radio <номер> — запуск; /radio l <стр> — страница; /radio <текст> — поиск\n"
+            "/tv — ТВ-каналы; /tv <номер> — включить; /tv l <стр> — страница; /tv <текст> — поиск; /tv stop — стоп\n"
             "/mow — Моя волна (Яндекс.Музыка)\n"
             "/fav — избранное (f + — добавить текущий, f + <ссылка>, f <номер>, f - <номер>)\n"
             "/v <1-100> — громкость; /sf <сек> — перемотка вперёд; /sb <сек> — назад\n"
@@ -3226,6 +3727,10 @@ class MusicBot(TeamTalk5.TeamTalk):
     def onConnectionLost(self):
         log("connection lost; exiting for restart")
         self.connected = False
+        self._tv_active = False
+        self._tv_starting = False
+        self._tv_url = None
+        self._tv_title = None
         self.playing = False
         self.logged_in = False
         self.joined = False
@@ -3244,6 +3749,16 @@ class MusicBot(TeamTalk5.TeamTalk):
         self.my_user_id = userid
         self.logged_in = True
         log("logged in as %s (user id %d)" % (self.nickname, userid))
+        try:
+            rights = int(TeamTalk5._GetMyUserRights(self._tt) or 0)
+            log("my rights=0x%x mediafile_audio=%s mediafile_video=%s multi_login=%s" % (
+                rights,
+                bool(rights & 0x00010000),
+                bool(rights & 0x00020000),
+                bool(rights & 0x00000001),
+            ))
+        except Exception as e:
+            log("rights read err: %s" % str(e)[:120])
         target = CHANNEL if CHANNEL else "/"
         cid = self.getChannelIDFromPath(target)
         for _ in range(20):
@@ -3750,6 +4265,41 @@ class MusicBot(TeamTalk5.TeamTalk):
             log("ip geo err: %s" % str(e)[:100])
             return ""
 
+    def _welcome_lang(self, nick):
+        """Ник с латиницей — английское приветствие, иначе русское."""
+        return "en" if re.search(r"[A-Za-z]", nick or "") else "ru"
+
+    def _silero_welcome(self, text, lang):
+        """Синтезировать приветствие Silero в кэш и вернуть путь к WAV."""
+        key = hashlib.sha1(("%s|%s" % (lang, text)).encode("utf-8")).hexdigest()
+        out = os.path.join(CACHE_DIR, "welcome_%s.wav" % key)
+        if os.path.isfile(out) and os.path.getsize(out) > 44:
+            return out
+        voice = WELCOME_VOICE_EN if lang == "en" else WELCOME_VOICE_RU
+        script = os.path.join(BASE_DIR, "welcome_tts.py")
+        env = dict(os.environ)
+        env["TORCH_HOME"] = os.path.join(BASE_DIR, ".cache", "torch")
+        with self._welcome_tts_lock:
+            if os.path.isfile(out) and os.path.getsize(out) > 44:
+                return out
+            try:
+                r = subprocess.run(
+                    ["/usr/bin/python3", script, lang, text, out, voice],
+                    capture_output=True, timeout=180, env=env,
+                )
+                if r.returncode != 0 or not os.path.isfile(out) or os.path.getsize(out) <= 44:
+                    err = (r.stderr or r.stdout or b"").decode("utf-8", "replace").strip()
+                    log("welcome tts err: %s" % err[-240:])
+                    try:
+                        os.remove(out)
+                    except OSError:
+                        pass
+                    return None
+                return out
+            except Exception as e:
+                log("welcome tts err: %s" % str(e)[:160])
+                return None
+
     def _welcome_join(self, user):
         """При входе пользователя на сервер — приветствие с ником, городом и
         провайдером в канал TeamTalk (IP не показываем)."""
@@ -3775,14 +4325,27 @@ class MusicBot(TeamTalk5.TeamTalk):
     def _welcome_do(self, nick, ip):
         """Гео-резолв и отправка приветствия сетевым сообщением (всем на сервере,
         в любом канале). В фоне — не блокирует событийный цикл. В сообщении только
-        город и провайдер: IP наружу не отдаём."""
+        город и провайдер: IP наружу не отдаём. Голос — Silero по языку ника."""
         try:
             geo = self._ip_geo(ip)
-            text = "Привет, %s. Добро пожаловать на сервер %s." % (nick, self._server_name())
+            lang = self._welcome_lang(nick)
+            server = self._server_name()
+            if lang == "en":
+                text = "Hi, %s. Welcome to %s." % (nick, server)
+                rules = WELCOME_RULES_EN or "Please read the server rules."
+                voice_text = "Hi, %s. Welcome to %s." % (nick, server)
+            else:
+                text = "Привет, %s. Добро пожаловать на сервер %s." % (nick, server)
+                rules = WELCOME_RULES or "Ознакомься, пожалуйста, с правилами сервера."
+                voice_text = "Привет, %s. Добро пожаловать на сервер %s." % (nick, server)
             if geo:
                 text += "\n%s" % geo
-            text += "\n%s" % (WELCOME_RULES or "Ознакомься, пожалуйста, с правилами сервера.")
+            text += "\n%s" % rules
             self._send_network_msg(text)
+            if WELCOME_VOICE_ENABLED:
+                path = self._silero_welcome(voice_text, lang)
+                if path:
+                    self.api_q.put(("welcome_voice", path))
         except Exception as e:
             log("welcome do err: %s" % str(e)[:150])
 
@@ -4431,6 +4994,27 @@ class MusicBot(TeamTalk5.TeamTalk):
     def onStreamMediaFile(self, mediafileinfo):
         try:
             status = mediafileinfo.nStatus
+            if self._tv_starting or self._tv_active:
+                if status == MediaFileStatus.MFS_STARTED:
+                    self.api_q.put(("tv_started",))
+                    return
+                if status in (
+                    MediaFileStatus.MFS_FINISHED,
+                    MediaFileStatus.MFS_CLOSED,
+                    MediaFileStatus.MFS_ABORTED,
+                    MediaFileStatus.MFS_ERROR,
+                ):
+                    if time.time() < self._tv_grace_until:
+                        log("tv early terminal ignored: %s" % status)
+                        return
+                    names = {
+                        MediaFileStatus.MFS_FINISHED: "FINISHED",
+                        MediaFileStatus.MFS_CLOSED: "CLOSED",
+                        MediaFileStatus.MFS_ABORTED: "ABORTED",
+                        MediaFileStatus.MFS_ERROR: "ERROR",
+                    }
+                    self.api_q.put(("tv_finished", names.get(status, str(status))))
+                    return
             if status in (
                 MediaFileStatus.MFS_FINISHED,
                 MediaFileStatus.MFS_CLOSED,
@@ -4492,6 +5076,8 @@ class MusicBot(TeamTalk5.TeamTalk):
                     lines = ["Результаты (%d):" % len(items)]
                     for i, it in enumerate(items[:10], 1):
                         lines.append("%d. %s" % (i, it["title"][:60]))
+                    if len(items) > 10:
+                        lines.append("Показаны первые 10; n — следующий, b — назад.")
                     self._send("\n".join(lines))
                     self._play_search_index(0)
                 elif kind == "playlist_done":
@@ -4516,10 +5102,42 @@ class MusicBot(TeamTalk5.TeamTalk):
                     self._play_playlist_index(0)
                 elif kind == "advance":
                     self._advance(silent=True)
+                elif kind == "tv_started":
+                    if self._tv_starting:
+                        self._tv_starting = False
+                        self._tv_active = True
+                        log("tv stream started: %s" % (self._tv_title or ""))
+                elif kind == "tv_finished":
+                    _, reason = item
+                    self._tv_finished(reason)
+                elif kind == "tv_timeout":
+                    _, title = item
+                    if self._tv_starting and self._tv_title == title:
+                        log("tv start timeout: %s" % title)
+                        self._tv_finished("TIMEOUT", stop_stream=True)
+                elif kind == "welcome_voice":
+                    _, path = item
+                    if self._tv_active or self._tv_starting:
+                        log("welcome voice skipped: TV active")
+                        continue
+                    active_audio = (
+                        self.playing and not self.paused
+                        and ((self.voice_thread and self.voice_thread.is_alive())
+                             or self._announce_pending)
+                    )
+                    if active_audio:
+                        self._welcome_overlay_set(path)
+                        log("welcome voice mixed into current audio")
+                    else:
+                        self._welcome_voice_path = path
+                        self._start_voice(path, 0, gain=WELCOME_VOICE_GAIN)
                 elif kind == "voice_finished":
                     _, run, path = item
                     if run != self._voice_run:
                         continue  # устаревшее событие остановленного/заменённого голоса
+                    if self._welcome_voice_path and path == self._welcome_voice_path:
+                        self._welcome_voice_path = None
+                        continue
                     if self._announce_pending:
                         tpath, offset = self._announce_pending
                         self._announce_pending = None
@@ -4551,6 +5169,10 @@ class MusicBot(TeamTalk5.TeamTalk):
                         self._music_broadcast(path, title)
                 elif kind == "voice_error":
                     _, msg = item
+                    if self._welcome_voice_path:
+                        self._welcome_voice_path = None
+                        log("welcome voice err: %s" % msg)
+                        continue
                     self._send("Ошибка озвучки: %s" % msg)
                     self._advance()
                 elif kind == "status":

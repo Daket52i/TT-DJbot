@@ -1,0 +1,2002 @@
+#EXTM3U
+# Radio Browser (radio-browser.info), RU, hidebroken, lastcheckok=1; 1000 stations
+#EXTINF:-1,Anon.FM
+https://icecast.anon.fm/radio
+#EXTINF:-1,Europa Plus
+http://ep256.hostingradio.ru:8052/europaplus256.mp3
+#EXTINF:-1,ROCK FM
+http://nashe1.hostingradio.ru/rock-128.mp3
+#EXTINF:-1,Relax FM Chillout
+https://pub0201.101.ru/stream/trust/mp3/128/24?
+#EXTINF:-1,Вести ФМ (Vesti FM)
+http://icecast.vgtrk.cdnvideo.ru/vestifm_mp3_192kbps
+#EXTINF:-1,DFM RUSSIAN DANCE
+https://dfm-dfmrusdance.hostingradio.ru/dfmrusdance96.aacp?0.9987259013359274
+#EXTINF:-1,DFM Дискач 90-х
+https://dfm-disc90.hostingradio.ru/disc9096.aacp
+#EXTINF:-1,Шансон без цензуры
+http://chanson.hostingradio.ru:8041/chanson-uncensored256.mp3
+#EXTINF:-1,Mixadance FM
+https://stream.mixadance.fm/mixadance
+#EXTINF:-1,Радио «Комсомольская Правда» | КП Россия
+http://kpradio.hostingradio.ru:8000/russia.radiokp128.mp3
+#EXTINF:-1,Спутник
+https://icecast-rian.cdnvideo.ru/voicerus
+#EXTINF:-1,Вести FM
+http://icecast.vgtrk.cdnvideo.ru/vestifm
+#EXTINF:-1,Соловьёв LIVE
+https://solovievfm.hostingradio.ru/solovievfm128.aacp
+#EXTINF:-1,Radio Record - Russian Mix
+https://radiorecord.hostingradio.ru/rus96.aacp
+#EXTINF:-1,Радио Маяк (Radio Mayak)
+http://icecast.vgtrk.cdnvideo.ru/mayakfm_mp3_192kbps
+#EXTINF:-1,Радио Патриот
+http://radio.mixto.ru:8001/patriot
+#EXTINF:-1,Radio Record - Russian Gold
+https://radiorecord.hostingradio.ru/russiangold96.aacp
+#EXTINF:-1,Комсомольская правда
+https://kpradio.hostingradio.ru:8000/64
+#EXTINF:-1,Luxury Lounge - Late night, Deep sleep & Meditation
+http://188.40.109.122:8000/ices3
+#EXTINF:-1,Русский Рок - Russian Rock
+http://rock.volna.top/RusRock
+#EXTINF:-1,Радио Книга
+http://bookradio.hostingradio.ru:8069/fm
+#EXTINF:-1,ДИСКОТЕКА 90-Х
+https://radiorecord.hostingradio.ru/sd9096.aacp?0968d4a7
+#EXTINF:-1,Club Hits 2000s
+https://radio.retrolan.party:8000/radio.mp3
+#EXTINF:-1,РЕТРО ХИТ - RETRO HIT
+http://retro.volna.top/Retro
+#EXTINF:-1,дорожное радио (Dorognoe Radio)
+http://dorognoe.hostingradio.ru:8000/dorognoe
+#EXTINF:-1,Breaking Bass Air
+https://aircast.breaking-bass.ru:8443/air
+#EXTINF:-1,DEEP IN SPACE
+https://stream.drugradio.ru:8020/stream128
+#EXTINF:-1,Ретро FM 70e
+http://retro70.hostingradio.ru:8025/retro70-128.mp3
+#EXTINF:-1,Авторадио
+https://cast.mediaonline.net.ua/avtoradio
+#EXTINF:-1,Радио Русские Песни
+http://listen.rusongs.ru/ru-mp3-128
+#EXTINF:-1,BEST DEEP FM
+https://myradio24.org/5129
+#EXTINF:-1,Радио дача
+http://listen13.vdfm.ru:8000/dacha
+#EXTINF:-1,Радио Книга Вслух
+https://radio-soyuz.ru:1045/stream
+#EXTINF:-1,Relax FM Smooth Jazz
+https://pub0201.101.ru/stream/trust/mp3/128/31?
+#EXTINF:-1,Nashe Radio
+http://nashe1.hostingradio.ru/nashe-128.mp3
+#EXTINF:-1,101.RU - Дискотека СССР
+https://pub0201.101.ru/stream/pro/aac/64/144
+#EXTINF:-1,Бизнес FM
+https://bfm.hostingradio.ru:9075/fm
+#EXTINF:-1,Instrumental Jazz
+https://jfm1.hostingradio.ru:14536/ijstream.mp3
+#EXTINF:-1,Вести FM (AAC)
+https://icecast-vgtrk.cdnvideo.ru/vestifm_aac_32kbps
+#EXTINF:-1,DiscoverTranceRadio (MP3 HQ stereo 192kBit/s)
+http://node-2.promo-cloud.com:8006//
+#EXTINF:-1,Radio Record Megamix
+https://radiorecord.hostingradio.ru/mix96.aacp
+#EXTINF:-1,Звезда
+https://icecast-zvezda.mediacdn.ru/radio/zvezda/zvezda_128
+#EXTINF:-1,Радио "Маяк"
+https://icecast-vgtrk.cdnvideo.ru/mayakfm
+#EXTINF:-1,комерсант (Kommersant FM) 93.6 Moscow
+http://kommersant77.hostingradio.ru:8016/kommersant64.mp3
+#EXTINF:-1,Wave Anime Radio
+https://channel_3.waveani.fun/stream
+#EXTINF:-1,ABBA Radio
+https://pub0102.101.ru:8443/stream/personal/aacp/64/1785788
+#EXTINF:-1,Высоцкий
+https://rr-vysockij.hostingradio.ru/vysockij96.aacp
+#EXTINF:-1,Ретро FM — Вечеринка
+https://hls-01-retro-vecherinka.emgsound.ru/20/playlist.m3u8
+#EXTINF:-1,Радио 7 на семи холмах - Настроение счастья
+https://radio7.hostingradio.ru:8040/radio7_happiness64.aacp
+#EXTINF:-1,Радио Забытая Кассета
+https://casseta-disco.ru:6275/stream?x=1711899723831
+#EXTINF:-1,ГопФМ
+https://radiorecord.hostingradio.ru/gop96.aacp
+#EXTINF:-1,Radio Record - Rap Classics
+https://radiorecord.hostingradio.ru/rapclassics96.aacp
+#EXTINF:-1,Гарик Сукачёв
+https://stream03.pcradio.app/Garik_Sukachov-hi
+#EXTINF:-1,Говорит Москва
+http://media.govoritmoskva.ru:8880/ru64.mp3
+#EXTINF:-1,Retro FM
+http://retroserver.streamr.ru:8043/retro256.mp3
+#EXTINF:-1,Старый Маяк
+https://yacht-radio.lv:1175/stream
+#EXTINF:-1,Радио 7 на семи холмах
+http://radio7server.streamr.ru:8040/radio7256.mp3
+#EXTINF:-1,Remix FM
+http://air4.amgradio.ru/RemixFM
+#EXTINF:-1,Radio Record Deep
+http://radiorecord.hostingradio.ru/deep96.aacp
+#EXTINF:-1,Radio Kamchatka Live House
+https://radio.kamchatkalive.ru:8103/house
+#EXTINF:-1,MonteCarlo Nights
+https://mc-chilllonge.hostingradio.ru/chilllonge96.aacp
+#EXTINF:-1,Ретро ФМ
+http://retroserver.streamr.ru:8043/retro128
+#EXTINF:-1,Enigmatic 3 - Magnetic Chillout
+http://radio.enigmatic.su:8050/radio
+#EXTINF:-1,Radio Record Trancehouse
+https://radiorecord.hostingradio.ru/trancehouse96.aacp
+#EXTINF:-1,Вести ФМ
+https://icecast-vgtrk.cdnvideo.ru/vestifm_mp3_64kbps
+#EXTINF:-1,Record Chill House
+https://radiorecord.hostingradio.ru/chillhouse96.aacp
+#EXTINF:-1,Radio Ultra
+http://nashe1.hostingradio.ru/ultra-192.mp3
+#EXTINF:-1,Коммерсантъ FM 93.6
+https://kommersant77.hostingradio.ru:8085/kommersant128.mp3
+#EXTINF:-1,Relax FM Nature
+https://pub0101.101.ru/stream/trust/mp3/128/263
+#EXTINF:-1,Советская эстрада
+https://evcast.mediacp.eu:2075/stream
+#EXTINF:-1,Radio Caprice - Drum n Bass
+https://nationalanthems.info/dz.mp3?PANGEAhttps://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3https://nationalanthems.info/dz.mp3
+#EXTINF:-1,Радио Рекорд Eurodance
+http://radiorecord.hostingradio.ru/eurodance96.aacp
+#EXTINF:-1,Романтический шансон
+http://chanson.hostingradio.ru:8041/chanson-romantic256.mp3
+#EXTINF:-1,Deep One
+https://stream.deep1.ru/deep1mp3
+#EXTINF:-1,Советская Классика
+https://rr-sovclass.hostingradio.ru/sovclass96.aacp
+#EXTINF:-1,[GTA:III] Chatterbox FM [GTARadio.net]
+https://audio.gtaradio.net/3/chat
+#EXTINF:-1,Armin van Buuren (Record)
+https://radiorecord.hostingradio.ru/armin96.aacp
+#EXTINF:-1,Ретро FM 90e
+http://retro90.hostingradio.ru:8025/retro90-128.mp3
+#EXTINF:-1,Радио Монте-Карло
+https://mc-mcgold.hostingradio.ru/mcgold96.aacp
+#EXTINF:-1,ВИА СССР
+https://pub0101.101.ru/stream/pro/aac/64/36
+#EXTINF:-1,Русское Радио: Русский Рок
+https://rmg.hostingradio.ru:80/russkijrok96.aacp
+#EXTINF:-1,Радио Шансон - Radio Shanson
+http://chanson.hostingradio.ru:8041/chanson256.mp3
+#EXTINF:-1,Ретро FM 80e
+https://retro80.hostingradio.ru:8025/retro80-128.mp3
+#EXTINF:-1,DFM - Vocal Trance
+https://dfm-trance.hostingradio.ru/trance96.aacp
+#EXTINF:-1,Radio Gameplay
+https://c22.radioboss.fm:8144/GamePlay
+#EXTINF:-1,Радиостация Маяк Москва 128kbs
+http://icecast.vgtrk.cdnvideo.ru/mayakfm_mp3_128kbps
+#EXTINF:-1,Старое радио - Old Radio
+http://195.91.237.50:8000/ices128
+#EXTINF:-1,Дядя Ваня на даче (18+)
+https://ic1.radiosignal.one/vanya-mp3
+#EXTINF:-1,Ностальгия - Дорожное радио
+http://stream1.hostingradio.ru:8010/19_mp3_128
+#EXTINF:-1,ЧИСТАЯ ВОЛНА
+https://stream.purewave.ru:8443/live128.mp3
+#EXTINF:-1,1000 HITS RADIO
+https://stream.1000hit.ru:8000/stream128
+#EXTINF:-1,Серебряный дождь
+http://213.59.4.27:8000/silver128.mp3
+#EXTINF:-1,Radio Caprice - Classical Piano
+http://79.120.39.202:9069/;
+#EXTINF:-1,ГУСЬ.Дипхаус
+https://stream2.radiogoose.ru/listen/deep/play
+#EXTINF:-1,Luxury Lounge Radio - Chillwave, Retrowave, Synthwave
+http://188.40.109.114:8000/ices2
+#EXTINF:-1,Диско-радио SOVA
+https://evcast.mediacp.eu:1965/stream
+#EXTINF:-1,DISCO 80-90
+https://listen7.myradio24.com/discovery
+#EXTINF:-1,Record Trancemission
+https://radiorecord.hostingradio.ru/tm96.aacp
+#EXTINF:-1,Coffee Jazz
+https://tower.hayva.ru/f7lwc-96
+#EXTINF:-1,Дискотека 80-х & 90-х
+https://listen4.myradio24.com/dance80
+#EXTINF:-1,Anima Amoris Dub Techno
+https://amoris.sknt.ru/dubtechno
+#EXTINF:-1,101.ru ABBA
+https://srv01.gpmradio.ru/stream/pro/aac/64/104
+#EXTINF:-1,101.ru Michael Jackson
+https://srv01.gpmradio.ru/stream/pro/aac/64/52
+#EXTINF:-1,DFM - Insomnia
+https://dfm-insomnia.hostingradio.ru/insomnia96.aacp
+#EXTINF:-1,Record Minimal
+https://radiorecord.hostingradio.ru/mini96.aacp
+#EXTINF:-1,Radio Record Phonk
+http://radiorecord.hostingradio.ru/phonk96.aacp
+#EXTINF:-1,Liquid DnB Station
+http://95.47.244.172:8000/live
+#EXTINF:-1,Юмор ФМ
+https://fed.fmplay.ru:8000/humor-32.aac
+#EXTINF:-1,Радио АСТВ
+https://stream.astv.ru/stream.mp3
+#EXTINF:-1,Nostalgie Russia
+https://listen7.myradio24.com/alexx333
+#EXTINF:-1,Женский Stand Up
+https://pub0102.101.ru:8443/stream/pro/aac/64/448
+#EXTINF:-1,[GTA IV] Fusion FM [GTARadio.net]
+https://audio.gtaradio.net/4/fusion_fm
+#EXTINF:-1,Disco House Radio
+https://radiorecord.hostingradio.ru/discofunk96.aacp
+#EXTINF:-1,Советские Песни
+https://sovetskie-pesni.ru:8005/stream
+#EXTINF:-1,Anima Amoris - Goa Psy Trance
+https://amoris.sknt.ru/goa
+#EXTINF:-1,MCM
+https://webradio.mcm.fm:10443/hit128
+#EXTINF:-1,Monte Carlo
+https://montecarlo.hostingradio.ru/montecarlo96.aacp
+#EXTINF:-1,Радонеж
+http://icecast.radonezh.cdnvideo.ru:8000/rad
+#EXTINF:-1,Noise FM - EDM Radio
+http://play.sas-media.ru/play_256
+#EXTINF:-1,Radio Jazz 89.1 - JAZZ Vocals
+http://jfm1.hostingradio.ru:14536/jvstream.mp3
+#EXTINF:-1,Радио России (Radio Russia)
+http://icecast.vgtrk.cdnvideo.ru/rrzonam_mp3_128kbps
+#EXTINF:-1,Sovietwave
+http://station.waveradio.org/soviet.mp3
+#EXTINF:-1,Михаил Круг Радио
+https://stream03.pcradio.app/Michail_Krug-hi
+#EXTINF:-1,Звезда 95.6 FM
+https://radio.mediacdn.ru/radio/zvezda/zvezda_96
+#EXTINF:-1,Всесоюзное радио
+https://stream.cassiopeia-station.ru:1045/stream
+#EXTINF:-1,90-е Россия
+https://stream03.pcradio.app/nineties_rus_pcradio-hi
+#EXTINF:-1,Радио Рекорд Russian Mix
+http://radiorecord.hostingradio.ru/rus96.aacp
+#EXTINF:-1,Радио Рекорд Russian Gold
+http://radiorecord.hostingradio.ru/russiangold96.aacp
+#EXTINF:-1,Relax FM Instrumental
+https://pub0201.101.ru/stream/pro/aac/64/28?
+#EXTINF:-1,RadCap - Atmospheric Ambient Black Metal
+http://79.120.39.202:8004/aabmds
+#EXTINF:-1,Radio Record Ambient
+http://radiorecord.hostingradio.ru/ambient96.aacp
+#EXTINF:-1,Kamchatka Live Dance
+https://radio.kamchatkalive.ru:8103/dance
+#EXTINF:-1,Radio Maximum - Metallica
+https://metallica.hostingradio.ru/metallica96.aacp
+#EXTINF:-1,Radio Record Liquid Funk
+https://radiorecord.hostingradio.ru/liquidfunk96.aacp
+#EXTINF:-1,Юрий Шатунов Радио
+https://stream03.pcradio.app/Jurij_Shatunov-hi
+#EXTINF:-1,Nightwave Plaza
+https://radio.plaza.one/ogg
+#EXTINF:-1,нафталин fm
+https://radiorecord.hostingradio.ru/naft96.aacp
+#EXTINF:-1,Radio Fantastika
+http://fantasyradioru.no-ip.biz:8002/live
+#EXTINF:-1,Русский Рок
+https://rr-russkijrok.hostingradio.ru/russkijrok96.aacp
+#EXTINF:-1,Сказка FM
+https://skazka.amgradio.ru/Skazka
+#EXTINF:-1,Dorozhnoe Radio
+https://dorognoe.hostingradio.ru/dorognoe
+#EXTINF:-1,Luxury Lounge - Chillwave & Retrowave
+http://188.40.109.122:8000/ices2
+#EXTINF:-1,Ретро Хит
+https://retro.volna.top/Retro
+#EXTINF:-1,Радио Ретроклуб
+http://retroclub.hostingradio.ru/retroclub128.aacp
+#EXTINF:-1,Модель для сборки
+http://mds-station.com:8000/mds
+#EXTINF:-1,Radio Caprice - Classical Baroque
+http://79.111.14.76:8002/baroque
+#EXTINF:-1,Radio Caprice - Dub Techno [2]
+http://79.120.39.202:8000/dubtechno
+#EXTINF:-1,101.ru МИХАИЛ и ИРИНА КРУГ
+https://pub0102.101.ru:8443/stream/personal/aacp/64/931360
+#EXTINF:-1,Radio of Russia - Moscow
+https://icecast-vgtrk.cdnvideo.ru/rrzonam_mp3_192kbps
+#EXTINF:-1,На шашлыки!
+https://hls-01-radiorecord.hostingradio.ru/record-nashashlyki/playlist.m3u8
+#EXTINF:-1,Maria FM 102.9
+https://online.mariafm.ru:8443/MariaFM
+#EXTINF:-1,Radio Caprice - Flamenco
+https://nationalanthems.info/ax.mp3?PANGEAhttps://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3https://nationalanthems.info/ax.mp3
+#EXTINF:-1,Дорожное Радио Танцы по-русски
+https://dorognoe.hostingradio.ru:8000/dorognoe1945.mp3
+#EXTINF:-1,НАШЕ Радио Тюмень
+http://nashe1.hostingradio.ru/nashe-256
+#EXTINF:-1,Radio Record Chill House
+https://radiorecord.hostingradio.ru/organic96.aacp
+#EXTINF:-1,Musical Decadence Radio
+https://stream.musicaldecadence.ru/live
+#EXTINF:-1,Russian Lounge
+https://muzdolet.com/radio.mp3
+#EXTINF:-1,Radio Caprice - Dark Techno
+http://79.111.14.76:9139/
+#EXTINF:-1,За друзей
+https://listen8.myradio24.com/8144
+#EXTINF:-1,Радио Эрмитаж
+http://hermitage.hostingradio.ru/hermitage128.mp3
+#EXTINF:-1,ART City Radio
+https://listen7.myradio24.com/artcity
+#EXTINF:-1,Enigmatic 3 Magnetic Chill out (256 kbps)
+https://radio.enigmatic.su:8005/radio?x=1738166302438
+#EXTINF:-1,RADCAP: INDUSTRIAL / DARK / RITUAL AMBIENT
+http://79.120.39.202:8000/darkambient
+#EXTINF:-1,Sputnik Arabic
+https://icecast-rian.cdnvideo.ru/voicearb
+#EXTINF:-1,Радио Юность
+http://icecast-vgtrk.cdnvideo.ru/unost_mp3_192kbps
+#EXTINF:-1,Радио для двоих
+https://icecast-radiofortwo.cdnvideo.ru/radiofortwo
+#EXTINF:-1,(( RES ))
+https://res.lirz.ru/listen/res/radio.mp3
+#EXTINF:-1,Radio Caprice - Acoustic Guitar
+http://79.120.39.202:8000/acousticguitar
+#EXTINF:-1,Caprice - Classical Guitar
+http://213.141.131.10:8000/classguitar
+#EXTINF:-1,Megapolis Samara
+https://online.radio-megapolis.ru/megapolis_mp3
+#EXTINF:-1,Калина Красная
+http://icecast-studio21.cdnvideo.ru/KalynaK_1a
+#EXTINF:-1,Fitness Mixadance
+https://stream.mixadance.fm/fitness
+#EXTINF:-1,101.ru Trance
+http://pub0101.101.ru:8000/stream/trust/mp3/128/19?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpcCI6Ijc5LjI1My4xMy43MSIsInVzZXJhZ2VudCI6Ik1vemlsbGFcLzUuMCAoWDExOyBMaW51eCB4ODZfNjQ7IHJ2Ojk0LjApIEdlY2tvXC8yMDEwMDEwMSBGaXJlZm94XC85NC4wIiwidWlkX2NoYW5uZWwiOiIxOSIsInR5cGVfY2hhbm5lbCI6ImNoYW5uZWwiLCJleHAiOjE2MzY4ODYwMzJ9.0vfq2B5eNRtuEwE42pHUS9Sf_GosTmrQs0aHcPvbFj8
+#EXTINF:-1,DFM - Party
+https://dfm-party.hostingradio.ru/dfmparty96.aacp
+#EXTINF:-1,Comedy radio
+http://23.105.238.4/gpm-comedyradio495.aacp
+#EXTINF:-1,Cassiopeia Station Радио
+https://stream.cassiopeia-station.ru:5015/stream
+#EXTINF:-1,101.ru Modern Talking
+https://srv01.gpmradio.ru/stream/pro/aac/64/115
+#EXTINF:-1,Radio Caprice - Hip Hop
+https://nationalanthems.info/ad.mp3?PANGEAhttps://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3https://nationalanthems.info/ad.mp3
+#EXTINF:-1,Старый портфель
+https://lk.castnow.ru:8100/oldbrief-320.mp3
+#EXTINF:-1,Cassiopeia Station (Наука)
+https://stream.cassiopeia-station.ru:1095/stream
+#EXTINF:-1,РАДИО КАФЕ - Radio CAFE
+http://cafe.volna.top/Cafe
+#EXTINF:-1,Ретро FM Санкт-Петербург (128 kbps, mp3)
+http://emgspb.hostingradio.ru/retrofmspb128.mp3
+#EXTINF:-1,101.ru Музыка и песни из советских фильмов
+https://pub0102.101.ru:8443/stream/personal/aacp/64/661332
+#EXTINF:-1,101.ru Italo Disco
+https://srv01.gpmradio.ru/stream/pro/aac/64/161
+#EXTINF:-1,ROCK FM, 70s
+http://jfm1.hostingradio.ru:14536/rock70.mp3
+#EXTINF:-1,CORE Radio!
+http://194.58.97.117:8000/coreradio
+#EXTINF:-1,A State of Trance - Record
+https://radiorecord.hostingradio.ru/asot96.aacp
+#EXTINF:-1,Russian Punk rock
+http://79.120.77.11:8000/punkru
+#EXTINF:-1,Радио ЗВЕЗДА - Центральная Россия
+https://zvezda-radio128.mediacdn.ru/radio/zvezda/zvezda_128
+#EXTINF:-1,Radio Caprice - Jazz Fusion
+http://79.111.119.111:9009/;
+#EXTINF:-1,эльдорадио (Eldo Radio) 101.4 St. Petersburg
+http://emgspb.hostingradio.ru/eldoradio128.mp3
+#EXTINF:-1,РУССКОЕ 1995-2005 [HDR FLAC]
+http://harddanceradio.ddns.is74.ru:9000/russian.ogg
+#EXTINF:-1,Radio Caprice - Drum 'n' Bass [2]
+http://79.111.14.76:8000/drumbass
+#EXTINF:-1,Старое радио - Old Radio 64
+http://195.91.237.50:8000/ices64
+#EXTINF:-1,CRN - Hardcore Rap/Horrorcore
+http://79.120.39.202:8000/hardcorerap
+#EXTINF:-1,Radio Maximum - Rammstein
+https://maximum-rammstein.hostingradio.ru/rammstein96.aacp
+#EXTINF:-1,Radio Maximum - Heavy 80s
+https://maximum80.hostingradio.ru/max8096.aacp
+#EXTINF:-1,Радио Рекорд (основной канал)
+http://radiorecord.hostingradio.ru/rr_main96.aacp
+#EXTINF:-1,Dancehall / Raggamuffin - Caprice Radio
+http://79.111.14.76:8000/dancehall
+#EXTINF:-1,Radio Record Synthwave
+http://radiorecord.hostingradio.ru/synth96.aacp
+#EXTINF:-1,Ska Punk / Core / Two Tone - Caprice Radio
+http://79.111.119.111:8000/skapunk
+#EXTINF:-1,РадиоЛАМПА.FM
+https://listen9.myradio24.com/180667
+#EXTINF:-1,Кинозал.ТВ
+https://listen7.myradio24.com/kinozaltv
+#EXTINF:-1,Питер FM (Piter FM)
+https://icecast-piterfm.cdnvideo.ru/piterfm
+#EXTINF:-1,Родные Нулевые - Русское Радио
+https://rr-00.hostingradio.ru/rr0096.aacp
+#EXTINF:-1,Super-Radio Remix
+https://listen2.myradio24.com/serz
+#EXTINF:-1,RadCap - Post Metal
+http://79.120.39.202:8004/postmetal
+#EXTINF:-1,За!Радио (Мелитополь)
+https://listen9.myradio24.com/86040
+#EXTINF:-1,ДЕТСКОЕ РАДИО [DETSKOE RADIO BABY FM
+http://a5.radioheart.ru:8012/nonstop
+#EXTINF:-1,Радио Рекорд Pirate Station
+http://radiorecord.hostingradio.ru/ps96.aacp
+#EXTINF:-1,Street Beat FM
+https://stream.streetbeatfm.ru/online
+#EXTINF:-1,DFM - Dancehall
+https://dfm-dancehall.hostingradio.ru/dancehall96.aacp
+#EXTINF:-1,Radio Caprice - Rock Ballads
+http://79.120.77.11:8000/rockballads
+#EXTINF:-1,Спутник FM (Уфа)
+https://radio.mediacdn.ru/sputnik_fm.mp3?aa21
+#EXTINF:-1,ЭХО
+https://i1.echofm.online:8443/stream
+#EXTINF:-1,Радио Рекорд Супердискотека 90-х
+http://radiorecord.hostingradio.ru/sd9096.aacp
+#EXTINF:-1,101.ru Scorpions
+https://srv01.gpmradio.ru/stream/pro/aac/64/113
+#EXTINF:-1,C-Pop (Chinese Popular Music)
+http://213.141.131.10:8000/cpop
+#EXTINF:-1,DFM DANCE GOLD 2000s
+https://dfm-dancegold00.hostingradio.ru/dancegold0096.aacp
+#EXTINF:-1,Radio Caprice - Retrowave
+http://79.120.39.202:9125/
+#EXTINF:-1,Юмор FM
+http://pub0101.101.ru:8000/stream/air/aac/64/102
+#EXTINF:-1,Dark Dubstep
+http://79.120.39.202:8000/darkdubstep
+#EXTINF:-1,101.ru Enigma
+https://srv01.gpmradio.ru/stream/pro/aac/64/175
+#EXTINF:-1,Radio Caprice - Club Dance
+https://nationalanthems.info/as.mp3?PANGEAhttps://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3ttps://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3ttps://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3ttps://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3ttps://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3ttps://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3ttps://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3ttps://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3ttps://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3ttps://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3ttps://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3ttps://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3ttps://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3https://nationalanthems.info/as.mp3
+#EXTINF:-1,101.ru Ennio Morricone
+https://srv01.gpmradio.ru/stream/pro/aac/64/395
+#EXTINF:-1,Суворов FM
+https://listen2.myradio24.com/suvorovrad
+#EXTINF:-1,YouRitmix
+https://youritmix.ru/stream/
+#EXTINF:-1,ГУСЬ.Драм
+https://stream3.radiogoose.ru/listen/dnb/play
+#EXTINF:-1,Radio Record 00's
+https://radiorecord.hostingradio.ru/200096.aacp
+#EXTINF:-1,russkoe radio
+http://rusradio.hostingradio.ru/rusradio96.aacp
+#EXTINF:-1,Ретроклуб Радио 60-х
+https://retroclub.hostingradio.ru/retroclubdbl128.aacp
+#EXTINF:-1,Radio Caprice - Eurodance
+http://79.120.39.202:9003/
+#EXTINF:-1,Комсомольская правда Краснодар 91.0 FM
+http://kpradio.hostingradio.ru:8000/krasnodar.radiokp128.mp3
+#EXTINF:-1,Радио Гармония
+https://online.garmoniyafm.com/listen/garm/256
+#EXTINF:-1,Дорожное радио НН
+https://dorognoe.hostingradio.ru/dorognoe_acc
+#EXTINF:-1,Radio Record Organic
+http://radiorecord.hostingradio.ru/organic96.aacp
+#EXTINF:-1,Record Trance Classics
+https://radiorecord.hostingradio.ru/trancehits96.aacp
+#EXTINF:-1,Наше Радио Панки-ХОЙ!
+http://nashe1.hostingradio.ru/nashepunks.mp3
+#EXTINF:-1,Synthradio
+http://77.51.212.205:8005/live192
+#EXTINF:-1,Забытая кассета
+https://casseta-disco.ru:6270/stream
+#EXTINF:-1,Coffee Wave
+https://coffee-wave.ru:8000/aac
+#EXTINF:-1,METALchet
+https://listen8.myradio24.com/metalchet
+#EXTINF:-1,DFM THE PRODIGY
+https://dfm-prodigy.hostingradio.ru/prodigy96.aacp
+#EXTINF:-1,DFM Trap
+https://dfm-dfmtrap.hostingradio.ru/dfmtrap96.aacp
+#EXTINF:-1,DNB FM
+https://air.dnbfm.ru/listen/player/qplay
+#EXTINF:-1,Питер FM - Санкт-Петербург 100.9 МГц
+http://icecast-piterfm.cdnvideo.ru/piterfm
+#EXTINF:-1,REVOLUTION Radio
+https://revolutionradio.ru:8443/live.mp3
+#EXTINF:-1,Радио России (AAC)
+http://icecast.vgtrk.cdnvideo.ru/rrzonam_aac_64kbps
+#EXTINF:-1,RadCap - Black Death Metal
+http://79.111.14.76:8004/blackdeath
+#EXTINF:-1,Радио Шансон Киров 91.2 FM
+http://185.76.147.85:8000/chanson_kirov
+#EXTINF:-1,Radio Record Electro
+https://radiorecord.hostingradio.ru/elect96.aacp
+#EXTINF:-1,Radio Caprice LIQUID FUNK / INTELLIGENT / ATMOSPHERIC DRUM'n'BASS
+http://79.111.119.111:8000/liquidfunk
+#EXTINF:-1,Radio Caprice - Melodic Death Metal
+http://79.120.77.11:8000/melodicdeath
+#EXTINF:-1,NRJ Russia
+https://srv02.gpmradio.ru:8443/stream/air/aac/64/99
+#EXTINF:-1,Радио Фантастики
+https://listen9.myradio24.com/55699
+#EXTINF:-1,Radio Caprice - Hammond Organ
+http://79.120.39.202:9079/
+#EXTINF:-1,Радио Рекорд GOA/PSY
+http://radiorecord.hostingradio.ru/goa96.aacp
+#EXTINF:-1,Radio Caprice - Traditional Electronic - 320 AAC
+http://79.111.14.76:8000/tradelectronic
+#EXTINF:-1,РЕТРО РАДИО
+https://listen2.myradio24.com/1458
+#EXTINF:-1,ULTRA
+http://nashe1.hostingradio.ru/ultra-256
+#EXTINF:-1,Alex - Best Lounge Music
+https://listen7.myradio24.com/avmarushak
+#EXTINF:-1,M.Deep Radio
+https://deephousex.ru/live
+#EXTINF:-1,Radio Caprice - Dark Psytrance
+http://79.111.119.111:9057/;
+#EXTINF:-1,Радио ASMR - Массаж для ваших ушей!😍
+http://live.lofiradio.ru:8000/asmr_mp3_320
+#EXTINF:-1,HIP HOP RADIO
+https://tntradio.hostingradio.ru:8027/hhr128.mp3
+#EXTINF:-1,ШАНСОН БЕЗ ЦЕНЗУРЫ [CHANSONUNCENSORED]
+http://chanson.hostingradio.ru:8041/chanson-uncensored128.mp3
+#EXTINF:-1,Radio Caprice - Chill Out
+http://79.111.14.76:8000/chillout
+#EXTINF:-1,Искатель
+http://iskatel.hostingradio.ru:8015/iskatel-128.mp3
+#EXTINF:-1,Детский Канал - Русское Радио
+https://rr-detskijkanal.hostingradio.ru/detskijkanal96.aacp
+#EXTINF:-1,Radio Caprice - Roots Reggae
+http://79.111.119.111:9047/
+#EXTINF:-1,Comedy радио Сыктывкар 100.8 FM
+https://cast.severmedia.ru:5443/Comedy_11_01
+#EXTINF:-1,DFM - Tech House
+https://dfm-techhouse.hostingradio.ru/techhouse96.aacp
+#EXTINF:-1,РадиоКанск
+https://azura-cast.radiokansk.ru/listen/radiokansk/live
+#EXTINF:-1,101.ru World Music - Музыка Востока
+https://srv01.gpmradio.ru/stream/pro/aac/64/67
+#EXTINF:-1,Radio Fish
+https://listen1.myradio24.com/8317
+#EXTINF:-1,Радио Эрмитаж Санкт-Петербург 90.1 FM
+https://hermitage.hostingradio.ru/hermitage128.mp3
+#EXTINF:-1,Radio Record VIP House
+https://radiorecord.hostingradio.ru/vip96.aacp
+#EXTINF:-1,Радио Ваня Санкт-Петербург 90.6 FM
+http://icecast-radiovanya.cdnvideo.ru:8000/rv_spb
+#EXTINF:-1,[GTA IV] Vladivostok FM [GTARadio.net]
+https://audio.gtaradio.net/4/vladivostok
+#EXTINF:-1,Радио Джаз 89,1FM
+http://jazz.streamr.ru/jazz-128.mp3
+#EXTINF:-1,Кавказ Радио Волна (Владикавказ, 90.8 FM)
+http://radio.alania.net:8000/kvk
+#EXTINF:-1,DFM - Gangsta Deep
+https://dfm-gangstadeep.hostingradio.ru/gangstadeep96.aacp
+#EXTINF:-1,Авторадио 107.7 FM
+https://online2.gkvr.ru:8001/avtoradio_mzd_64.aac
+#EXTINF:-1,Monsters of Rock USSR
+https://stream-51.zeno.fm/6nbz7p2w908uv
+#EXTINF:-1,Avtoradio - Saratov
+https://hls-01-gpm.hostingradio.ru/avtoradio8452/64/playlist.m3u8
+#EXTINF:-1,Radio Caprice - Progressive Trance
+http://79.120.39.202:9025/;
+#EXTINF:-1,Radio Grand FM
+http://grandfm.ru:8000/radio
+#EXTINF:-1,Radio 7
+https://radio7server.streamr.ru:8040/radio7256.mp3
+#EXTINF:-1,C.C.Catch
+https://stream.pcradio.ru/C_C_Catch-hi
+#EXTINF:-1,Sandra
+https://stream.pcradio.ru/Sandra-hi
+#EXTINF:-1,Мелодия СПб
+http://stream.salyutfm.ru:4020/stream
+#EXTINF:-1,Radio Kamchatka LIVE chillout
+http://radio.kamchatkalive.ru:8103/chillout
+#EXTINF:-1,Radio Caprice - Minimal Tech House [2]
+http://79.111.119.111:8000/mintechhouse
+#EXTINF:-1,adskoe_radio
+https://radio.openos.pp.ua/listen/adskoe_radio/radio.mp3
+#EXTINF:-1,-=- Relax-FM -=-
+http://ic4.101.ru:8000/stream/air/aac/64/200
+#EXTINF:-1,Radio Caprice - Brutal Death Metal
+http://79.111.119.111:8000/brutaldeathmetal
+#EXTINF:-1,радио АЛЬФА
+https://stream2.alfafm.ru/alfa_mp3
+#EXTINF:-1,Dipol FM
+https://icecast-sibinformburo.cdnvideo.ru/dipolfm
+#EXTINF:-1,Kamchatka Live Chillout
+https://radio.kamchatkalive.ru:8103/chillout
+#EXTINF:-1,Glam Rock / Metal - Caprice Radio
+http://79.120.39.202:8000/glam
+#EXTINF:-1,Radio Caprice - Old School Hip-Hop / Rap
+http://213.141.131.10:8002/oldschoolhiphop
+#EXTINF:-1,Luxury Lounge Radio - Late Night, Deep Sleep and Meditation
+http://188.40.109.114:8000/ices3
+#EXTINF:-1,92.0 Москва FM
+http://icecast.vgtrk.cdnvideo.ru:8000/moscowfm128
+#EXTINF:-1,STUDIO 21
+http://icecast-studio21.cdnvideo.ru/S21cl_1r
+#EXTINF:-1,Garage FM Online
+http://music.garagefm.ru:8005/Garagefm128
+#EXTINF:-1,Radio Record - Russian Hits
+https://radiorecord.hostingradio.ru/russianhits96.aacp
+#EXTINF:-1,get.radio — Джаз
+https://get-radio.sipout.ai/stream/jazz.mp3
+#EXTINF:-1,Radio Caprice - Chamber Classical
+http://213.141.131.10:8000/chamber
+#EXTINF:-1,Шансон Плюс
+http://radio.radioshansonplus.com:8000/radio
+#EXTINF:-1,Afrobeat / Afrobeats - Radio Caprice
+http://79.120.39.202:8000/afrobeat
+#EXTINF:-1,Voices of the Univerce
+https://stream.cassiopeia-station.ru:1175/stream
+#EXTINF:-1,Europa Plus Light
+http://emg02.hostingradio.ru/ep-light128.mp3
+#EXTINF:-1,Acoustic Rock Radio
+http://live-radio.ru:8111/live
+#EXTINF:-1,Ласковый май
+https://stream03.pcradio.app/Laskovyj_maj-hi
+#EXTINF:-1,Комета - Ретро
+https://listen8.myradio24.com/8415
+#EXTINF:-1,Radio Caprice - Chicago Blues
+https://nationalanthems.info/ao.mp3?PANGEAhttps://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3https://nationalanthems.info/ao.mp3
+#EXTINF:-1,George Michael
+https://stream.pcradio.ru/George_Michael-hi
+#EXTINF:-1,Культура (AAC+)
+https://icecast-vgtrk.cdnvideo.ru/kulturafm_aac_64kbps
+#EXTINF:-1,seva ru
+https://seva.ru/radio/stream
+#EXTINF:-1,LoFi Radio
+https://live.lofiradio.ru/lofi_mp3_128
+#EXTINF:-1,L-radio
+https://air.unmixed.ru/lradio256
+#EXTINF:-1,ROCK FM, 80s
+http://jfm1.hostingradio.ru:14536/rock80.mp3
+#EXTINF:-1,Радио Монте Карло - Nights
+https://mc-mcnight.hostingradio.ru/mcnight96.aacp
+#EXTINF:-1,1970's music collection
+http://213.141.131.10:8004/70collection
+#EXTINF:-1,Radio Monte Carlo - Bossa Nova
+https://mc-mcbossa.hostingradio.ru/mcbossa96.aacp?listening-from-radio-garden=1645969315
+#EXTINF:-1,DFM - Chill
+https://dfm-dfmchill.hostingradio.ru/dfmchill96.aacp
+#EXTINF:-1,Cyberpunk
+http://79.120.12.130:8000/cyberpunk
+#EXTINF:-1,Acoustic Blues
+http://79.111.14.76:8000/acousticblues
+#EXTINF:-1,РАДИО ГУСЬ
+https://stream4.radiogoose.ru/listen/radiogoose/play
+#EXTINF:-1,ретро фм 96.4 FM
+https://online2.gkvr.ru:8001/retro_che_64.aac
+#EXTINF:-1,Radio Caprice - Classic Rock
+http://79.120.77.11:8000/rock
+#EXTINF:-1,Детский Хит - Kids Hit
+http://deti.volna.top/Deti
+#EXTINF:-1,Ambient DUB
+http://79.111.14.76:8000/ambientdub
+#EXTINF:-1,Radio Caprice - Underground Rap
+http://79.111.14.76:8000/undergroundrap
+#EXTINF:-1,Русская Волна
+https://ru2.volna.top/RuWave48
+#EXTINF:-1,Ретро FM 80е
+http://retro80.hostingradio.ru:8025/retro80-128.mp3
+#EXTINF:-1,Детское радио (ДетиFM) - Detskoye Radio
+https://pub0101.101.ru/stream/air/aac/64/199
+#EXTINF:-1,POPFM Ретро
+https://stream.popfm-bir.ru:1150/stream
+#EXTINF:-1,Radio Caprice - Free Jazz
+http://79.111.14.76:8002/freejazz
+#EXTINF:-1,Radio Caprice - Contemporary Classical
+http://79.111.119.111:8002/contclass
+#EXTINF:-1,BBZ BREAKBEATZONE
+https://radio.bbz.ru/listen/bbz/192.mp3
+#EXTINF:-1,Radio Caprice - Electro Techno [2]
+http://213.141.131.10:8000/electrotechno
+#EXTINF:-1,CRN - East Coast Rap
+http://79.111.14.76:8000/eastcoastrap
+#EXTINF:-1,datamosh
+https://radio.datamosh.ru/listen/datamosh_radio/radio.mp3
+#EXTINF:-1,Made In Russia Dance Radio
+https://listen7.myradio24.com/9083
+#EXTINF:-1,[GTA:III] MSX FM [GTARadio.net]
+https://audio.gtaradio.net/3/msx
+#EXTINF:-1,[GTA:III] Flashback 95.6 [GTARadio.net]
+https://audio.gtaradio.net/3/flash
+#EXTINF:-1,Радио Образ / Radio Obraz - FM 98.0
+https://radioobraz.ru/radio/
+#EXTINF:-1,Verdure Station
+http://air.verdure.net:8881/stream
+#EXTINF:-1,Heavy Music Atmospheric Radio
+http://stream.heavy-music.net:8176/stream
+#EXTINF:-1,Радио Рекорд 80-х
+http://radiorecord.hostingradio.ru/198096.aacp
+#EXTINF:-1,101.ru Любэ
+https://pub0101.101.ru/stream/pro/aac/64/158
+#EXTINF:-1,Mixadance FM Relax
+https://stream.mixadance.fm/relax#.m4a
+#EXTINF:-1,Radio Caprice - Neoclassical Music
+http://79.120.39.202:8002/neoclassical
+#EXTINF:-1,Радио Монте Карло - Covers
+https://mc-covers.hostingradio.ru/mccovers96.aacp
+#EXTINF:-1,[GTA IV] Liberty City Hardcore [GTARadio.net]
+https://audio.gtaradio.net/4/hardcore
+#EXTINF:-1,Виктор Цой (Кино)
+https://stream03.pcradio.app/gr_Kino-hi
+#EXTINF:-1,Radio Caprice - Baroque
+http://79.111.14.76:8000/baroque
+#EXTINF:-1,Europa Plus (128 kbps)
+http://ep128.streamr.ru/
+#EXTINF:-1,RuWorship Псалом
+https://s.ruworship.ru:8035/radio
+#EXTINF:-1,Radio Caprice - Forest Psytrance
+http://213.141.131.10:8000/forestpsytrance
+#EXTINF:-1,ОГОНËК
+https://misato.ru-hoster.com:8037/stream
+#EXTINF:-1,Anima Amoris Minimal Deep Techno
+https://amoris.sknt.ru/minimal.mp3
+#EXTINF:-1,Radio Caprice - Dub Techno [1]
+http://79.120.39.202:8002/dubtechno
+#EXTINF:-1,Witch House on WaveRadio
+https://station.waveradio.org/witch
+#EXTINF:-1,Radio Caprice - Stoner Metal
+http://79.120.77.11:9089/
+#EXTINF:-1,Radio Maximum - Depeche Mode
+https://depechemode.hostingradio.ru/depechemode96.aacp
+#EXTINF:-1,Radio Caprice Industrial/Dark/Ritual Ambient
+http://79.120.39.202:9095/
+#EXTINF:-1,101.ru Агата Кристи
+https://srv01.gpmradio.ru:8443/stream/pro/aac/64/139
+#EXTINF:-1,Радио Сектор / Sector SPACE (flac)
+http://89.223.45.5:8000/space-flac
+#EXTINF:-1,Dr Alban
+https://stream.pcradio.ru/Dr_Alban-hi
+#EXTINF:-1,Relax FM christmas
+https://pub0101.101.ru/stream/trust/mp3/128/258
+#EXTINF:-1,Radio Caprice - Erotic
+http://79.120.39.202:8000/erotic
+#EXTINF:-1,IDM Ambient
+http://213.141.131.10:8000/idmambient
+#EXTINF:-1,101.ru Алексей Брянцев
+https://pub0102.101.ru:8443/stream/personal/aacp/64/927583
+#EXTINF:-1,Enigmatic Immersion
+http://radio.enigmatic.su:8040/radio
+#EXTINF:-1,Лето
+https://online.radioletofm.ru/radioletofm
+#EXTINF:-1,Ленинград Радио
+https://stream03.pcradio.app/Leningrad-hi
+#EXTINF:-1,Дождь ТВ (Звук)
+https://wl.tvrain.tv/transcode/ses_audio_only/playlist.m3u8
+#EXTINF:-1,Салют Fm Мелодия
+https://stream.salyutfm.ru:4020/stream
+#EXTINF:-1,Radio Caprice - Folk Metal
+http://79.120.39.202:8000/folkmetal
+#EXTINF:-1,Звезда ТВ🌟(ТВЧ)📺
+https://tvchannelstream1.tvzvezda.ru/cdn/tvzvezda/playlist.m3u8
+#EXTINF:-1,Радио Рекорд Медляк FM
+http://radiorecord.hostingradio.ru/mdl96.aacp
+#EXTINF:-1,CRN - Hip-Hop
+http://79.120.77.11:8000/hiphop
+#EXTINF:-1,Radio Jazz 89.1 - Classic JAZZ
+http://jfm1.hostingradio.ru:14536/ijstream.mp3
+#EXTINF:-1,Record Hard Bass
+https://radiorecord.hostingradio.ru/hbass96.aacp
+#EXTINF:-1,Radio Caprice - Symphonic Gothic Metal
+http://213.141.131.10:8002/symphogoth
+#EXTINF:-1,Дискач 90s Мегахит ДНР
+http://radio90s.stream.laut.fm/radio90s?uuid=5cf1e988-b47d-8577-2907-36f5518a6780&t302=2026-11-02_03-00-18
+#EXTINF:-1,Радио Рекорд Innocence
+http://radiorecord.hostingradio.ru/ibiza96.aacp
+#EXTINF:-1,RADCAP: DARK / DOOM / NOIR / FUNERAL / AMBIENT JAZZ
+http://79.120.39.202:8000/darkjazz
+#EXTINF:-1,Голос Бирмы
+https://listen4.myradio24.com/39982
+#EXTINF:-1,Radio Caprice - Vocal Trance
+http://79.120.39.202:9031/;
+#EXTINF:-1,Роксана радиосы
+https://listen1.myradio24.com/2761
+#EXTINF:-1,get.radio — Чилл
+https://get-radio.sipout.ai/stream/chill.mp3
+#EXTINF:-1,Радио Сектор / Sector Progressive (flac)
+http://89.223.45.5:8000/progressive-flac
+#EXTINF:-1,Пилот FM
+https://online.pilotfm.ru/pilot
+#EXTINF:-1,russian radio golden gramophone
+http://rr-zolotoigrammofon.hostingradio.ru/zolotoigrammofon96.aacp
+#EXTINF:-1,Record Radio 70's
+https://radiorecord.hostingradio.ru/197096.aacp
+#EXTINF:-1,Radio Sputnik Volgograd 105.1FM
+https://stream2.sputnikfm.ru/sputnik_mp3
+#EXTINF:-1,Radio Record BREAKS AAC
+https://radiorecord.hostingradio.ru/brks96.aacp
+#EXTINF:-1,Avtoradio - Moscow
+http://185.40.31.28:8000/station_93
+#EXTINF:-1,EuropaPplus Party
+http://epdop.hostingradio.ru:8033//epparty128.mp3
+#EXTINF:-1,Radio Caprice-Gregorian Chant
+http://213.141.131.10:8002/chants
+#EXTINF:-1,Radio Record Lo-Fi
+https://radiorecord.hostingradio.ru/lofi96.aacp
+#EXTINF:-1,Сергей Наговицын
+https://stream03.pcradio.app/sergey_nagovicin-hi
+#EXTINF:-1,CRN - Old School Hip-Hop/Rap
+http://213.141.131.10:8000/oldschoolhiphop
+#EXTINF:-1,101.ru ДДТ
+https://pub0101.101.ru/stream/pro/aac/64/112
+#EXTINF:-1,J-Rock (Japanese Rock Music)
+http://79.111.119.111:8000/jrock
+#EXTINF:-1,REPLAY NEWS - Русский
+https://replaynewsru.ice.infomaniak.ch/replaynewsru-128.mp3
+#EXTINF:-1,Читаем Евангелие (цся)
+https://radio.azbyka.ru/chitaem-evangelie-csya
+#EXTINF:-1,Ретроклуб Инструментал
+https://retroclub.hostingradio.ru/retroclubdbl224.aacp
+#EXTINF:-1,Radio Caprice - Downtempo / Downbeat [3]
+http://79.120.77.11:8004/downtempo
+#EXTINF:-1,Радио Искатель
+https://iskatel.hostingradio.ru:8015/iskatel-128.mp3
+#EXTINF:-1,French Hip-Hop / Rap
+http://213.141.131.10:8002/frenchrap
+#EXTINF:-1,Наше Радио ЩАС СПОЮ
+http://nashe1.hostingradio.ru/nashesongs.mp3
+#EXTINF:-1,Radio Caprice - Renaissance Music
+http://213.141.131.10:8000/renaissance
+#EXTINF:-1,Русский Хит
+https://microit.n340.ru:8443/VgMv0WV17ZVx1uuo_19_ruhit_64_reg_1
+#EXTINF:-1,Песни всех времен
+https://pub0102.101.ru:8443/stream/personal/aacp/64/792012
+#EXTINF:-1,rock.irk.ru :: main-mix
+https://live.rock.irk.ru/hls/main-mix/live.m3u8
+#EXTINF:-1,Sputnik Ossetia
+https://icecast-rian.cdnvideo.ru/voicetsk
+#EXTINF:-1,THT Music Radio
+http://tntradio.hostingradio.ru:8027/tntradio128.mp3
+#EXTINF:-1,Радио Спутник Санкт-Петербург 91.5 FM
+http://orig.video.ria.ru:8000/voicespb
+#EXTINF:-1,Радио Рекорд Old School
+http://radiorecord.hostingradio.ru/pump96.aacp
+#EXTINF:-1,Radio Caprice - Progressive Rock
+http://79.111.119.111:9121/
+#EXTINF:-1,Радио Новая Жизнь
+https://nlradio.stream/hifi
+#EXTINF:-1,Wow Русская Нетленка
+https://stream.vyshka24.ru/wowrugold
+#EXTINF:-1,Radio Caprice - Neo-progressive Rock
+http://79.111.119.111:9095/;stream/1
+#EXTINF:-1,Indie Electronic
+http://79.111.119.111:8000/indieelectronic
+#EXTINF:-1,Vesti FM Nizhny Novgorod 98.6 FM
+http://icecast.vgtrk.cdnvideo.ru/vestifm_nn
+#EXTINF:-1,Кай Метов
+https://stream03.pcradio.app/kay_metov-hi
+#EXTINF:-1,Радио Культура / Radio Kultura
+http://icecast.vgtrk.cdnvideo.ru/kulturafm_mp3_192kbps
+#EXTINF:-1,Град Петров
+http://stream.grad-petrov.ru:8093/aac
+#EXTINF:-1,102.3 FM Хомякс Луганск
+https://radio.play-fm.ru:8001/homyak
+#EXTINF:-1,Радио Родные Песни
+https://rodpesni.amgradio.ru/rp
+#EXTINF:-1,Alex
+https://myradio24.org/walcon
+#EXTINF:-1,Radio Caprice - Dub
+http://79.111.14.76:9029/
+#EXTINF:-1,DFM 101.2
+https://dfm.hostingradio.ru/dfm128.mp3
+#EXTINF:-1,Radio Caprice - Computer / Video Game Music (Ost / Score / Soundrack)
+http://79.120.39.202:9139/
+#EXTINF:-1,Рыжий сентябрь
+https://listen7.myradio24.com/45071
+#EXTINF:-1,Radio Caprice - Progressive House
+http://79.111.119.111:9021/
+#EXTINF:-1,Radio Dacha
+https://stream.n340.com/14_dacha_64?type=aac&UID=AF2C3AB947218127F59F62740712F61D
+#EXTINF:-1,Лира FM
+https://listen1.myradio24.com/23737
+#EXTINF:-1,Радио РБЖ
+https://rbj.recomedy.ru/online
+#EXTINF:-1,Radio Record - Summer Dance
+https://radiorecord.hostingradio.ru/summerparty96.aacp
+#EXTINF:-1,Radio Caprice - Downtempo / Downbeat [1]
+http://79.120.77.11:8002/downtempo
+#EXTINF:-1,get.radio — Хаус (Прочие языки)
+https://get-radio.sipout.ai/stream/house-other.mp3
+#EXTINF:-1,Радио Рекорд Нафталин FM
+http://radiorecord.hostingradio.ru/naft96.aacp
+#EXTINF:-1,New Age Radio
+http://a7.radioheart.ru:8044/newageradio?_ga=2.255684622.769977034.1646991967-126118534.1646991967
+#EXTINF:-1,Звуки Природы
+https://zvuki.amgradio.ru/Zvuki
+#EXTINF:-1,Радио Град Петров / Radio Grad Petrov 73.1 FM
+http://stream.grad-petrov.ru:8093/mp3
+#EXTINF:-1,Дорожное радио Москва 96.0 FM
+http://emgregion.hostingradio.ru:8064/moscow.dorognoe.mp3
+#EXTINF:-1,Радио хиты 90х
+https://stream03.pcradio.app/i_love_90_pcradio-hi
+#EXTINF:-1,Soloviev FM
+https://solovievfm.hostingradio.ru/solovievfm32.aacp
+#EXTINF:-1,Record Chill-Out
+https://radiorecord.hostingradio.ru/chil96.aacp
+#EXTINF:-1,Radio Caprice - Death Metal
+http://79.120.77.11:9083/
+#EXTINF:-1,get.radio — Шансон (Русский)
+https://get-radio.sipout.ai/stream/chanson-ru.mp3
+#EXTINF:-1,Сказочное
+https://listen6.myradio24.com/fairytale
+#EXTINF:-1,Национальное Радио Чувашии / Chuvash National Radio
+http://icecast.ntrk21.ru:8000/nacradio
+#EXTINF:-1,Radio Caprice - Russian Pop music 80-90's
+http://79.120.77.11:8002/80ru
+#EXTINF:-1,1Z1 Radio
+https://listen7.myradio24.com/1z1radio
+#EXTINF:-1,Radio Caprice - Psychedelic Folk
+http://213.141.131.10:8000/psychfolk
+#EXTINF:-1,Record Piratestation
+https://radiorecord.hostingradio.ru/ps96.aacp
+#EXTINF:-1,Retrowave.One Radio
+http://77.108.192.88:8000/stream
+#EXTINF:-1,Radio DFM Ufa 91.5 FM
+http://92.50.177.134:8000/dfm_ufa
+#EXTINF:-1,Country/folk blues - Radio Caprice
+http://79.120.77.11:8004/countryblues
+#EXTINF:-1,3 Music
+http://misato.ru-hoster.com:8057/stream
+#EXTINF:-1,Radio Caprice - Viking Metal
+http://79.111.14.76:8000/vikingmetal
+#EXTINF:-1,Record
+https://radio-srv1.11one.ru/record192k.mp3
+#EXTINF:-1,Радио Сибирь
+https://stream.radiosibir.ru:8093/HQ
+#EXTINF:-1,Радио Рекорд Москва 89.9 FM
+http://icecast-record.cdnvideo.ru/record
+#EXTINF:-1,СПРАВЕДЛИВАЯ РОССИЯ
+https://spravedlivo.hostingradio.ru:8022/spravedlivo128.mp3
+#EXTINF:-1,Вера
+http://77.39.8.49:8000/vera_air_96
+#EXTINF:-1,MixCult
+http://radio.mixcult.net:8000/MixCult_256kbps
+#EXTINF:-1,RadioGora - HitMix
+http://listen.radiogora.ru:8000/hitmix128
+#EXTINF:-1,Italo Disco - Caprice Radio
+http://79.111.119.111:8000/italodisco
+#EXTINF:-1,Record Neurofunk
+https://radiorecord.hostingradio.ru/neurofunk96.aacp
+#EXTINF:-1,Ambient
+http://amoris.sknt.ru/ambient
+#EXTINF:-1,Dance FM Россия
+https://listen3.myradio24.com/dmfm
+#EXTINF:-1,Radio Caprice - Relaxation Music
+http://79.120.39.202:9109/
+#EXTINF:-1,Radio Caprice - АВТОРСКАЯ / БАРДОВСКАЯ ПЕСНЯ
+http://79.120.39.202:9021/
+#EXTINF:-1,Golden 70's
+http://pub0201.101.ru:8000/stream/pro/aac/64/192
+#EXTINF:-1,Deep Dub Tech radio
+https://listen5.myradio24.com/ddtradio
+#EXTINF:-1,Умное Радио
+https://umnoe.amgradio.ru/Umnoe
+#EXTINF:-1,Avtoradio - Moscow (stream 2)
+https://hls-01-gpm.hostingradio.ru/avtoradio495/playlist.m3u8
+#EXTINF:-1,Deep FM
+https://deep.amgradio.ru/deepfm.aacp
+#EXTINF:-1,101.ru Sandra
+https://srv01.gpmradio.ru/stream/pro/aac/64/179
+#EXTINF:-1,Rebyachya Respublika
+http://live.radio7.su:9000/deti256
+#EXTINF:-1,Boney M
+https://stream.pcradio.ru/BoneyM-hi
+#EXTINF:-1,101.ru Mylene Farmer
+https://srv01.gpmradio.ru:8443/stream/pro/aac/64/166
+#EXTINF:-1,Благо
+https://live.radioblago.ru/live-1.ogg
+#EXTINF:-1,Radio Orpheus
+https://orfeyfm.hostingradio.ru:8034/orfeyfm128.mp3
+#EXTINF:-1,Радио Новая Россия
+http://91.194.120.107:8000/256
+#EXTINF:-1,Aplus.FM Progressive-Techno
+https://shoutcast.aplus.fm/aplus_progressive-techno_128
+#EXTINF:-1,Radio Pro Italo Disco
+http://pub0102.101.ru:8000/stream/personal/aacp/64/866529
+#EXTINF:-1,Радио Монте Карло - Wonderful Blues
+https://mc-blues.hostingradio.ru/blues96.aacp
+#EXTINF:-1,Ретро ФМ Москва 88.3 FM
+http://emgregion.hostingradio.ru:8064/moscow.retrofm.mp3
+#EXTINF:-1,RadCap - Math Rock
+http://79.120.39.202:8004/mathrock
+#EXTINF:-1,Cовременная зарубежная музыка в стиле House, Trance, Chillout и Lounge
+https://a1.radioheart.ru:9019/liferadioru
+#EXTINF:-1,Бизнес FM — Business Fm (Moscow)
+https://bfm.hostingradio.ru/bfm256.mp3?radiostatistica=bfmru
+#EXTINF:-1,Best FM
+http://nashe.streamr.ru/best-128.mp3
+#EXTINF:-1,DFM POP GOLD 2000s
+https://dfm-popgold00.hostingradio.ru/popgold0096.aacp
+#EXTINF:-1,Радио Турист
+https://listen7.myradio24.com/turist
+#EXTINF:-1,Радио Рекорд Jungle
+http://radiorecord.hostingradio.ru/jungle96.aacp
+#EXTINF:-1,Сергей Трофимов
+https://stream03.pcradio.app/Sergej_trofimov-hi
+#EXTINF:-1,Radio 7 Moscow
+https://emgregion.hostingradio.ru:8064/moscow.radio7.mp3
+#EXTINF:-1,Enigmatic Station
+https://listen2.myradio24.com/8226
+#EXTINF:-1,Anima Amoris Techno
+https://amoris.sknt.ru/techno
+#EXTINF:-1,Radio Record Future Bass
+https://radiorecord.hostingradio.ru/fbass96.aacp
+#EXTINF:-1,Душевный восторг
+https://listen9.myradio24.com/74127
+#EXTINF:-1,Радио России
+http://icecast.vgtrk.cdnvideo.ru/rrzonam_mp3_192kbps
+#EXTINF:-1,Acid Jazz
+http://79.111.14.76:8000/acidjazz
+#EXTINF:-1,Карибу Арт
+https://online.karibu.ru/Karibu-Art
+#EXTINF:-1,Radio Melodiya
+http://icecast.mediaalliance.cdnvideo.ru:8000/mediaalliance
+#EXTINF:-1,Radio Caprice - Deathcore
+http://79.111.14.76:8000/deathcore
+#EXTINF:-1,RadCap - Nu Metal
+http://79.111.14.76:8004/numetal
+#EXTINF:-1,Владимир Высоцкий
+https://stream03.pcradio.app/Visotskiy-hi
+#EXTINF:-1,Radio Caprice - Future Garage / Chillstep / Deep / Post Dubstep
+http://79.120.39.202:8002/futuregarage
+#EXTINF:-1,Radio Caprice - Classical Guitar
+https://nationalanthems.info/al.mp3?PANGEAhttps://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3https://nationalanthems.info/al.mp3
+#EXTINF:-1,Radio Caprice - Drone Ambient
+http://79.111.119.111:9135/;
+#EXTINF:-1,Полтос
+https://radio.4m3.ru/listen/poltos/radio.mp3
+#EXTINF:-1,Disco- Caprice Radio
+http://79.120.77.11:8000/disco
+#EXTINF:-1,Орфей - Музыка кино
+https://channels.fonotron.ru:8000/Chan_67_256.mp3
+#EXTINF:-1,RadCap - Pop Punk
+http://79.111.14.76:9035/;
+#EXTINF:-1,Rock Space Station
+https://stream.cassiopeia-station.ru:1225/stream
+#EXTINF:-1,Популярная классика Симагино 100.1 FM
+http://icecast-radioclassica.cdnvideo.ru:8000/radioclassica
+#EXTINF:-1,Radio Caprice WITCH HOUSE
+http://79.120.77.11:8002/witchhouse
+#EXTINF:-1,Вокалоид радио (Vocaloid Radio on mikupa.ru)
+http://aska.ru-hoster.com:8093/mikuparu
+#EXTINF:-1,Anima Amoris Dub Step
+https://amoris.sknt.ru/dubstep.mp3
+#EXTINF:-1,16Bit.FM Cafe
+http://16bitfm.com:8000/cafe_mp3_128
+#EXTINF:-1,CRN - Memphis Rap/Hip-Hop
+http://213.141.131.10:8000/memphisrap
+#EXTINF:-1,CASPIAN RADIO BOSS
+https://myradio24.org/bosscomaz
+#EXTINF:-1,Сектор Газовой Атаки
+https://stream03.pcradio.app/sector_gazovoy_ataki-hi
+#EXTINF:-1,Радио Jazz Legends
+http://jfm1.hostingradio.ru:14536/jlstream.mp3
+#EXTINF:-1,Радиоканал Мелодия
+http://stream128.melodiafm.spb.ru:8000/melodia128
+#EXTINF:-1,Radio Caprice - Instrumental Hip-hop
+http://79.120.77.11:8000/instrumentalhiphop
+#EXTINF:-1,Radio Caprice - Atmospheric/Ambient Black Metal
+http://79.120.39.202:8002/aabmds
+#EXTINF:-1,Прибой
+https://online.priboyfm.ru/
+#EXTINF:-1,Радио Рекорд Remix
+http://radiorecord.hostingradio.ru/rmx96.aacp
+#EXTINF:-1,Старое радио Музыка - Old radio Music 64
+http://195.91.237.50:8000/music64
+#EXTINF:-1,Радио Рекорд Маятник Фуко
+http://radiorecord.hostingradio.ru/mf96.aacp
+#EXTINF:-1,RADCAP: PROGRESSIVE BLACK / POST-BLACK / BLACKGAZE
+http://79.111.14.76:8000/postblack
+#EXTINF:-1,GachiBass Radio
+https://radio.gachibass.us.to/fisting
+#EXTINF:-1,Шура Каретный 18+ Радио
+https://stream03.pcradio.app/Shura_Karetniy-hi
+#EXTINF:-1,Радио Монте Карло Владикавказ 107.5 FM
+http://broadcast.osetiafm.ru/mc.mp3
+#EXTINF:-1,Радио Рекорд Rap Classics
+http://radiorecord.hostingradio.ru/rapclassics96.aacp
+#EXTINF:-1,Radio Caprice - Cyberpunk
+http://79.120.12.130:8004/cyberpunk
+#EXTINF:-1,RADIO CHOCOLATE 98FM
+https://choco.hostingradio.ru:10010/fm
+#EXTINF:-1,ГУСЬ.Рок
+https://stream3.radiogoose.ru/listen/rock/play
+#EXTINF:-1,Таня Буланова
+https://stream03.pcradio.app/Bulanova-hi
+#EXTINF:-1,RadCap - Dark Metal
+http://79.111.119.111:8004/darkmetal
+#EXTINF:-1,Anima Amoris Trip Hop Lounge
+https://amoris.sknt.ru/triphop.mp3
+#EXTINF:-1,GOOSE-HYPERTECHNO
+https://stream5.radiogoose.ru/listen/hypertechno/play
+#EXTINF:-1,Any-anime
+http://5.9.2.139:8000/any-anime.ru
+#EXTINF:-1,RadCap - Speed Metal
+http://79.111.119.111:9107/;
+#EXTINF:-1,Король и шут радио
+https://stream03.pcradio.app/Korol_i_Shut-hi
+#EXTINF:-1,Radio Caprice - Heavy Metal
+http://79.111.14.76:8000/heavymetal
+#EXTINF:-1,Пи FM
+http://cdn.pifm.ru/mp3
+#EXTINF:-1,Teyvat Radio (Genshin Impact)
+http://170.168.112.96:8000/live-mp3
+#EXTINF:-1,Дорожное радио Ярославль 103.8 FM
+http://emgregion.hostingradio.ru:8064/yaroslavl.dorognoe.mp3
+#EXTINF:-1,Radio Caprice - Opera
+http://79.120.39.202:8000/opera
+#EXTINF:-1,Радио Пилигрим Библия
+https://radiopiligrim.ru/icecast/bible
+#EXTINF:-1,Ретро ФМ Владикавказ 105.9 FM
+http://broadcast.osetiafm.ru/retro.mp3
+#EXTINF:-1,Blues
+http://79.120.77.11:8000/blues
+#EXTINF:-1,Radio CAPrise
+http://79.120.12.130:8000/nwobhm
+#EXTINF:-1,Radio Caprice - Chiptune
+http://79.111.119.111:8004/chiptune
+#EXTINF:-1,Чайф
+https://stream03.pcradio.app/Chaif-hi
+#EXTINF:-1,Радио Группы Солидарности с КНДР
+https://stream.zeno.fm/i3q4bwnzxp1uv
+#EXTINF:-1,Radio Caprice Sinphonic Music
+http://79.120.77.11:9019/
+#EXTINF:-1,Radio Caprice - Psychedelic Rock
+http://79.111.119.111:9027/
+#EXTINF:-1,100.3 FM
+https://a2.radioheart.ru:8015/admin
+#EXTINF:-1,Radio Mantra
+https://c22.radioboss.fm:8291/stream
+#EXTINF:-1,Murka FM
+https://murka.amgradio.ru/MurkaFM
+#EXTINF:-1,Радио Орфей - Клавир 256kbps
+https://channels.fonotron.ru:8000/Chan_77_256.mp3
+#EXTINF:-1,Radio Caprice - Death Doom Metal
+http://79.120.39.202:9007/
+#EXTINF:-1,NEW HIP-HOP - качаем по-новому!
+http://live.lofiradio.ru:8000/hiphop_mp3_320
+#EXTINF:-1,Родина ФМ
+https://cast.modnoeradio.ru/live
+#EXTINF:-1,SynthWay Radio
+https://ac.synthway.com/listen/radio/radio_256.mp3
+#EXTINF:-1,Легенда
+https://s.fmplay.ru/9e081499
+#EXTINF:-1,record rock
+https://radiorecord.hostingradio.ru/rock96.aacp
+#EXTINF:-1,Рязанское Епархиальное Радио
+https://s01.radio-tochka.com:4995/radio
+#EXTINF:-1,Radio Caprice - Eurobeat/Hi-NRG
+http://79.120.39.202:9159/
+#EXTINF:-1,RadioKP Russia
+https://kpradio.hostingradio.ru:8003/russia.radiokp32.mp3
+#EXTINF:-1,Радио Орфей - Популярная классика 256kbps
+https://channels.fonotron.ru:8000/Chan_72_256.mp3
+#EXTINF:-1,Radio Caprice - Instrumental Music
+http://79.120.77.11:8002/instrumental
+#EXTINF:-1,MOTORADIO.ONLINE, 320 kbps
+https://stream.motoradio.online/std-mp3
+#EXTINF:-1,Радио Сахаров
+https://icecast.correctiv.net/sacharow
+#EXTINF:-1,Ночной звонок
+https://listen7.myradio24.com/74828
+#EXTINF:-1,Zaycev.FM Pop
+https://abs.zaycev.fm/pop128k
+#EXTINF:-1,Радио Любимые хиты
+https://radio.lyubimyehity.ru:1045/stream
+#EXTINF:-1,Rock n Roll FM
+https://a6.radioheart.ru:9046/RH1972
+#EXTINF:-1,RADIO CAPRICE - K-POP (KOREAN POP)
+http://79.111.119.111:8002/kpop
+#EXTINF:-1,Старое радио - Музыка
+http://195.91.237.50:8000/music128
+#EXTINF:-1,drumfunk.ru
+https://ice.drumfunk.ru:8050/on.mp3
+#EXTINF:-1,НАШЕ Радио,Классик рок
+http://nashe1.hostingradio.ru/nasheclassic.mp3
+#EXTINF:-1,get.radio — Хаус (Без вокала)
+https://get-radio.sipout.ai/stream/house-instrumental.mp3
+#EXTINF:-1,Clavecin/Cembalo/Harpsichord - Radio Caprice
+http://213.141.131.10:8004/clavecin
+#EXTINF:-1,Experimental/Avant Rock, Radio Caprice
+http://213.141.131.10:8004/avantrock
+#EXTINF:-1,get.radio — Джаз (Без вокала)
+https://get-radio.sipout.ai/stream/jazz-instrumental.mp3
+#EXTINF:-1,Ретро ФМ Липецк 103.1 FM
+http://s0.radioheart.ru:8000/RH76210
+#EXTINF:-1,Radio Caprice - Easy Listening
+http://79.111.14.76:8002/easylistening
+#EXTINF:-1,Детское радио Ярославль 107.0 FM
+http://s0.radioheart.ru:8000/detifm76
+#EXTINF:-1,БИМ-Радио Казань 102.8 FM
+http://av.bimradio.ru:8066/bim_mp3_128k
+#EXTINF:-1,Radio Caprice [Happy / Uk Hardcore / Happy Rave / Happycore]
+http://79.120.77.11:8002/happyhardcore
+#EXTINF:-1,Новое радио Воронеж 98.5 FM
+http://emgregion.hostingradio.ru:8064/voronezh.novoe.mp3
+#EXTINF:-1,ChillHop радио
+http://media-the.musicradio.com/ChillMP3
+#EXTINF:-1,RadCap - Symphonic Death Metal
+http://213.141.131.10:8000/symphodeath
+#EXTINF:-1,EuropaPplus Top 40
+http://eptop128.streamr.ru/
+#EXTINF:-1,Classical guitar - Radio Caprice
+http://213.141.131.10:8004/classguitar
+#EXTINF:-1,[GTA IV] International Funk 99 [GTARadio.net]
+https://audio.gtaradio.net/4/afro_beat
+#EXTINF:-1,Relax Lo-Fi
+https://pub0101.101.ru/stream/pro/aac/64/358
+#EXTINF:-1,Radio M00 Dark Ambient
+https://radio.m00.su:8000/darkambient.mp3
+#EXTINF:-1,Роман Трахтенберг 18+
+https://stream03.pcradio.app/Roman_Trakhtenberg-hi
+#EXTINF:-1,Radio Caprice - Blues Rock
+http://79.120.39.202:8000/bluesrock
+#EXTINF:-1,Radio Maximum - Punk
+https://maximum-punk.hostingradio.ru/maxpunk96.aacp
+#EXTINF:-1,Radio Record Hardstyle
+https://radiorecord.hostingradio.ru/teo96.aacp
+#EXTINF:-1,Radio Caprice - Lo-Fi [1]
+http://79.111.14.76:8002/lo-fi
+#EXTINF:-1,Russian Rock - РУССКИЙ РОК - AMG Radio
+https://dirxiph.amgradio.ru/RusRock
+#EXTINF:-1,Radio Caprice - Traditional Electronic
+http://79.111.14.76:8002/tradelectronic
+#EXTINF:-1,РетроФМ
+http://europaplus.hostingradio.ru:8014/retro320.mp3
+#EXTINF:-1,90 Hits
+https://stream.pcradio.ru/shitsradiopcradio90-hi
+#EXTINF:-1,Much FM Eurodance
+http://myradio24.org/7552
+#EXTINF:-1,Radio Caprice - New Age
+http://79.120.77.11:8000/newage
+#EXTINF:-1,Adrenalin FM
+https://listen9.myradio24.com/77103
+#EXTINF:-1,Nui Radio
+https://a2.radioheart.ru:9003/nuiradio
+#EXTINF:-1,get.radio — 80-е (Без вокала)
+https://get-radio.sipout.ai/stream/eighties-instrumental.mp3
+#EXTINF:-1,Radio Sputnik Mundo Latam
+https://icecast-rian.cdnvideo.ru/voicespa
+#EXTINF:-1,ЯН-ФМ Trance
+https://anilibria.stream.laut.fm/anilibria?uuid=916bfc44-85f4-a20d-dd46-ff6abbe5698b&t302=2026-11-01_05-58-04
+#EXTINF:-1,Новое Радио 91.1 (СПб)
+http://emgspb.hostingradio.ru/novoespb128.mp3
+#EXTINF:-1,Caprice - Latin / Afro-Cuban Jazz
+http://79.111.119.111:8002/latinjazz
+#EXTINF:-1,Anima Amoris Dub Techno Mix
+http://amoris.sknt.ru/dubtechnomix.mp3
+#EXTINF:-1,Europa Plus 128aac
+http://hls-02-europaplus.emgsound.ru/11/128/playlist.m3u8
+#EXTINF:-1,Progressive Electronic
+http://79.120.12.130:8000/progelectronic
+#EXTINF:-1,Radio Caprice - Medieval Music
+http://213.141.131.10:8000/medieval
+#EXTINF:-1,BadBeatRadio
+http://misato.ru-hoster.com:8061/badbeatradio
+#EXTINF:-1,Алла Пугачева
+https://stream03.pcradio.app/Alla_Pugacheva-hi
+#EXTINF:-1,Mega FM Arkhangelsk
+http://s0.radioheart.ru:8000/RH23554
+#EXTINF:-1,Radio Caprice - Suomisaundi / Freeform Psytrance / Spugedelic Trance [2]
+http://79.120.77.11:8000/suomisaundi
+#EXTINF:-1,RadCap - Horror Punk
+http://79.120.77.11:8002/horrorpunk
+#EXTINF:-1,null fm
+http://nullfm.dedyn.io:8000/radio.mp3
+#EXTINF:-1,Instrumental
+http://79.120.77.11:8000/instrumental
+#EXTINF:-1,101.ru Neoclassical
+http://pub0101.101.ru:8000/stream/pro/aac/64/275?
+#EXTINF:-1,радио Алтай
+http://146.158.96.114:8000/radio
+#EXTINF:-1,RadioGora - Electro
+http://listen.radiogora.ru:8000/electro128
+#EXTINF:-1,Radio Caprice - Black Metal
+http://79.120.77.11:9003/
+#EXTINF:-1,Пилигрим. Библия
+http://radiopiligrim.ru:8000/bible
+#EXTINF:-1,Techno Trance Techtrance
+http://213.141.131.10:8000/techtrance
+#EXTINF:-1,Radio OldHit
+https://oldhit.org:8000/
+#EXTINF:-1,RadCap - Thrash Heavy Metal
+http://213.141.131.10:8004/thrashheavy
+#EXTINF:-1,Luxury Lounge - level 2
+http://188.40.109.122:8000/ices
+#EXTINF:-1,Ирина Круг
+https://stream03.pcradio.app/irina_krug-hi
+#EXTINF:-1,Золотой Граммофон
+https://rr-zolotoigrammofon.hostingradio.ru/zolotoigrammofon96.aacp
+#EXTINF:-1,Старое доброе радио
+http://91.189.162.134:8008/;
+#EXTINF:-1,Ария радио
+https://stream03.pcradio.app/Aria-hi
+#EXTINF:-1,dewoq Lo-Fi Radio
+https://radio.dewoq.ru/listen/dewoq_lo-fi_radio/radio.mp3
+#EXTINF:-1,Dark Electro
+http://79.120.39.202:8000/darkelectro
+#EXTINF:-1,Radio AnimKLATU
+https://animklatu.stream.laut.fm/animklatu?uuid=22c5e78e-6b4f-2b0b-0225-fa66dc636d4e&t302=2026-11-01_07-26-45
+#EXTINF:-1,радио Дача Новосибирск
+https://stream2.n340.com/12_dacha_28_reg_316?type=.aac&UID=0E7ACB8332B0F838199083C383FB7F40
+#EXTINF:-1,Russian Rap / Hip Hop - Caprice Radio
+http://79.120.77.11:8000/rapru
+#EXTINF:-1,Radio Caprice - Post-rock
+http://79.111.14.76:8004/postrock
+#EXTINF:-1,Relax FM для медитации
+https://pub0102.101.ru:8443/stream/trust/mp3/128/461?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJrZXkiOiJlZDU4MTY4MDliN2ZkYzg3NWQ2NWE1YzY4YmUzYTE0MyIsIklQIjoiMTc4LjE3OC4yMDUuMzEiLCJVQSI6Ik1vemlsbGEvNS4wIChMaW51eDsgQW5kcm9pZCAxMzsgTTIxMDFLNkcgQnVpbGQvVEtRMS4yMjEwMTMuMDAyKSBBcHBsZVdlYktpdC81MzcuMzYgKEtIVE1MLCBsaWtlIEdlY2tvKSAgQ2hyb21lLzEyNy4wLjY1MzMuMTAzIE1vYmlsZSBTYWZhcmkvNTM3LjM2IiwiUmVmIjoiaHR0cHM6Ly9yZWxheC1mbS5ydS8iLCJ1aWRfY2hhbm5lbCI6IjQ2MSIsInR5cGVfY2hhbm5lbCI6ImNoYW5uZWwiLCJ0eXBlRGV2aWNlIjoicGhvbmUiLCJEZXZpY2UiOiJNMjEwMUs2RyBCdWlsZCIsIkJyb3dzZXIiOiJDaHJvbWUiLCJTeXN0ZW0iOiJBbmRyb2lkIiwiZXhwIjoxNzI1MjYzMDk3fQ.XT9_PNt1Cixo0yW3LpEgsIJNkL5bEmfkTJ_otq4ZyxA
+#EXTINF:-1,Сapital fm
+https://icecast-vgtrk.cdnvideo.ru/capitalfmmp3
+#EXTINF:-1,Х_й Забей
+https://stream03.pcradio.app/Hui_Zabey-hi
+#EXTINF:-1,Radio Caprice - Dark Electro / Aggrotech
+http://79.120.39.202:8002/darkelectro
+#EXTINF:-1,RADCAP: PROGRESSIVE ROCK
+http://79.111.119.111:8000/progressiverock
+#EXTINF:-1,Radio Caprice - Cyberpunk [1]
+http://79.120.12.130:8002/cyberpunk
+#EXTINF:-1,пурга
+https://radiostream.chukotnet.ru/RadioPurga_48
+#EXTINF:-1,Топ
+http://streamer.radiovseti.ru:8000/tr_hi
+#EXTINF:-1,Radio caprice - pop ballads
+http://79.120.77.11:8002/popballads
+#EXTINF:-1,Казак ФМ Краснодар 105.2 FM
+http://radio.kazak.fm/kazak_fm.mp3
+#EXTINF:-1,Radio Caprice - Melodic Heavy Metal
+http://79.111.119.111:8000/melodicheavy
+#EXTINF:-1,Звери
+https://stream03.pcradio.app/Zveri-hi
+#EXTINF:-1,Союз ФМ
+http://soyuzfm.su:8100//soyuzfm-320.mp3?1702169748633
+#EXTINF:-1,Радио Рекорд Russian Hits
+http://radiorecord.hostingradio.ru/russianhits96.aacp
+#EXTINF:-1,Radio Caprice - Minimal Tech House [3]
+http://79.111.119.111:8004/mintechhouse
+#EXTINF:-1,Riddim Dubstep
+http://79.111.119.111:8000/riddimdubstep
+#EXTINF:-1,JoyRadio
+http://airtime.joyradio.cc:8000/airtime_192.mp3
+#EXTINF:-1,Coffee FM
+https://stream.pcradio.ru/Vintazh_kafe-med
+#EXTINF:-1,Radio Caprice - Abstract Hip-hop
+http://79.111.14.76:9093/;stream/1
+#EXTINF:-1,Radio Caprice - Symphony
+http://79.111.14.76:9079/;
+#EXTINF:-1,Радио Рекорд Dubstep
+http://radiorecord.hostingradio.ru/dub96.aacp
+#EXTINF:-1,RES: Rewind
+https://cst.res.ad/rw320
+#EXTINF:-1,SW-Radio Russisch
+http://www.segenswelle.de:8000/russisch
+#EXTINF:-1,ГУСЬ.Бигрум
+https://stream5.radiogoose.ru/listen/bigroom/play
+#EXTINF:-1,Radio Caprice - Depressive Black Metal
+http://79.111.119.111:9011/;
+#EXTINF:-1,Radio Record Summer lounge
+http://radiorecord.hostingradio.ru/summerlounge96.aacp
+#EXTINF:-1,get.radio — Микс всех волн
+https://get-radio.sipout.ai/stream/mix.mp3
+#EXTINF:-1,Радио Орфей - Классика крупных форм
+https://channels.fonotron.ru:8000/Chan_8_192.mp3
+#EXTINF:-1,Ретро ФМ Ярославль 102.2 FM
+http://emgregion.hostingradio.ru:8064/yaroslavl.retrofm.mp3
+#EXTINF:-1,RadCap - Instrumental Metal
+http://79.111.119.111:8004/instrumentalmetal
+#EXTINF:-1,101.ru Муслим Магомаев
+https://srv01.gpmradio.ru/stream/pro/aac/64/156
+#EXTINF:-1,Юлдаш радиоһы
+http://radio.mediacdn.ru/uldash.mp3
+#EXTINF:-1,русская гармонь
+https://pub0102.101.ru:8443/stream/personal/aacp/64/701955?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJrZXkiOiI3NGNjODVmNDQyMmViMTJiMjExODFiZmZmMjhjMTI4MiIsIklQIjoiMTA5LjE2NS45My4yMTciLCJVQSI6Ik1vem
+#EXTINF:-1,Dzhon Radio
+https://stream.drugradio.ru:8000/stream128
+#EXTINF:-1,Radio Caprice - Folk Black Metal
+http://79.120.12.130:8002/folkblackmet
+#EXTINF:-1,East of Russia (Восток России)
+http://109.70.24.182:8000/stream/1/
+#EXTINF:-1,АЭС
+https://radio.4m3.ru/listen/aes/radio.mp3
+#EXTINF:-1,Радио Монте-Карло омск
+https://radio.mediacdn.ru/shanson_omsk.mp3
+#EXTINF:-1,RADCAP: DRONE AMBIENT
+http://79.111.119.111:8000/droneambient
+#EXTINF:-1,рекорд чилл
+http://radiorecord.hostingradio.ru/chil96.aacp
+#EXTINF:-1,Radio Maximum - Heavy Monday
+https://heavymonday.hostingradio.ru/heavymonday96.aacp
+#EXTINF:-1,Europa Plus K-Pop
+https://hls-01-europaplus-kpop.emgsound.ru/europaplus-kpop/112/playlist.m3u8
+#EXTINF:-1,Радио Орфей - Русская классика 256kbps
+https://channels.fonotron.ru:8000/Chan_73_256.mp3
+#EXTINF:-1,Radonezh
+http://icecast.radonezh.cdnvideo.ru:8000/rad128
+#EXTINF:-1,Милицейская Волна Москва 107.8 FM
+http://radiomv.hostingradio.ru/radiomv128.mp3
+#EXTINF:-1,ROCK FM, 00s
+http://jfm1.hostingradio.ru:14536/rock00.mp3
+#EXTINF:-1,DFM - Club
+https://dfm-dfmclub.hostingradio.ru/dfmclub96.aacp
+#EXTINF:-1,Радио Монте Карло - Время джаза
+https://mc-mcjazz.hostingradio.ru/mcjazz96.aacp
+#EXTINF:-1,RadCap - Industrial Metal
+http://79.120.39.202:9075/;
+#EXTINF:-1,Радио JAZZ 89.1 256kbps
+https://nashe1.hostingradio.ru/jazz-256
+#EXTINF:-1,1000 Пластинок
+https://listen7.myradio24.com/12818
+#EXTINF:-1,Radio Caprice - Classical Symphonic Music
+http://79.120.77.11:8002/classical
+#EXTINF:-1,CHANSON
+http://chanson.hostingradio.ru:8041/chanson128.mp3?md5=2eMCvcYXPx0fjyorGnLWuw&e=1545675080
+#EXTINF:-1,Радио Рекорд Гастарбайтер FM
+http://radiorecord.hostingradio.ru/gast96.aacp
+#EXTINF:-1,Shoot`em Up Radio Station
+https://stream.shmupradio.com/320
+#EXTINF:-1,Radio Caprice - LOVE SONGS
+http://213.141.131.10:8002/lovesongs
+#EXTINF:-1,Радио Лихие Девяностые
+https://rr-90.hostingradio.ru/rr9096.aacp
+#EXTINF:-1,Radio Caprice - Electroclash / Synthcore / Tech Pop / Nouveau Disco [1]
+http://79.120.39.202:8002/electroclash
+#EXTINF:-1,Radio Caprice - African Folk / Ethnic Music 320k
+http://79.120.39.202:8004/africanfolk
+#EXTINF:-1,Radio Caprice - Progressive Folk
+http://213.141.131.10:8000/progfolk
+#EXTINF:-1,Атаман ФМ
+https://listen5.myradio24.com/ataman
+#EXTINF:-1,Radio Caprice - grime
+http://79.120.77.11:8004/grime
+#EXTINF:-1,Портал
+https://icecast-ext.dimfm.ru/portal
+#EXTINF:-1,Радио Рекорд Rave FM
+http://radiorecord.hostingradio.ru/rave96.aacp
+#EXTINF:-1,Цыганское Радио - Gipsy
+http://radio.ransis.org:8000/gvtradition
+#EXTINF:-1,RadCap - Ska Punk
+http://79.111.119.111:9039/;
+#EXTINF:-1,Радио Алиса
+https://listen8.myradio24.com/alisa
+#EXTINF:-1,RadioSpinner - Buddha Bar Chill -om
+https://statics-v3.streema.com/static/audios/sample.ea78c3d52389.mp3
+#EXTINF:-1,Радио Москвы
+https://icecast-vgtrk.cdnvideo.ru/moscowtalk128?v=1640610887877
+#EXTINF:-1,Record D'n'B Hits
+https://radiorecord.hostingradio.ru/drumhits96.aacp
+#EXTINF:-1,Radio 2000x
+http://air.radio2000x.com:8000/stream
+#EXTINF:-1,Радио Болид
+https://icecast-bulteam.cdnvideo.ru/bolid128
+#EXTINF:-1,Азбука веры - Знаменные песнопения
+https://radio.azbyka.ru/znamennye-pesnopenija
+#EXTINF:-1,Radio Caprice - Electro Techno [1]
+http://213.141.131.10:8002/electrotechno
+#EXTINF:-1,Radio Caprice - AOR / Melodic Hard Rock
+http://79.111.14.76:8002/aor
+#EXTINF:-1,Русское радио Владикавказ 107.9 FM
+http://broadcast.osetiafm.ru/rr.mp3
+#EXTINF:-1,ROCK FM, 90s
+http://jfm1.hostingradio.ru:14536/rock90.mp3
+#EXTINF:-1,Overdrive Live! Station
+https://stream.overdrivelive.net:8000/alternative_128.mp3
+#EXTINF:-1,Radio Caprice - Arabic Pop
+http://79.120.39.202:8000/arabicpop
+#EXTINF:-1,rockfm.ru progressive
+https://jfm1.hostingradio.ru:14536/prog.mp3
+#EXTINF:-1,Relax FM Gold
+https://srv01.gpmradio.ru/stream/air/aac/64/200?
+#EXTINF:-1,RadCap - Noise Rock
+http://79.120.39.202:8000/noiserock
+#EXTINF:-1,Radio 42 FM — Радио «Воруй-Убивай»
+http://listen.42fm.ru:8000/stealkill-8.0.ogg
+#EXTINF:-1,Неслучайное Радио
+http://aska.ru-hoster.com:8006/stream
+#EXTINF:-1,Советская Волна
+https://station.waveradio.org/soviet.mp3?pltsukioahxdexkqsjgf
+#EXTINF:-1,PilotFM
+https://online.pilotfm.ru/pilot?v=1788326407182
+#EXTINF:-1,Radio Caprice - NWOBHM (New Wave of British Heavy Metal)
+http://79.120.12.130:8002/nwobhm
+#EXTINF:-1,Maximum 90 е
+https://maximum90.hostingradio.ru/maximum9096.aacp
+#EXTINF:-1,Radio Metro Sankt-Peterburg
+http://stream.radiometro.ru:8230/;
+#EXTINF:-1,Radio Caprice - West Coast Hip-Hop, Gangsta Rap, G-Funk 320k
+http://79.120.39.202:8004/gangstarap
+#EXTINF:-1,МОЙГИДтв — аудиоэкскурсии (moygid.online)
+https://moygid.online/radio.mp3
+#EXTINF:-1,Mineplay FM
+https://radio.nedodev.ru/stream
+#EXTINF:-1,Radio Caprice - Soul Jazz
+http://79.111.14.76:8002/souljazz
+#EXTINF:-1,Radio Caprice - Pagan Metal
+http://79.111.119.111:8000/paganmetal
+#EXTINF:-1,Интернет-радиостанция Новое Радио
+http://vm2083793.42ssd.had.wf:8000/online
+#EXTINF:-1,DFM - Organic House
+https://dfm-organichouse.hostingradio.ru/organichouse96.aacp
+#EXTINF:-1,Радио Орфей (Radio Orpheus) 64 AAC
+http://orfeyfm.hostingradio.ru:8034/orfeyfm64.aacp
+#EXTINF:-1,rockfm.ru rock80s
+https://jfm1.hostingradio.ru:14536/rock80.mp3
+#EXTINF:-1,VIBE
+https://live.lofiradio.ru/vibe_mp3_320
+#EXTINF:-1,MelodiClab Radio
+https://radio.melodiclab.studio/stream.aac
+#EXTINF:-1,Radio Caprice - ACID HOUSE / TRANCE / TECHNO
+http://79.111.119.111:8002/acid
+#EXTINF:-1,Радио Sputnik (Россия) 256 кбит/с
+https://icecast-rian.cdnvideo.ru/voicerushi
+#EXTINF:-1,1234567890
+https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3?https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3https://embed.tawk.to/_s/v4/assets/audio/chat_sound.mp3
+#EXTINF:-1,Post Rock
+http://79.111.14.76:8000/postrock
+#EXTINF:-1,Радио Русский Драйв
+https://rusdriveradio.ru:8000/live_aac64
+#EXTINF:-1,Radio Caprice - Minimal Techno [1]
+http://79.120.39.202:8002/mintechno
+#EXTINF:-1,Дорожное радио Санкт-Петербург 87.5 FM
+http://emgregion.hostingradio.ru:8064/spb.dorognoe.mp3
+#EXTINF:-1,Радио России ГТРК Коми Гор 91.6 FM
+http://drh-connect.dline-media.com/radiokomigor
+#EXTINF:-1,Dancefloor Radio
+https://air.broadcastinggroup.ro/Dancefloor_m
+#EXTINF:-1,Fomenko Fake Radio
+https://pub0102.101.ru:8443/stream/personal/aacp/64/933259?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJrZXkiOiIxZmZkYjcxYjRkMTk3MDc2YzVjMmM0NjdkYTc5OWVmNiIsIklQIjoiMTc4LjE3OC4yMDUuNCIsIlVBIjoiTW96aWxsYS81LjAgKExpbnV4OyBBbmRyb2lkIDEzOyBNMjEwMUs2RyBCdWlsZC9US1ExLjIyMTAxMy4wMDIpIEFwcGxlV2ViS2l0LzUzNy4zNiAoS0hUTUwsIGxpa2UgR2Vja28pICBDaHJvbWUvMTI2LjAuNjQ3OC4xMzQgTW9iaWxlIFNhZmFyaS81MzcuMzYiLCJSZWYiOiJodHRwOi8vZm9tZW5rb2ZtLnJ1LyIsInVpZF9jaGFubmVsIjoiOTMzMjU5IiwidHlwZV9jaGFubmVsIjoicGVyc29uYWwiLCJ0eXBlRGV2aWNlIjoicGhvbmUiLCJEZXZpY2UiOiJNMjEwMUs2RyBCdWlsZCIsIkJyb3dzZXIiOiJDaHJvbWUiLCJTeXN0ZW0iOiJBbmRyb2lkIiwiZXhwIjoxNzIxOTc2NTg0fQ.BpaTvtj1rLtR-SaTIZGK0hHwL08alJXskW0bPhHlgtc
+#EXTINF:-1,Folk / Celtic / Gypsy Punk
+http://213.141.131.10:8002/folkpunk
+#EXTINF:-1,Radio Maximum - Supernova
+https://maximum-unplugged.hostingradio.ru/maxunplugged96.aacp
+#EXTINF:-1,Радио Рекорд Neurofunk
+http://radiorecord.hostingradio.ru/neurofunk96.aacp
+#EXTINF:-1,Southern Rock
+http://79.111.14.76:8000/southernrock
+#EXTINF:-1,Radio Maximum - Nirvana
+https://maximum-nirvana.hostingradio.ru/nirvana96.aacp
+#EXTINF:-1,Kommersant FM
+https://kommersant77.hostingradio.ru:8085/kommersant64.mp3
+#EXTINF:-1,Nostalgie FM Makhachkala
+https://nostalgie.dagfm.ru/
+#EXTINF:-1,Nature Sound
+http://79.111.14.76:8000/soundnat
+#EXTINF:-1,Radio Caprice - Contemporary Jazz
+http://79.111.119.111:8002/contemporaryjazz
+#EXTINF:-1,Radio Caprice - Celtic
+http://79.111.14.76:8000/celtic
+#EXTINF:-1,Chamber Pop
+http://79.111.14.76:8000/chamberpop
+#EXTINF:-1,Radio Caprice - Electroclash / Synthcore / Tech Pop / Nouveau Disco [2]
+http://79.120.39.202:8000/electroclash
+#EXTINF:-1,Радио Карл
+https://karl.amgradio.ru/Karl
+#EXTINF:-1,Relax Instrumental
+https://pub0101.101.ru/stream/pro/aac/64/28
+#EXTINF:-1,NOGAY FM
+http://188.246.233.137:8000/stream
+#EXTINF:-1,Love Radio Санкт-Петербург 105.3 FM
+http://microit.n340.com:9000/VgMv0WV17ZVx1uuo_12_love_128_reg_45
+#EXTINF:-1,Radio Record - Remix
+https://radiorecord.hostingradio.ru/rmx96.aacp
+#EXTINF:-1,Радио Vibe Новый Звук
+http://live.lofiradio.ru:8000/vibe_mp3_320
+#EXTINF:-1,Комсомольская правда Калуга 93.1 FM
+http://kpradio.hostingradio.ru:8000/kaluga.radiokp128.mp3
+#EXTINF:-1,Electric Blues
+http://79.111.14.76:8000/electricblues
+#EXTINF:-1,Radio Caprice Chamber Music
+http://213.141.131.10:8002/chamber
+#EXTINF:-1,loFi Радио
+http://live.lofiradio.ru:8000/lofi_mp3_320
+#EXTINF:-1,Clarinet/Bassoon/Oboe - Radio Caprice
+http://213.141.131.10:8004/clarinet
+#EXTINF:-1,ГУСЬ.Фонк
+https://stream3.radiogoose.ru/listen/phonk/play
+#EXTINF:-1,Middle Eastern music - Radio Caprice
+http://79.111.119.111:8004/middleeast
+#EXTINF:-1,Radio Caprice - Jazz Funk
+http://79.120.39.202:8002/jazzfunk
+#EXTINF:-1,Metaradio
+https://s2.metaradio.ru/mradio.aacp
+#EXTINF:-1,Radio Myata - Gold Hits
+https://radio.dline-media.com/gold
+#EXTINF:-1,97557
+http://listen5.myradio24.com/97557
+#EXTINF:-1,Caprice Radio - Forest Psy
+http://213.141.131.10:8002/forestpsytrance
+#EXTINF:-1,Сплин
+https://stream03.pcradio.app/Splin-hi
+#EXTINF:-1,Moskva FM
+http://icecast.vgtrk.cdnvideo.ru/moscowfm128?v=1550419566950
+#EXTINF:-1,Станция Кассиопея
+https://stream.cassiopeia-station.ru:1075/stream
+#EXTINF:-1,ХАЙП FM
+https://hfm.amgradio.ru/HypeFM
+#EXTINF:-1,rockfm.ru heavy
+https://jfm1.hostingradio.ru:14536/metal.mp3
+#EXTINF:-1,Радио ТМК
+https://a4.radioheart.ru:9036/RH13170
+#EXTINF:-1,get.radio — Лоу-фай (Прочие языки)
+https://get-radio.sipout.ai/stream/lofi-other.mp3
+#EXTINF:-1,Европа Плюс Владикавказ 102.0 FM
+http://broadcast.osetiafm.ru/europa.mp3
+#EXTINF:-1,Вастрик 📻 Радио
+https://radio.vas3k.club/listen/vas3kradio/radio320.mp3
+#EXTINF:-1,BRİDGE CLASSİC TV
+http://stream.mcquack.net/272/index.m3u8
+#EXTINF:-1,get.radio — Лоу-фай (Без вокала)
+https://get-radio.sipout.ai/stream/lofi-instrumental.mp3
+#EXTINF:-1,Radio Caprice - Piano
+http://79.120.77.11:8004/piano
+#EXTINF:-1,RadCap - Neoclassical Metal
+http://79.111.119.111:9033/;
+#EXTINF:-1,get.radio — Хаус (Русский)
+https://get-radio.sipout.ai/stream/house-ru.mp3
+#EXTINF:-1,Chilz
+https://a5.radioheart.ru:9002/RH4016
+#EXTINF:-1,Алания FM
+http://vgtrk15.hostingradio.ru:8011/vgtrk15128.mp3
+#EXTINF:-1,Радио 10
+https://ic.radio10.live/stream.mp3
+#EXTINF:-1,Radio Caprice - Jazz Rock
+http://79.111.119.111:8002/jazzrock
+#EXTINF:-1,Radio Caprice - Symphonic Power Metal
+http://213.141.131.10:8000/symphopower
+#EXTINF:-1,Classic FM
+https://classic.amgradio.ru/ClassicFM
+#EXTINF:-1,Radio Caprice - Breakcore
+http://79.111.119.111:8004/breakcore
+#EXTINF:-1,RadCap - Post Grunge
+http://79.111.119.111:9073/;
+#EXTINF:-1,Alternative / Insurgent Country Music - Caprice Radio
+http://79.111.119.111:8000/altcountry
+#EXTINF:-1,MOTORADIO
+http://stream.motoradio.online:8000/high-aac
+#EXTINF:-1,Radio Myata
+http://radio.dline-media.com/myata
+#EXTINF:-1,get.radio — Джаз (Прочие языки)
+https://get-radio.sipout.ai/stream/jazz-other.mp3
+#EXTINF:-1,RadCap - Thrash Metal
+http://79.120.77.11:9101/;
+#EXTINF:-1,[GTA:III] Head Radio [GTARadio.net]
+https://audio.gtaradio.net/3/head
+#EXTINF:-1,ENERGY Slap House
+https://pub0102.101.ru:8443/stream/pro/aac/64/416?
+#EXTINF:-1,RadCap - Progressive Metal
+http://79.120.77.11:9093/;
+#EXTINF:-1,RCMdeep
+https://h.getradio.me/rcmdeep/hls.m3u8
+#EXTINF:-1,RadCap - Post Punk
+http://79.120.39.202:9071/;
+#EXTINF:-1,get.radio — Эмбиент (Прочие языки)
+https://get-radio.sipout.ai/stream/ambient-other.mp3
+#EXTINF:-1,Лавра Успенский собор
+http://stream.lavra.info/USPEN
+#EXTINF:-1,get.radio — Эмбиент (Без вокала)
+https://get-radio.sipout.ai/stream/ambient-instrumental.mp3
+#EXTINF:-1,[GTA:III] Game Radio [GTARadio.net]
+https://audio.gtaradio.net/3/game
+#EXTINF:-1,Radio Caprice - Power Metal
+http://79.120.77.11:9099/
+#EXTINF:-1,DUB
+http://79.111.14.76:8000/dub
+#EXTINF:-1,Иван Кучин
+https://stream03.pcradio.app/Ivan_Kuchin-hi
+#EXTINF:-1,Радио Рекорд EDM
+http://radiorecord.hostingradio.ru/club96.aacp
+#EXTINF:-1,Юмор ФМ 106.5 FM
+http://online-2.gkvr.ru:8000/yumorfm11_vld_64.aac
+#EXTINF:-1,Thrash Heavy Metal - Caprice Radio
+http://213.141.131.10:8000/thrashheavy
+#EXTINF:-1,Всемирная радиосеть // World Radio Network – Russia
+http://streaming.edmradio.online:8025/WRN-R
+#EXTINF:-1,Relax Life
+https://pub0101.101.ru/stream/trust/mp3/128/267?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJrZXkiOiJmZGEzNTE4Nzk2MTRmYjkxZmJjZWUwZjBkN2NiMDEwMSIsIklQIjoiMTU2LjIxOC4xNTEuMTYyIiwiVUEiOiJNb3ppbGxhXC81LjAgKFdpbmRvd3MgTlQgMTAuMDsgV2luNjQ7IHg2NCkgQXBwbGVXZWJLaXRcLzUzNy4zNiAoS0hUTUwsIGxpa2UgR2Vja28pIENocm9tZVwvMTA0LjAuMC4wIFNhZmFyaVwvNTM3LjM2IiwiUmVmIjoiaHR0cHM6XC9cLzEwMS5ydVwvIiwidWlkX2NoYW5uZWwiOiIyNjciLCJ0eXBlX2NoYW5uZWwiOiJjaGFubmVsIiwidHlwZURldmljZSI6IlBDIiwiQnJvd3NlciI6IkNocm9tZSIsIkJyb3dzZXJWZXJzaW9uIjoiMTA0LjAuMC4wIiwiU3lzdGVtIjoiV2luZG93cyAxMCIsImV4cCI6MTY2MDk2NzE4OH0.cEjEybJ8rYlV8kiv_su7cSgAc9qgQS5XyS7UsWqRelY
+#EXTINF:-1,Dream Pop - Radio Caprice
+http://79.111.14.76:8000/dreampop
+#EXTINF:-1,Радио Орфей Санкт-Петербург 97.6 FM
+https://orfeyfm.hostingradio.ru:8034/orfeyfm192.mp3
+#EXTINF:-1,get.radio — Шансон (Английский)
+https://get-radio.sipout.ai/stream/chanson-en.mp3
+#EXTINF:-1,get.radio — Шансон (Прочие языки)
+https://get-radio.sipout.ai/stream/chanson-other.mp3
+#EXTINF:-1,Radi Caprice - Afrobeat
+https://nationalanthems.info/ag.mp3?PANGEAhttps://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3https://nationalanthems.info/ag.mp3
+#EXTINF:-1,Radio Caprice - Medieval Folk
+http://213.141.131.10:8004/medievalfolk
+#EXTINF:-1,Твоя Москва - Русское Радио
+https://rr-moscow.hostingradio.ru/rrmoscow96.aacp
+#EXTINF:-1,Радио Краснодар
+https://icecast-radiokrasnodar.cdnvideo.ru/radiokrasnodar_site_01
+#EXTINF:-1,Radio Caprice - Russian Rock
+http://79.120.77.11:9029/
+#EXTINF:-1,Radio Orthodox Chants
+http://orthodox-chants.ru:8000/128kb
+#EXTINF:-1,Русские Каверы
+https://rr-covers.hostingradio.ru/rrcovers96.aacp
+#EXTINF:-1,Звездатые Десятые
+https://rr-10.hostingradio.ru/rr1096.aacp
+#EXTINF:-1,Radio Caprice - J-Pop
+http://79.111.119.111:8000/jpop
+#EXTINF:-1,DWG Radio ru
+https://server32349.streamplus.de/;stream.mp3
+#EXTINF:-1,get.radio — Гиперпоп (Английский)
+https://get-radio.sipout.ai/stream/hyperpop-en.mp3
+#EXTINF:-1,RadCap - Russian Punk Rock
+http://79.120.77.11:9045/;
+#EXTINF:-1,Beach Party
+https://radiorecord.hostingradio.ru/alltimers96.aacp
+#EXTINF:-1,get.radio — Гиперпоп (Прочие языки)
+https://get-radio.sipout.ai/stream/hyperpop-other.mp3
+#EXTINF:-1,[GTA IV] The Vibe 98.8 [GTARadio.net]
+https://audio.gtaradio.net/4/the_vibe
+#EXTINF:-1,Радио «Luxury Lounge»
+http://188.40.109.122:8000/ices1
+#EXTINF:-1,chanson256
+https://chanson.hostingradio.ru:8041/chanson256.mp3
+#EXTINF:-1,RuWorship Библия по плану
+https://s.ruworship.ru:8155/stream
+#EXTINF:-1,EuropaRussia
+https://europarussia.ru:8006/live
+#EXTINF:-1,[GTA IV] Self Actualization FM [GTARadio.net]
+https://audio.gtaradio.net/4/meditation
+#EXTINF:-1,Piano Rock
+http://79.111.14.76:8000/pianorock
+#EXTINF:-1,Хайповые Двадцатые - Русское Радио
+https://rr-20.hostingradio.ru/rr2096.aacp
+#EXTINF:-1,RadCap - Crossover Progressive
+http://79.111.14.76:8004/crossoverprog
+#EXTINF:-1,Radio Caprice - Minimal Tech House [1]
+http://79.111.119.111:8002/mintechhouse
+#EXTINF:-1,Радио Благовестие Воронеж 73.55 УКВ
+http://82.146.46.30:8000/blagovestie
+#EXTINF:-1,[GTA IV] The Journey [GTARadio.net]
+https://audio.gtaradio.net/4/classical_ambient
+#EXTINF:-1,ЯН.ФМ Диско 90х РФ
+https://radio90s.stream.laut.fm/radio90s?uuid=511fd605-4506-8a85-c241-bb29b410fdbd&t302=2026-11-01_19-15-46
+#EXTINF:-1,Радио Рекорд Hardstyle
+http://radiorecord.hostingradio.ru/teo96.aacp
+#EXTINF:-1,RadCap - Melodic Metalcore
+http://79.111.14.76:8004/melodicmetalcore
+#EXTINF:-1,Радио Шансон Костомукша 105.5 FM
+http://93.190.204.101:8000/live_105_5.mp3
+#EXTINF:-1,Radio Maximum - New Russians
+https://maximum-newrussians.hostingradio.ru/maxnewrussians96.aacp
+#EXTINF:-1,Radio Caprice - Modern Classical
+http://79.120.39.202:8002/modernclassical
+#EXTINF:-1,Radio Caprice - Thrash Metal
+http://79.120.77.11:9101/
+#EXTINF:-1,Hitradio Center Megamix
+http://212.30.80.195:8066/stream
+#EXTINF:-1,Eldoradio
+http://emgspb.hostingradio.ru/eldoradio64.mp3
+#EXTINF:-1,[GTA IV] Public Liberty Radio [GTARadio.net]
+https://audio.gtaradio.net/4/plr
+#EXTINF:-1,Radio Caprice - Mass/Chorus/Cantana
+http://79.120.39.202:8002/chorus
+#EXTINF:-1,Radio Caprice - Gothic Metal
+http://79.120.77.11:8002/gothicmetal
+#EXTINF:-1,Маятник Фуко (Record)
+https://radiorecord.hostingradio.ru/mf96.aacp
+#EXTINF:-1,Радио Рекорд Black Rap
+http://radiorecord.hostingradio.ru/yo96.aacp
+#EXTINF:-1,Radio Record Bass House
+https://radiorecord.hostingradio.ru/jackin96.aacp
+#EXTINF:-1,Deep Mix Moscow Radio
+http://deepmix.ru:8520/;
+#EXTINF:-1,AlexFM Lets Rock
+http://myradio24.org/2411
+#EXTINF:-1,Zaycev.FM Relax
+https://abs.zaycev.fm/relax128k
+#EXTINF:-1,soundpark deep
+https://h.getradio.me/spdeep/hls.m3u8
+#EXTINF:-1,Радио Ногинска
+https://a7.radioheart.ru:9008/radionoginsk
+#EXTINF:-1,Спутник 107.0 FM
+https://online.sputnik107.ru/sputnik107?v=1715804319955
+#EXTINF:-1,EUROPA PLUS 101.6FM
+https://online2.gkvr.ru:8001/europa_che_64.aac
+#EXTINF:-1,Любовь Успенская
+https://stream03.pcradio.app/Ljubov_Uspenskaja-hi
+#EXTINF:-1,Pi FM Moskow
+https://cdn.pifm.ru/mp3
+#EXTINF:-1,Christian Radio City of Eden
+https://listen7.myradio24.com/cityeden
+#EXTINF:-1,Radio Caprice - Indie Folk
+http://79.111.14.76:8002/indiefolk
+#EXTINF:-1,Bad Boys Blue
+https://stream.pcradio.ru/Bad_Boys_Blue-hi
+#EXTINF:-1,Бутырка
+https://stream03.pcradio.app/Butirka-hi
+#EXTINF:-1,BleepLove Chiptune Radio
+https://stream-152.zeno.fm/gyazcly9dfotv?zs=4n2MPkZJRImNtNA8HGWuFw
+#EXTINF:-1,stand up
+https://pub0102.101.ru:8443/stream/pro/aac/64/447
+#EXTINF:-1,Наше Радио СПБ
+https://nashe1.hostingradio.ru:80/nashespb128.mp3
+#EXTINF:-1,..:: KIDS HIT - ДЕТСКИЙ ХИТ - РЕЗЕРВ ::..
+https://deti.amgradio.ru/Deti
+#EXTINF:-1,RadCap - Dreampop
+http://79.111.14.76:9039/;
+#EXTINF:-1,Неслабое
+https://listen6.myradio24.com/neslaboe
+#EXTINF:-1,Радио Рекорд Trancehouse
+http://radiorecord.hostingradio.ru/trancehouse96.aacp
+#EXTINF:-1,Детское радио Сыктывкар 92.0 FM
+https://cast.severmedia.ru:5443/DET_11_01
+#EXTINF:-1,Радио «Таван»
+http://icecast.ntrk21.ru:8000/tavan
+#EXTINF:-1,Power Electronics
+http://79.111.14.76:8000/powerelectronics
+#EXTINF:-1,Говорит Москва - Govorit Moskva
+https://media.govoritmoskva.ru/radio/rufm.mp3
+#EXTINF:-1,RadCap - Gothic Doom Metal
+http://79.120.39.202:8004/gothdoommet
+#EXTINF:-1,101.ru opéra
+https://srv01.gpmradio.ru/stream/pro/aac/64/96
+#EXTINF:-1,Radio Caprice - Gothic Black Metal
+http://79.120.39.202:8000/gothblackmet
+#EXTINF:-1,Radio Maximum - Britpop
+https://maximum-britpop.hostingradio.ru/maxbritpop96.aacp
+#EXTINF:-1,Anima Amoris [Trance]
+https://amoris.sknt.ru/trance
+#EXTINF:-1,Sputnik News Belarussian
+https://nfw.ria.ru/flv/audio.aspx?ID=68862011&amp;type=mp3
+#EXTINF:-1,Radio Caprice - Orthodox
+http://79.111.14.76:9127/
+#EXTINF:-1,Radio Monte Carlo Golf Club
+http://montecarlo.hostingradio.ru/golfcup96.aacp
+#EXTINF:-1,ГУСЬ.Электро
+https://stream4.radiogoose.ru/listen/electro/play
+#EXTINF:-1,http://79.120.77.11:8000/classical
+http://79.120.77.11:8000/classical
+#EXTINF:-1,ЮморФМ: Стендапы
+https://pub0201.101.ru/stream/pro/aac/64/245?
+#EXTINF:-1,Atmosfera 48
+https://listen10.myradio24.com/atmo_48
+#EXTINF:-1,101.ru Михаил Боярский (Mikhail Boyarsky)
+https://srv02.gpmradio.ru:8443/stream/personal/aacp/64/1786150
+#EXTINF:-1,Royal Lounge
+http://193.33.170.218:8000/RoyalLounge
+#EXTINF:-1,Классное Радио "Движения Первых"
+https://schoolradio.hostingradio.ru:18026/schoolradio128.mp3
+#EXTINF:-1,Мираж
+https://stream03.pcradio.app/Mirazh-hi
+#EXTINF:-1,Радио России Анадырь
+https://icecast-vgtrk.cdnvideo.ru/rrzonam_mp3_64kbps
+#EXTINF:-1,Pilot fm dance channel
+https://online.pilotfm.ru/pilot_dance
+#EXTINF:-1,Radio Caprice Piano Blues / Boogie-Woogie
+http://79.111.14.76:8002/pianoblues
+#EXTINF:-1,Anima Amoris ambient
+https://amoris.sknt.ru/ambient
+#EXTINF:-1,Radio Caprice Minimalism
+http://213.141.131.10:8000/minimalism
+#EXTINF:-1,Буряад FM Улан-Удэ
+https://buryadfm.hostingradio.ru:8018/buryadfm128.mp3
+#EXTINF:-1,DFM DANCE GOLD 1990s
+https://dfm-dancegold90.hostingradio.ru/dancegold9096.aacp
+#EXTINF:-1,Heavy Blues
+http://79.120.77.11:8000/heavyblues
+#EXTINF:-1,Күңел радиосы
+http://live.kunelradio.ru:8000/128.mp3
+#EXTINF:-1,JAZZ MANOUCHE / GYPSY JAZZ / GYPSY SWING - Radio Caprice
+http://79.120.77.11:8004/manouche
+#EXTINF:-1,Уездное радио Архангельск 91.2 FM
+http://62.192.226.178:8001/stream.ogg
+#EXTINF:-1,Deep1
+https://stream.deep1.ru/deep1aac
+#EXTINF:-1,RadCap - Gothic Black Metal
+http://79.120.39.202:8004/gothblackmet
+#EXTINF:-1,КЕКС FM
+http://emg02.hostingradio.ru/keksfm64.aac
+#EXTINF:-1,Радио Старого Полковника
+https://notthatoldcolonel.ru:1050/stream
+#EXTINF:-1,Radio Caprice - Avant-Garde Jazz / Free Improvisation [1]
+http://79.111.119.111:8002/avantgardejazz
+#EXTINF:-1,GardaricaFM Golds
+https://stream.gardaricafm.ru:8443/stream.mp3
+#EXTINF:-1,Real Drift - Phonk
+http://radio.real-drift.com/stream
+#EXTINF:-1,Radio Caprice - Funky House [2]
+http://213.141.131.10:8000/funkyhouse
+#EXTINF:-1,Радио "МУЗ-ИИ"
+https://radio.muz-ii.ru/listen/mix/radio.mp3
+#EXTINF:-1,Зимнее Любимое
+https://rr-zimlub.hostingradio.ru/zimlub96.aacp
+#EXTINF:-1,Underground Techno
+http://213.141.131.10:8000/undergroundtechno
+#EXTINF:-1,Radio Caprice - Organic House [2]
+http://79.120.12.130:8000/organichouse
+#EXTINF:-1,RadCap - Melodic Death Metal
+http://79.120.77.11:9091/;
+#EXTINF:-1,MOSCOW MADNESS
+https://stream3.radiogoose.ru/listen/hardcore/play
+#EXTINF:-1,Legend Fm
+https://legendfm.in/player/relaying.php
+#EXTINF:-1,Radio Caprice - Dance Pop
+http://79.120.77.11:8002/dancepop
+#EXTINF:-1,Radio Caprice - BEATDOWN / MOSHCORE / DOWNTEMPO HARDCORE / METALCORE
+http://79.111.14.76:8002/beatdown
+#EXTINF:-1,Радио Атмосфера
+http://185.64.76.49:8000/128
+#EXTINF:-1,Rockabilly - Caprice Radio
+http://79.111.14.76:8000/rockabilly
+#EXTINF:-1,Luxury Lounge Radio - Lounge Level 1
+http://188.40.109.114:8000/ices1
+#EXTINF:-1,Zydeco / Cajun / Creole Music - Radio Caprice
+http://213.141.131.10:8002/zydeco
+#EXTINF:-1,Radio Caprice - Lo-Fi [2]
+http://79.111.14.76:8000/lo-fi
+#EXTINF:-1,Luxury Lounge Radio - Lounge Level 2
+http://188.40.109.114:8000/ices
+#EXTINF:-1,Radio Caprice - Glitch / Glitch-Hop [2]
+http://79.111.14.76:8000/glitch
+#EXTINF:-1,Rocksteady / Lovers Rock - Caprice Radio
+http://79.120.39.202:8000/rocksteady
+#EXTINF:-1,Radio Caprice - Dream Trance
+http://79.120.39.202:8002/dreamtrance
+#EXTINF:-1,Poprock
+http://79.120.77.11:8000/poprock
+#EXTINF:-1,Radio Caprice - Progressive Metal
+http://79.120.77.11:8000/progmetal
+#EXTINF:-1,Radio Caprice - Ambient Dub
+http://79.111.14.76:9037/
+#EXTINF:-1,SECTOR Jazz
+http://89.223.45.5:8000/jazz-flac
+#EXTINF:-1,radio caprice dark Techno HQ
+http://79.111.14.76:8000/darktechno
+#EXTINF:-1,rsound.cyou - dj radio!
+https://radio.rsound.cyou/stream.mp3
+#EXTINF:-1,Кофемания ФМ
+https://coffeemania.fm:8055/radio
+#EXTINF:-1,TrueColorsRadio
+https://myradio24.org/45329
+#EXTINF:-1,AIST TV
+http://live2-aisttv.cdnvideo.ru/aisttv2/aisttv.sdp/playlist.m3u8
+#EXTINF:-1,Динамит FM
+http://listen7.myradio24.com/76923
+#EXTINF:-1,Radio Caprice - Symponic Metal
+http://79.120.77.11:8004/symphometal
+#EXTINF:-1,Монте Карло Песни о любви
+https://montecarlo.hostingradio.ru/pesniolyubvi96.aacp
+#EXTINF:-1,Дальнобой-2
+https://listen7.myradio24.com/4807
+#EXTINF:-1,Радио ТусняковыЙ ШансоН
+https://listen7.myradio24.com/56974
+#EXTINF:-1,provoda.ch
+https://station.waveradio.org/provodach
+#EXTINF:-1,Наше Радио 2.0
+https://nashe1.hostingradio.ru:18000/nashe20-128.mp3
+#EXTINF:-1,Radio New Italo Disco
+http://pub0102.101.ru:8000/stream/personal/aacp/64/787826
+#EXTINF:-1,Елена ФМ
+https://listen7.myradio24.com/radioelena
+#EXTINF:-1,Invoice радио
+https://a6.radioheart.ru:9019/RH78566
+#EXTINF:-1,Radio Caprice - Americana / American Roots
+http://213.141.131.10:8002/americana
+#EXTINF:-1,Comedy Radio Irkutsk
+https://hls-01-gpm.hostingradio.ru/comedyradio7/playlist.m3u8
+#EXTINF:-1,Joy
+https://uk5.internet-radio.com/proxy/joyradio?mp=/stream;
+#EXTINF:-1,Radio Caprice Erotic / Sensual Music
+http://79.120.39.202:8002/erotic
+#EXTINF:-1,Love Radio Владикавказ 105.3 FM
+http://stream.loveradio.ru/12_love_28?type=.aac&U
+#EXTINF:-1,Самопознание
+https://radio.albrin.online:8001/nonstop
+#EXTINF:-1,Дигравиль ФМ
+https://jecarchive.ru/radio.mp3
+#EXTINF:-1,Staroe Radio
+http://server.audiopedia.su:8000/ices128
+#EXTINF:-1,Radio Ulitka (stream #3, mp3, 192 kbps)
+https://radioulitka.ru/mount
+#EXTINF:-1,Radio Maximum - Indie
+https://maximum-indie.hostingradio.ru/indie96.aacp
+#EXTINF:-1,Radio Caprice - Electro Techno [3]
+http://213.141.131.10:8004/electrotechno
+#EXTINF:-1,Золотой аккордеон
+https://pub0102.101.ru:8443/stream/personal/aacp/64/387928?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJrZXkiOiI3NGNjODVmNDQyMmViMTJiMjExODFiZmZmMjhjMTI4MiIsIklQIjoiMTA5LjE2NS45My4yMTciLCJVQSI6Ik1vem
+#EXTINF:-1,innocence ibiza
+https://radiorecord.hostingradio.ru/ibiza96.aacp
+#EXTINF:-1,БИМ-радио
+https://bimradio.hostingradio.ru/bimradio128.mp3
+#EXTINF:-1,Радио Тавния
+https://tavria.hostingradio.ru/tavria192.mp3
+#EXTINF:-1,DFM SWEDISH HOUSE MAFIA
+https://dfm-housemafia.hostingradio.ru/housemafia96.aacp
