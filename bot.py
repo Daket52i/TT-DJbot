@@ -236,6 +236,7 @@ CHANNEL_PASSWORD = str(_cfg("server.channel_password", "TEAMTALK_CHANNEL_PASSWOR
 DEFAULT_VOLUME = int(_cfg("playback.default_volume", None, 10))
 MAX_VOLUME = int(_cfg("playback.max_volume", None, 100))
 DEFAULT_SERVICE = str(_cfg("runtime.main_service", None, "yt"))
+SERVICE_NAMES = {"yt": "YouTube", "ym": "Яндекс.Музыка", "mz": "Музофонд"}
 DEFAULT_CHANNEL_MSG = bool(_cfg("runtime.send_to_channel", None, True))
 START_COMMANDS = list(_cfg("runtime.startup_commands", None, []))
 RESUME_LAST = bool(_cfg("runtime.resume_last", None, True))  # при старте продолжить последнее воспроизведение
@@ -1637,7 +1638,7 @@ class MusicBot(TeamTalk5.TeamTalk):
             "radio — радиостанции (radio <номер> — запуск, radio l <стр> — страница)\n"
             "tv — ТВ-каналы (tv <номер> — включить, tv l <стр> — страница, tv <текст> — поиск, tv stop — стоп)\n"
             "fav — избранное (f +, f + <ссылка>, f <номер>, f - <номер>)\n"
-            "sv yt / sv ym — сервис\n"
+            "sv yt / sv ym / sv mz — сервис\n"
             "cm — отвечать в канал/личку\n"
             "cn <ник> — ник, cs <текст> — статус, sc — сохранить\n"
             "status — текущий трек\n"
@@ -2192,7 +2193,10 @@ class MusicBot(TeamTalk5.TeamTalk):
                         self.api_q.put(("download_fail", url, title, err_msg))
                         return
                 got_title = (stdout or "").strip().splitlines()
-                real_title = got_title[0] if got_title else title
+                if "muzofond.fm" in url:
+                    real_title = title
+                else:
+                    real_title = got_title[0] if got_title else title
                 self.api_q.put(("download_ok", url, real_title, audio))
                 return
             except subprocess.TimeoutExpired:
@@ -2671,6 +2675,8 @@ class MusicBot(TeamTalk5.TeamTalk):
         try:
             if self.service == "ym":
                 items = self._ym_search_list(query, SEARCH_LIMIT)
+            elif self.service == "mz":
+                items = self._mz_search_list(query, SEARCH_LIMIT)
             else:
                 items = self._yt_search_list(query, SEARCH_LIMIT)
             self.api_q.put(("search_done", query, items))
@@ -3113,6 +3119,39 @@ class MusicBot(TeamTalk5.TeamTalk):
             lines.append("%d. %s" % (idx, t))
         self._send("\n".join(lines) + "\nradio <номер> — запуск")
 
+    def _mz_search_list(self, query, limit=10):
+        """Поиск музыки на Музофонде (muzofond.fm). Возвращает до `limit` треков."""
+        limit = max(1, int(limit))
+        url = "https://muzofond.fm/music?" + urllib.parse.urlencode({"q": query})
+        req = urllib.request.Request(url, headers={
+            "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/120 Safari/537.36",
+            "Referer": "https://muzofond.fm/",
+        })
+        try:
+            with urllib.request.urlopen(req, timeout=25) as r:
+                html = r.read().decode("utf-8", "ignore")
+        except Exception as e:
+            log("mz search err: %s" % str(e)[:150])
+            return []
+        items = []
+        for blk in re.split(r'(?=<li class="item" data-id=")', html):
+            if not blk.startswith('<li class="item" data-id="'):
+                continue
+            if len(items) >= limit:
+                break
+            murl = re.search(r'class="play"[^>]*data-url="(https://dl[^"]+)"', blk)
+            if not murl:
+                continue
+            mtitle = re.search(r'<span class="track">(.*?)</span>', blk, re.S)
+            martist = re.search(r'<span class="artist">(.*?)</span>', blk, re.S)
+            track = re.sub(r"\s+", " ", (mtitle.group(1) if mtitle else "").strip())
+            artist = re.sub(r"\s+", " ", (martist.group(1) if martist else "").strip())
+            if not track:
+                continue
+            title = ("%s - %s" % (artist, track)) if artist else track
+            items.append({"key": murl.group(1), "title": title})
+        return items
+
     def _mow_cmd(self):
         """Моя волна — персональный поток Яндекс.Музыки."""
         if not YM_TOKEN:
@@ -3363,8 +3402,8 @@ class MusicBot(TeamTalk5.TeamTalk):
         if first in ("sv", "svc"):
             parts = text.split(None, 1)
             if len(parts) < 2:
-                cur = {"yt": "YouTube", "ym": "Яндекс.Музыка"}.get(self.service, "?")
-                self._send("Текущий сервис: %s. Смена: sv yt или sv ym." % cur)
+                cur = SERVICE_NAMES.get(self.service, "?")
+                self._send("Текущий сервис: %s. Смена: sv yt, sv ym, sv mz." % cur)
                 return
             svc = parts[1].strip().lower()
             if svc in ("yt", "youtube"):
@@ -3373,13 +3412,16 @@ class MusicBot(TeamTalk5.TeamTalk):
             elif svc in ("ym", "ya", "yandex"):
                 self.service = "ym"
                 self._send("Сервис: Яндекс.Музыка.")
+            elif svc in ("mz", "музофонд", "mp3"):
+                self.service = "mz"
+                self._send("Сервис: Музофонд.")
             else:
-                self._send("Сервис «%s» не распознан. Доступно: yt (YouTube), ym (Яндекс.Музыка)." % svc)
+                self._send("Сервис «%s» не распознан. Доступно: yt (YouTube), ym (Яндекс.Музыка), mz (Музофонд)." % svc)
             return
 
         # --- сохранить настройки сессии в config.json: sc ---
         if cmd in ("sc", "save"):
-            svc = {"yt": "YouTube", "ym": "Яндекс.Музыка"}.get(self.service, self.service)
+            svc = SERVICE_NAMES.get(self.service, self.service)
             try:
                 _save_config({
                     "server": {"nickname": self.nickname},
@@ -3704,7 +3746,7 @@ class MusicBot(TeamTalk5.TeamTalk):
             "/fav — избранное (f + — добавить текущий, f + <ссылка>, f <номер>, f - <номер>)\n"
             "/v <1-100> — громкость; /sf <сек> — перемотка вперёд; /sb <сек> — назад\n"
             "/cm — ответы в канал: вкл/выкл; /vo — озвучка названий треков: вкл/выкл\n"
-            "/sv yt, /sv ym — сервис: YouTube или Яндекс.Музыка\n"
+            "/sv yt, /sv ym, /sv mz — сервис: YouTube, Яндекс.Музыка, Музофонд\n"
             "/cn <ник> — сменить ник; /cs <текст> — статус; /sc — сохранить настройки\n"
             "/lf <путь> — воспроизвести файл с диска; /dl — выгрузить трек файлом в канал\n"
             "/login — статус входа YouTube; /cookies — обновить куки (файл присылается в Telegram)\n"
