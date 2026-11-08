@@ -8,6 +8,7 @@ import http.client
 import json
 import os
 import queue
+import random
 import re
 import secrets
 import select
@@ -1637,6 +1638,7 @@ class MusicBot(TeamTalk5.TeamTalk):
             "playlist — список плейлиста постранично\n"
             "radio — радиостанции (radio <номер> — запуск, radio l <стр> — страница)\n"
             "tv — ТВ-каналы (tv <номер> — включить, tv l <стр> — страница, tv <текст> — поиск, tv stop — стоп)\n"
+            "pop — случайная популярная музыка (шансон/поп/рок)\n"
             "fav — избранное (f +, f + <ссылка>, f <номер>, f - <номер>)\n"
             "sv yt / sv ym / sv mz — сервис\n"
             "cm — отвечать в канал/личку\n"
@@ -3119,25 +3121,27 @@ class MusicBot(TeamTalk5.TeamTalk):
             lines.append("%d. %s" % (idx, t))
         self._send("\n".join(lines) + "\nradio <номер> — запуск")
 
-    def _mz_search_list(self, query, limit=10):
-        """Поиск музыки на Музофонде (muzofond.fm). Возвращает до `limit` треков."""
-        limit = max(1, int(limit))
-        url = "https://muzofond.fm/music?" + urllib.parse.urlencode({"q": query})
+    _MZ_POP_GENRES = ("русский-поп", "шансон", "русский-рок")
+    _MZ_GENRE_LABELS = {"русский-поп": "русский поп", "шансон": "шансон", "русский-рок": "русский рок"}
+
+    def _mz_fetch(self, url):
         req = urllib.request.Request(url, headers={
             "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/120 Safari/537.36",
             "Referer": "https://muzofond.fm/",
         })
         try:
             with urllib.request.urlopen(req, timeout=25) as r:
-                html = r.read().decode("utf-8", "ignore")
+                return r.read().decode("utf-8", "ignore")
         except Exception as e:
-            log("mz search err: %s" % str(e)[:150])
-            return []
+            log("mz fetch err: %s" % str(e)[:150])
+            return ""
+
+    def _mz_parse(self, html, limit=0):
         items = []
         for blk in re.split(r'(?=<li class="item" data-id=")', html):
             if not blk.startswith('<li class="item" data-id="'):
                 continue
-            if len(items) >= limit:
+            if limit and len(items) >= limit:
                 break
             murl = re.search(r'class="play"[^>]*data-url="(https://dl[^"]+)"', blk)
             if not murl:
@@ -3151,6 +3155,26 @@ class MusicBot(TeamTalk5.TeamTalk):
             title = ("%s - %s" % (artist, track)) if artist else track
             items.append({"key": murl.group(1), "title": title})
         return items
+
+    def _mz_search_list(self, query, limit=10):
+        """Поиск музыки на Музофонде (muzofond.fm). Возвращает до `limit` треков."""
+        html = self._mz_fetch("https://muzofond.fm/music?" + urllib.parse.urlencode({"q": query}))
+        if not html:
+            return []
+        return self._mz_parse(html, limit)
+
+    def _pop_cmd(self):
+        """Случайная популярная русская музыка (шансон/поп/рок) с Музофонда."""
+        self.silent = False
+        genre = random.choice(self._MZ_POP_GENRES)
+        html = self._mz_fetch("https://muzofond.fm/popular/" + urllib.parse.quote(genre))
+        tracks = self._mz_parse(html)
+        if not tracks:
+            self._send("Не удалось загрузить музыку с Музофонда.")
+            return
+        self._send("Случайный трек (%s)…" % self._MZ_GENRE_LABELS.get(genre, genre))
+        item = random.choice(tracks)
+        self._switch_to(item["key"], item["title"])
 
     def _mow_cmd(self):
         """Моя волна — персональный поток Яндекс.Музыки."""
@@ -3610,6 +3634,11 @@ class MusicBot(TeamTalk5.TeamTalk):
             self._mow_cmd()
             return
 
+        # --- случайная популярная музыка: /pop ---
+        if cmd == "pop":
+            self._pop_cmd()
+            return
+
         if cmd == "tv" or cmd.startswith("tv "):
             arg = text.split(None, 1)[1].strip() if " " in text else ""
             self._tv_cmd(arg)
@@ -3694,11 +3723,11 @@ class MusicBot(TeamTalk5.TeamTalk):
     def _enqueue_url(self, url, label):
         if url in [u for u, _ in self.queue]:
             if not self.silent:
-                self._send("Уже в очереди: %s" % label)
+                self._send("Уже грузится: %s" % label)
             return
         self.queue.append((url, label))
         if not self.silent:
-            self._send("Добавлено в очередь: %s" % label)
+            self._send("Загружаю: %s…" % label)
         self._enqueue_next()
 
     def _queue_cmd(self):
@@ -3743,6 +3772,7 @@ class MusicBot(TeamTalk5.TeamTalk):
             "/radio — станции; /radio <номер> — запуск; /radio l <стр> — страница; /radio <текст> — поиск\n"
             "/tv — ТВ-каналы; /tv <номер> — включить; /tv l <стр> — страница; /tv <текст> — поиск; /tv stop — стоп\n"
             "/mow — Моя волна (Яндекс.Музыка)\n"
+            "/pop — случайная популярная музыка (шансон/поп/рок)\n"
             "/fav — избранное (f + — добавить текущий, f + <ссылка>, f <номер>, f - <номер>)\n"
             "/v <1-100> — громкость; /sf <сек> — перемотка вперёд; /sb <сек> — назад\n"
             "/cm — ответы в канал: вкл/выкл; /vo — озвучка названий треков: вкл/выкл\n"
