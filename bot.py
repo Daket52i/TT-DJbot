@@ -1639,6 +1639,7 @@ class MusicBot(TeamTalk5.TeamTalk):
             "radio — радиостанции (radio <номер> — запуск, radio l <стр> — страница)\n"
             "tv — ТВ-каналы (tv <номер> — включить, tv l <стр> — страница, tv <текст> — поиск, tv stop — стоп)\n"
             "pop — случайная популярная музыка (шансон/поп/рок)\n"
+            "settings — настройки; set <ключ> <значение> — изменить; welcome <текст> — приветствие\n"
             "fav — избранное (f +, f + <ссылка>, f <номер>, f - <номер>)\n"
             "sv yt / sv ym / sv mz — сервис\n"
             "cm — отвечать в канал/личку\n"
@@ -3176,6 +3177,256 @@ class MusicBot(TeamTalk5.TeamTalk):
         item = random.choice(tracks)
         self._switch_to(item["key"], item["title"])
 
+    def _nested_patch(self, key, value):
+        node = value
+        for part in reversed(key.split(".")):
+            node = {part: node}
+        return node
+
+    def _setting_raw(self, key):
+        node = CFG
+        for part in key.split("."):
+            if not isinstance(node, dict) or part not in node:
+                return None
+            node = node[part]
+        return node
+
+    def _mask(self, v):
+        if v is None or v == "":
+            return "(пусто)"
+        s = str(v)
+        return "***" if len(s) <= 6 else (s[:3] + "***" + s[-2:])
+
+    _SETTING_ALIASES = {
+        "welcome": "welcome.rules_text", "правила": "welcome.rules_text",
+        "ym": "services.ym.token", "ям": "services.ym.token",
+        "channel": "server.channel", "канал": "server.channel",
+        "volume": "playback.default_volume", "громкость": "playback.default_volume",
+        "nick": "server.nickname", "ник": "server.nickname",
+    }
+
+    def _settings_text(self):
+        rows = [
+            ("server.host", HOST),
+            ("server.tcp_port", TCP_PORT),
+            ("server.udp_port", UDP_PORT),
+            ("server.nickname", NICKNAME),
+            ("server.username", USERNAME),
+            ("server.password", self._mask(PASSWORD)),
+            ("server.channel", CHANNEL or "/"),
+            ("server.channel_password", self._mask(CHANNEL_PASSWORD)),
+            ("welcome.enabled", "on" if WELCOME_ENABLED else "off"),
+            ("welcome.voice_enabled", "on" if WELCOME_VOICE_ENABLED else "off"),
+            ("welcome.rules_text", WELCOME_RULES or "(пусто)"),
+            ("welcome.rules_text_en", WELCOME_RULES_EN or "(пусто)"),
+            ("services.ym.token", self._mask(YM_TOKEN)),
+            ("playback.default_volume", DEFAULT_VOLUME),
+            ("playback.max_volume", MAX_VOLUME),
+            ("runtime.main_service", self.service),
+            ("tv.video_bitrate", TV_VIDEO_BITRATE),
+            ("telegram.owner_user_id", TG_OWNER_USER_ID),
+        ]
+        lines = ["Настройки (%d). Менять: /set <ключ> <значение>" % len(rows)]
+        for k, v in rows:
+            lines.append("%s = %s" % (k, v))
+        lines.append("Примеры: /set ym <токен>, /set welcome <текст>, /set channel /канал")
+        return "\n".join(lines)
+
+    def _apply_setting(self, key, raw):
+        global HOST, TCP_PORT, UDP_PORT, NICKNAME, USERNAME, PASSWORD
+        global CHANNEL, CHANNEL_PASSWORD, DEFAULT_VOLUME, MAX_VOLUME
+        global YM_TOKEN, SEARCH_LIMIT, WELCOME_RULES, WELCOME_RULES_EN
+        global WELCOME_ENABLED, WELCOME_VOICE_ENABLED, TG_OWNER_USER_ID
+        global TV_VIDEO_BITRATE, TV_LIST_PAGE, RADIO_LIST_PAGE, TG_NOTIFY_SERVER
+
+        key = (key or "").strip().lower()
+        raw = (raw or "").strip()
+        key = self._SETTING_ALIASES.get(key, key)
+        if not key:
+            return False, "Укажи ключ. Список: /settings"
+
+        def need():
+            return False, "Формат: /set %s <значение>" % key
+
+        def as_int(lo=None, hi=None):
+            try:
+                v = int(raw)
+            except ValueError:
+                return None
+            if lo is not None:
+                v = max(lo, v)
+            if hi is not None:
+                v = min(hi, v)
+            return v
+
+        def as_bool():
+            v = raw.lower()
+            if v in ("1", "true", "yes", "on", "да", "вкл", "y"):
+                return True
+            if v in ("0", "false", "no", "off", "нет", "выкл", "n"):
+                return False
+            return None
+
+        value = raw
+        if key == "server.host":
+            if not raw:
+                return need()
+            HOST = raw
+        elif key == "server.tcp_port":
+            v = as_int(1, 65535)
+            if not v:
+                return need()
+            TCP_PORT = v
+            value = v
+        elif key == "server.udp_port":
+            v = as_int(1, 65535)
+            if not v:
+                return need()
+            UDP_PORT = v
+            value = v
+        elif key == "server.nickname":
+            if not raw:
+                return need()
+            NICKNAME = raw
+            try:
+                self.doChangeNickname(raw)
+            except Exception:
+                pass
+        elif key == "server.username":
+            if not raw:
+                return need()
+            USERNAME = raw
+        elif key == "server.password":
+            PASSWORD = raw
+        elif key == "server.channel":
+            if not raw:
+                return need()
+            path = raw if raw.startswith("/") else "/" + raw
+            cid = self.getChannelIDFromPath(path)
+            if not cid:
+                return False, "Канал не найден: %s" % path
+            CHANNEL = path
+            try:
+                self.doJoinChannelByID(cid, CHANNEL_PASSWORD)
+            except Exception:
+                pass
+            self.play_channel_id = cid
+            value = path
+        elif key == "server.channel_password":
+            CHANNEL_PASSWORD = raw
+        elif key == "welcome.rules_text":
+            WELCOME_RULES = raw
+        elif key == "welcome.rules_text_en":
+            WELCOME_RULES_EN = raw
+        elif key == "welcome.enabled":
+            b = as_bool()
+            if b is None:
+                return need()
+            WELCOME_ENABLED = b
+            value = b
+        elif key == "welcome.voice_enabled":
+            b = as_bool()
+            if b is None:
+                return need()
+            WELCOME_VOICE_ENABLED = b
+            value = b
+        elif key == "services.ym.token":
+            YM_TOKEN = raw
+        elif key == "playback.default_volume":
+            v = as_int(1, MAX_VOLUME)
+            if not v:
+                return need()
+            DEFAULT_VOLUME = v
+            value = v
+            self._set_volume(v)
+        elif key == "playback.max_volume":
+            v = as_int(1, 100)
+            if not v:
+                return need()
+            MAX_VOLUME = v
+            value = v
+        elif key == "runtime.main_service":
+            v = raw.lower()
+            if v not in ("yt", "ym", "mz"):
+                return False, "Сервис: yt, ym или mz"
+            self.service = v
+            value = v
+        elif key == "runtime.search_limit":
+            v = as_int(1, 5000)
+            if not v:
+                return need()
+            SEARCH_LIMIT = v
+            value = v
+        elif key == "tv.video_bitrate":
+            v = as_int(64, 20000)
+            if not v:
+                return need()
+            TV_VIDEO_BITRATE = v
+            value = v
+        elif key == "tv.list_page":
+            v = as_int(5, 100)
+            if not v:
+                return need()
+            TV_LIST_PAGE = v
+            value = v
+        elif key == "radio.list_page":
+            v = as_int(5, 100)
+            if not v:
+                return need()
+            RADIO_LIST_PAGE = v
+            value = v
+        elif key == "telegram.owner_user_id":
+            v = as_int(1)
+            if not v:
+                return need()
+            TG_OWNER_USER_ID = v
+            value = v
+        elif key == "telegram.server_display_name":
+            TG_NOTIFY_SERVER = raw
+        else:
+            cur = self._setting_raw(key)
+            if isinstance(cur, bool):
+                b = as_bool()
+                if b is None:
+                    return need()
+                value = b
+            elif isinstance(cur, int):
+                v = as_int()
+                if v is None:
+                    return need()
+                value = v
+            elif isinstance(cur, float):
+                try:
+                    value = float(raw)
+                except ValueError:
+                    return need()
+        try:
+            _save_config(self._nested_patch(key, value))
+        except Exception as e:
+            return False, "Не сохранилось: %s" % str(e)[:150]
+        globals()["CFG"] = _deep_merge(
+            _load_json(os.path.join(BASE_DIR, "config_default.json")),
+            _load_json(CONFIG_PATH),
+        )
+        note = ""
+        if key in ("server.host", "server.tcp_port", "server.udp_port",
+                   "server.username", "server.password", "server.nickname"):
+            note = "\nДля подключения перезапусти: /rs"
+        shown = "***" if key in ("server.password", "server.channel_password", "services.ym.token") else value
+        return True, "Сохранено: %s = %s%s" % (key, shown, note)
+
+    def _set_cmd(self, arg):
+        arg = (arg or "").strip()
+        if not arg:
+            self._send("Формат: /set <ключ> <значение>\nПример: /set welcome Привет! Правила в описании.\nСписок: /settings")
+            return
+        parts = arg.split(None, 1)
+        if len(parts) == 1:
+            self._send(self._settings_text())
+            return
+        ok, msg = self._apply_setting(parts[0], parts[1])
+        self._send(msg)
+
     def _mow_cmd(self):
         """Моя волна — персональный поток Яндекс.Музыки."""
         if not YM_TOKEN:
@@ -3276,7 +3527,7 @@ class MusicBot(TeamTalk5.TeamTalk):
         "cn", "cs", "s", "stop", "skip", "queue", "q", "status", "now",
         "dl", "download", "lf", "n", "next", "b", "back", "prev", "playlist",
         "radio", "r", "tv", "f", "fav", "favorites", "play", "p", "pause", "resume",
-        "channel", "u", "link", "url",
+        "channel", "u", "link", "url", "welcome",
     ])
 
     def _is_known_cmd(self, text):
@@ -3324,6 +3575,9 @@ class MusicBot(TeamTalk5.TeamTalk):
         try:
             if not self._is_known_cmd(text):
                 return
+            head = text.strip().lstrip("/").split(None, 1)[0].lower()
+            if head in ("set", "settoken", "settings", "cfg", "config"):
+                return  # не светим токены/пароли в канале
             author = self._tg_cmd_author(msg)
             verb = "запросила" if self._tg_cmd_female(msg) else "запросил"
             body = (text or "").strip()
@@ -3353,11 +3607,28 @@ class MusicBot(TeamTalk5.TeamTalk):
         # --- гейт: служебные команды — только администраторам ---
         # (в TeamTalk админ = USERTYPE_ADMIN; из Telegram сюда попадают уже после _tg_allowed)
         first = cmd.split(None, 1)[0]
-        admin_only = first in ("rs", "restart", "cn", "cs", "sv", "svc", "cm", "channel", "sc", "save", "login", "cookies")
+        admin_only = first in ("rs", "restart", "cn", "cs", "sv", "svc", "cm", "channel", "sc", "save", "login", "cookies", "set", "settoken", "settings", "cfg", "config", "welcome")
         if not admin_only:
             admin_only = cmd.startswith("lf ")
         if admin_only and not self._is_admin(from_user):
             self._send("Эта команда только для администраторов.")
+            return
+
+        # --- настройки бота: /settings, /set, /welcome ---
+        if cmd in ("settings", "cfg", "config"):
+            self._send(self._settings_text())
+            return
+        if cmd == "set" or cmd.startswith("set ") or cmd == "settoken" or cmd.startswith("settoken "):
+            arg = text.split(None, 1)[1] if " " in text else ""
+            self._set_cmd(arg)
+            return
+        if cmd == "welcome" or cmd.startswith("welcome "):
+            arg = text.split(None, 1)[1].strip() if " " in text else ""
+            if arg:
+                ok, msg = self._apply_setting("welcome.rules_text", arg)
+                self._send(msg)
+            else:
+                self._send("Приветствие: %s\nМенять: /set welcome <текст>" % (WELCOME_RULES or "(пусто)"))
             return
 
         # --- громкость: v 100 / v 50 / громкость 30 / volume 80 ---
@@ -3690,13 +3961,11 @@ class MusicBot(TeamTalk5.TeamTalk):
                 self._send("Использование: /channel <путь>, напр. /channel /root/music")
                 return
             path = parts[1].strip()
-            cid = self.getChannelIDFromPath(path)
-            if not cid:
-                self._send("Канал не найден: %s" % path)
-                return
-            self.doJoinChannelByID(cid, CHANNEL_PASSWORD)
-            self.play_channel_id = cid
-            self._send("Переход в канал: %s" % path)
+            ok, msg = self._apply_setting("server.channel", path)
+            if ok:
+                self._send("Переход в канал: %s (сохранено)" % CHANNEL)
+            else:
+                self._send(msg)
             return
 
         # --- прямая ссылка: u <url> / link <url> / url <url> ---
@@ -3773,6 +4042,7 @@ class MusicBot(TeamTalk5.TeamTalk):
             "/tv — ТВ-каналы; /tv <номер> — включить; /tv l <стр> — страница; /tv <текст> — поиск; /tv stop — стоп\n"
             "/mow — Моя волна (Яндекс.Музыка)\n"
             "/pop — случайная популярная музыка (шансон/поп/рок)\n"
+            "/settings — настройки; /set <ключ> <значение>; /welcome <текст> — приветствие\n"
             "/fav — избранное (f + — добавить текущий, f + <ссылка>, f <номер>, f - <номер>)\n"
             "/v <1-100> — громкость; /sf <сек> — перемотка вперёд; /sb <сек> — назад\n"
             "/cm — ответы в канал: вкл/выкл; /vo — озвучка названий треков: вкл/выкл\n"
