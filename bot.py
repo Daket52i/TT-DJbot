@@ -10,6 +10,7 @@ import os
 import queue
 import random
 import re
+import concurrent.futures
 import secrets
 import select
 import socket
@@ -446,6 +447,9 @@ TV_VIDEO_BITRATE = max(64, int(_cfg("tv.video_bitrate", None, 512) or 512))
 TV_LIST_PAGE = max(5, int(_cfg("tv.list_page", None, 20) or 20))
 RADIO_LIST_PAGE = max(5, int(_cfg("radio.list_page", None, 15) or 15))
 VOLNOREZ_FILE = os.path.join(BASE_DIR, "radio", "Volnorez.m3u")
+VOLN_CATALOG_FILE = os.path.join(CACHE_DIR, "voln_catalog.json")
+VOLN_REFRESH_SEC = 1800
+_VOLN_LIVE_APP = re.compile(r"/live-app/(\d+)")
 TV_PRIORITY = (
     "Первый канал (Казань)", "Россия 1 (Казань)", "НТВ (Казань)",
     "ТНВ Татарстан", "ТНТ (Казань)", "СТС (Казань)", "ТВ3 (Казань)",
@@ -557,6 +561,8 @@ class MusicBot(TeamTalk5.TeamTalk):
         self._now_playing = ""
         self._listeners = None
         self._station_label = ""
+        self._voln_last_refresh = 0.0
+        self._voln_refreshing = False
         self.favorites = self._load_favorites()  # list of {"key","label","radio"}
         self.playing = False
         self.downloading = set()
@@ -4124,11 +4130,125 @@ class MusicBot(TeamTalk5.TeamTalk):
         lines.append("Слушают: %s" % (self._listeners if self._listeners is not None else "неизвестно"))
         self._send("\n".join(lines))
 
+    def _voln_catalog(self):
+        """id -> {'title', 'listeners'} из кэша (cache/voln_catalog.json)."""
+        try:
+            with open(VOLN_CATALOG_FILE, encoding="utf-8") as f:
+                data = json.load(f)
+            return data.get("stations") or {}
+        except Exception:
+            return {}
+
+    def _voln_ensure_catalog(self, force=False):
+        """Запустить фоновое обновление каталога Волнореза, если оно устарело."""
+        now = time.time()
+        if not force and now - self._voln_last_refresh < VOLN_REFRESH_SEC:
+            return
+        if self._voln_refreshing:
+            return
+        self._voln_refreshing = True
+        threading.Thread(target=self._voln_refresh_worker, daemon=True).start()
+
+    def _voln_http(self, url, timeout=20):
+        req = urllib.request.Request(url, headers={
+            "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/120 Safari/537.36",
+            "Referer": "https://volnorez.com/radio?lang=ru",
+        })
+        try:
+            with urllib.request.urlopen(req, timeout=timeout) as r:
+                return r.read().decode("utf-8", "ignore")
+        except Exception as e:
+            log("voln http err: %s" % str(e)[:120])
+            return ""
+
+    def _voln_fetch_ids(self):
+        html = self._voln_http("https://volnorez.com/radio?lang=ru")
+        m = re.search(r"data-ids=\"(\[[0-9,\s]*\])\"", html)
+        if not m:
+            return []
+        try:
+            return json.loads(m.group(1))
+        except Exception:
+            return []
+
+    def _voln_fetch_meta(self, ids):
+        art = re.compile(r'<article class="radio_station" data-id="(\d+)">(.*?)</article>', re.S)
+        title = re.compile(r'class="radio_station_title"[^>]*>([^<]+)<')
+        lis = re.compile(r'class="radio_listeners"[^>]*>([^<]+)<')
+        meta = {}
+        for i in range(0, len(ids), 12):
+            batch = ids[i:i + 12]
+            q = urllib.parse.urlencode({"fragment": "more", "ids": ",".join(map(str, batch)), "lang": "ru"})
+            h = self._voln_http("https://volnorez.com/radio?" + q, timeout=25)
+            for m in art.finditer(h):
+                sid = int(m.group(1))
+                t = title.search(m.group(2))
+                l = lis.search(m.group(2))
+                meta[str(sid)] = {
+                    "title": (t.group(1).strip() if t else ""),
+                    "listeners": (int(l.group(1)) if l and l.group(1).isdigit() else None),
+                }
+            time.sleep(0.1)
+        return meta
+
+    def _voln_is_alive(self, sid):
+        url = "https://stream.volnorez.com/live-app/%s" % sid
+        req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0", "Range": "bytes=0-1024"})
+        try:
+            with urllib.request.urlopen(req, timeout=7) as r:
+                ct = r.headers.get("Content-Type", "")
+                r.read(64)
+                return ("audio" in ct) or (r.status == 200)
+        except urllib.error.HTTPError as e:
+            return e.code in (301, 302, 303, 307, 308)
+        except Exception:
+            return False
+
+    def _voln_refresh_worker(self):
+        """Перечитать каталог Волнореза: живые станции + слушатели → Volnorez.m3u + кэш."""
+        try:
+            ids = self._voln_fetch_ids()
+            if not ids:
+                return
+            meta = self._voln_fetch_meta(ids)
+            with concurrent.futures.ThreadPoolExecutor(max_workers=16) as ex:
+                checks = list(ex.map(self._voln_is_alive, ids))
+            alive = [sid for sid, ok in zip(ids, checks) if ok]
+            def sortkey(sid):
+                l = meta.get(str(sid), {}).get("listeners")
+                return (l is None, -(l or 0))
+            alive.sort(key=sortkey)
+            lines = ["#EXTM3U", "# Станции Волнореза (volnorez.com) — только в эфире"]
+            catalog = {}
+            for sid in alive:
+                t = (meta.get(str(sid), {}).get("title") or "").strip().replace("\n", " ")
+                if not t:
+                    t = "Станция %s" % sid
+                l = meta.get(str(sid), {}).get("listeners")
+                catalog[str(sid)] = {"title": t, "listeners": l}
+                lines.append("#EXTINF:-1,%s" % t)
+                lines.append("https://stream.volnorez.com/live-app/%s" % sid)
+            tmp = VOLNOREZ_FILE + ".tmp"
+            with open(tmp, "w", encoding="utf-8") as f:
+                f.write("\n".join(lines) + "\n")
+            os.replace(tmp, VOLNOREZ_FILE)
+            with open(VOLN_CATALOG_FILE + ".tmp", "w", encoding="utf-8") as f:
+                json.dump({"updated": time.time(), "stations": catalog}, f, ensure_ascii=False, indent=1)
+            os.replace(VOLN_CATALOG_FILE + ".tmp", VOLN_CATALOG_FILE)
+            log("voln catalog refreshed: %d alive of %d" % (len(alive), len(ids)))
+        except Exception as e:
+            log("voln refresh err: %s" % str(e)[:200])
+        finally:
+            self._voln_refreshing = False
+            self._voln_last_refresh = time.time()
+
     def _voln_cmd(self, arg):
+        self._voln_ensure_catalog()
         stations = self._load_voln()
         if not stations:
-            self._send("Список Волнореза пуст (radio/Volnorez.m3u).")
+            self._send("Список Волнореза пуст. Обновление в фоне — попробуй через минуту.")
             return
+        catalog = self._voln_catalog()
         total = len(stations)
         pages = max(1, (total + RADIO_LIST_PAGE - 1) // RADIO_LIST_PAGE)
         arg = (arg or "").strip()
@@ -4142,9 +4262,15 @@ class MusicBot(TeamTalk5.TeamTalk):
         if page is not None:
             start = (page - 1) * RADIO_LIST_PAGE
             end = min(total, start + RADIO_LIST_PAGE)
-            lines = ["Волнорез (%d станций, стр. %d/%d):" % (total, page, pages)]
+            lines = ["Волнорез (%d станций в эфире, стр. %d/%d):" % (total, page, pages)]
             for i in range(start, end):
-                lines.append("%d. %s" % (i + 1, stations[i][0]))
+                t, u = stations[i]
+                m = _VOLN_LIVE_APP.search(u)
+                l = None
+                if m:
+                    l = catalog.get(m.group(1), {}).get("listeners")
+                suffix = (" — %d слушают" % l) if l is not None else ""
+                lines.append("%d. %s%s" % (i + 1, t, suffix))
             lines.append("voln <номер> — включить; voln l <стр> — страница")
             self._send("\n".join(lines))
             return
