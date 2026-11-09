@@ -30,6 +30,8 @@ import ipaddress
 from collections import deque
 from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
+from icy_metadata import IcyMetadataReader
+from volnorez_metadata import VolnorezMetadataReader
 
 from ctypes import byref
 
@@ -443,6 +445,7 @@ TV_DIR = os.path.join(BASE_DIR, "tv")
 TV_VIDEO_BITRATE = max(64, int(_cfg("tv.video_bitrate", None, 512) or 512))
 TV_LIST_PAGE = max(5, int(_cfg("tv.list_page", None, 20) or 20))
 RADIO_LIST_PAGE = max(5, int(_cfg("radio.list_page", None, 15) or 15))
+VOLNOREZ_FILE = os.path.join(BASE_DIR, "radio", "Volnorez.m3u")
 TV_PRIORITY = (
     "Первый канал (Казань)", "Россия 1 (Казань)", "НТВ (Казань)",
     "ТНВ Татарстан", "ТНТ (Казань)", "СТС (Казань)", "ТВ3 (Казань)",
@@ -549,6 +552,11 @@ class MusicBot(TeamTalk5.TeamTalk):
         self.current = None  # (url, title)
         self.current_file = None
         self.cur_source = None  # (key, label, is_radio) — what's playing now, for favorites
+        self._icy_reader = None
+        self._vn_reader = None
+        self._now_playing = ""
+        self._listeners = None
+        self._station_label = ""
         self.favorites = self._load_favorites()  # list of {"key","label","radio"}
         self.playing = False
         self.downloading = set()
@@ -1637,6 +1645,7 @@ class MusicBot(TeamTalk5.TeamTalk):
             "v <1-100> — громкость, sf <сек> — перемотка (sf -5 — назад, sb <сек> — назад)\n"
             "playlist — список плейлиста постранично\n"
             "radio — радиостанции (radio <номер> — запуск, radio l <стр> — страница)\n"
+            "voln — станции Волнореза (voln <номер>, voln l <стр>); now — что в эфире и сколько слушают\n"
             "tv — ТВ-каналы (tv <номер> — включить, tv l <стр> — страница, tv <текст> — поиск, tv stop — стоп)\n"
             "pop — случайная популярная музыка (шансон/поп/рок)\n"
             "settings — настройки; set <ключ> <значение> — изменить; welcome <текст> — приветствие\n"
@@ -2690,6 +2699,10 @@ class MusicBot(TeamTalk5.TeamTalk):
     def _advance(self, silent=False):
         self.silent = silent
         self._stop_voice()
+        self._stop_metadata()
+        self._now_playing = ""
+        self._listeners = None
+        self._station_label = ""
         self.playing = False
         self.paused = False
         self.current = None
@@ -3514,12 +3527,17 @@ class MusicBot(TeamTalk5.TeamTalk):
         self.current = None
         self.current_orig = None
         self.cur_source = (url, title, True)
+        self._now_playing = ""
+        self._listeners = None
+        self._station_label = ""
+        self._stop_metadata()
         if remember:
             self._remember_last(url, title, True)
         self.cur_offset_ms = 0
         self._send("Играет радио: %s" % title)
         self._set_status("Radio: %s" % title)
         self._start_voice(url, 0)
+        self._start_metadata(url)
 
     # Команды-«запросы», которые при приходе из Telegram объявляются в канале TeamTalk.
     _TG_KNOWN_CMDS = frozenset([
@@ -3527,7 +3545,7 @@ class MusicBot(TeamTalk5.TeamTalk):
         "cn", "cs", "s", "stop", "skip", "queue", "q", "status", "now",
         "dl", "download", "lf", "n", "next", "b", "back", "prev", "playlist",
         "radio", "r", "tv", "f", "fav", "favorites", "play", "p", "pause", "resume",
-        "channel", "u", "link", "url", "welcome",
+        "channel", "u", "link", "url", "welcome", "voln", "now",
     ])
 
     def _is_known_cmd(self, text):
@@ -3767,6 +3785,10 @@ class MusicBot(TeamTalk5.TeamTalk):
             self.auto_playlist = False
             self.silent = False
             self._stop_voice()
+            self._stop_metadata()
+            self._now_playing = ""
+            self._listeners = None
+            self._station_label = ""
             self.playing = False
             self.paused = False
             self.current = None
@@ -3786,7 +3808,10 @@ class MusicBot(TeamTalk5.TeamTalk):
             self._queue_cmd()
             return
 
-        if cmd in ("status", "now"):
+        if cmd == "now":
+            self._now_cmd()
+            return
+        if cmd == "status":
             self._status_cmd()
             return
 
@@ -3915,6 +3940,12 @@ class MusicBot(TeamTalk5.TeamTalk):
             self._tv_cmd(arg)
             return
 
+        # --- волнорез: voln / voln <N> / voln <текст> / voln l <стр> ---
+        if cmd == "voln" or cmd.startswith("voln "):
+            arg = text.split(None, 1)[1].strip() if " " in text else ""
+            self._voln_cmd(arg)
+            return
+
         # --- радио: радио / радио <N> / радио <текст> ---
         if cmd.startswith("radio") or cmd == "r":
             arg = text.split(None, 1)[1].strip() if " " in text else ""
@@ -4008,6 +4039,134 @@ class MusicBot(TeamTalk5.TeamTalk):
                 lines.append("%d. %s (%s)" % (i, t, u))
             self._send("\n".join(lines))
 
+    # ----- «сейчас играет» / слушатели (ICY + WebSocket Волнореза) -----
+    def _load_voln(self):
+        """Станции Волнореза из radio/Volnorez.m3u -> [(title, url)]."""
+        stations = []
+        if os.path.isfile(VOLNOREZ_FILE):
+            for title, url in self._parse_m3u(VOLNOREZ_FILE, VOLNOREZ_FILE):
+                stations.append((title, url))
+        return stations
+
+    def _stop_metadata(self):
+        for attr in ("_icy_reader", "_vn_reader"):
+            r = getattr(self, attr, None)
+            if r is not None:
+                try:
+                    r.stop()
+                except Exception:
+                    pass
+                setattr(self, attr, None)
+
+    def _start_metadata(self, url):
+        self._stop_metadata()
+        try:
+            if VolnorezMetadataReader.supports(url):
+                r = VolnorezMetadataReader(url, on_metadata=self._on_now_playing,
+                                           on_listeners=self._on_listeners)
+                r.start()
+                self._vn_reader = r
+            else:
+                r = IcyMetadataReader(url, on_metadata=self._on_now_playing,
+                                      on_name=self._on_stream_name)
+                r.start()
+                self._icy_reader = r
+        except Exception as e:
+            log("metadata start err: %s" % str(e)[:150])
+
+    def _on_stream_name(self, name):
+        if name and not self._station_label:
+            self._station_label = str(name)[:80]
+
+    def _on_now_playing(self, title):
+        if not title or title == self._now_playing:
+            return
+        self._now_playing = title
+        self._update_radio_status()
+
+    def _on_listeners(self, value):
+        try:
+            value = int(value)
+        except (TypeError, ValueError):
+            return
+        self._listeners = value
+        self._update_radio_status()
+
+    def _radio_status_text(self):
+        parts = []
+        if self._station_label:
+            parts.append(self._station_label)
+        if self._now_playing:
+            parts.append(self._now_playing)
+        if self._listeners is not None:
+            parts.append("слушают: %d" % self._listeners)
+        return ". ".join(parts)
+
+    def _update_radio_status(self):
+        if self._tv_active or self._tv_starting:
+            return
+        if self.cur_source and self.cur_source[2]:  # is_radio
+            base = "Radio: %s" % self.cur_source[1]
+            extra = self._radio_status_text()
+            self._set_status((base + " — " + extra) if extra else base)
+
+    def _now_cmd(self):
+        """Сейчас играет + сколько слушают (для текущего радио)."""
+        if self._tv_active or self._tv_starting:
+            self._send("Сейчас ТВ: %s (слушателей нет — это медиапоток)." % (self._tv_title or "…"))
+            return
+        if not (self.cur_source and self.cur_source[2]):
+            self._send("Сейчас ничего не играет по радио. Включи: /radio или /voln.")
+            return
+        lines = ["Станция: %s" % self.cur_source[1]]
+        if self._now_playing:
+            lines.append("Сейчас: %s" % self._now_playing)
+        lines.append("Слушают: %s" % (self._listeners if self._listeners is not None else "неизвестно"))
+        self._send("\n".join(lines))
+
+    def _voln_cmd(self, arg):
+        stations = self._load_voln()
+        if not stations:
+            self._send("Список Волнореза пуст (radio/Volnorez.m3u).")
+            return
+        total = len(stations)
+        pages = max(1, (total + RADIO_LIST_PAGE - 1) // RADIO_LIST_PAGE)
+        arg = (arg or "").strip()
+        parts = arg.split()
+        page = None
+        if not arg:
+            page = 1
+        elif parts[0].lower() in ("l", "list", "page", "список"):
+            page = int(parts[1]) if len(parts) > 1 and parts[1].isdigit() else 1
+            page = max(1, min(pages, page))
+        if page is not None:
+            start = (page - 1) * RADIO_LIST_PAGE
+            end = min(total, start + RADIO_LIST_PAGE)
+            lines = ["Волнорез (%d станций, стр. %d/%d):" % (total, page, pages)]
+            for i in range(start, end):
+                lines.append("%d. %s" % (i + 1, stations[i][0]))
+            lines.append("voln <номер> — включить; voln l <стр> — страница")
+            self._send("\n".join(lines))
+            return
+        if arg.isdigit():
+            idx = int(arg) - 1
+            if idx < 0 or idx >= total:
+                self._send("Нет станции под номером %d (всего %d)." % (idx + 1, total))
+                return
+            title, url = stations[idx]
+            self._station_label = ""
+            self._play_radio(url, title)
+            return
+        q = arg.lower()
+        found = [(i + 1, t) for i, (t, _u) in enumerate(stations) if q in t.lower()]
+        if not found:
+            self._send("Станция «%s» не найдена." % arg)
+            return
+        lines = ["Нашёл (%d):" % len(found)]
+        for idx, t in found[:10]:
+            lines.append("%d. %s" % (idx, t))
+        self._send("\n".join(lines) + "\nvoln <номер> — включить")
+
     def _status_cmd(self):
         if self._tv_active or self._tv_starting:
             lines = ["Сейчас ТВ: %s" % (self._tv_title or "…")]
@@ -4016,6 +4175,13 @@ class MusicBot(TeamTalk5.TeamTalk):
             else:
                 lines.append("Время: %s" % _fmt_ms((time.time() - self._tv_started_at) * 1000))
             lines.append("Остановить: /tv stop.")
+        elif self.cur_source and self.cur_source[2]:
+            lines = ["Сейчас радио: %s" % self.cur_source[1]]
+            if self._now_playing:
+                lines.append("Сейчас в эфире: %s" % self._now_playing)
+            lines.append("Слушают: %s" % (self._listeners if self._listeners is not None else "неизвестно"))
+            if self.volume < 100:
+                lines.append("Громкость: %d%%" % self.volume)
         elif self.playing and self.current:
             lines = ["Сейчас играет: %s" % self.current[1]]
             lines.append("Время: %s" % _fmt_ms(self._elapsed_ms()))
@@ -4039,6 +4205,7 @@ class MusicBot(TeamTalk5.TeamTalk):
             "/playlist — список плейлиста постранично\n"
             "/u <ссылка> — воспроизвести ссылку напрямую\n"
             "/radio — станции; /radio <номер> — запуск; /radio l <стр> — страница; /radio <текст> — поиск\n"
+            "/voln — станции Волнореза; /voln <номер> — включить; /now — эфир и слушатели\n"
             "/tv — ТВ-каналы; /tv <номер> — включить; /tv l <стр> — страница; /tv <текст> — поиск; /tv stop — стоп\n"
             "/mow — Моя волна (Яндекс.Музыка)\n"
             "/pop — случайная популярная музыка (шансон/поп/рок)\n"
