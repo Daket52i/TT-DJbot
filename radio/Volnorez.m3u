@@ -1,120 +1,150 @@
 #EXTM3U
 # Станции Волнореза (volnorez.com) — только в эфире
-#EXTINF:-1,Станция 900927
-https://stream.volnorez.com/live-app/900927
-#EXTINF:-1,Станция 383025
-https://stream.volnorez.com/live-app/383025
-#EXTINF:-1,Станция 737306
-https://stream.volnorez.com/live-app/737306
-#EXTINF:-1,Станция 752890
-https://stream.volnorez.com/live-app/752890
-#EXTINF:-1,Станция 879346
-https://stream.volnorez.com/live-app/879346
-#EXTINF:-1,Станция 698007
-https://stream.volnorez.com/live-app/698007
-#EXTINF:-1,Станция 879375
-https://stream.volnorez.com/live-app/879375
-#EXTINF:-1,Станция 869683
-https://stream.volnorez.com/live-app/869683
-#EXTINF:-1,Станция 904019
-https://stream.volnorez.com/live-app/904019
-#EXTINF:-1,Станция 913786
+#EXTINF:-1,КAMERTON-RADIO
 https://stream.volnorez.com/live-app/913786
-#EXTINF:-1,Станция 886682
-https://stream.volnorez.com/live-app/886682
-#EXTINF:-1,Станция 897415
-https://stream.volnorez.com/live-app/897415
-#EXTINF:-1,Станция 928657
-https://stream.volnorez.com/live-app/928657
-#EXTINF:-1,Станция 917320
+#EXTINF:-1,Megamix MUSIC-RADIO
+https://stream.volnorez.com/live-app/698007
+#EXTINF:-1,ПыЛь_ДоРоГ FM
+https://stream.volnorez.com/live-app/869683
+#EXTINF:-1,Чистый Кайф
+https://stream.volnorez.com/live-app/752890
+#EXTINF:-1,Чайная роза
+https://stream.volnorez.com/live-app/788219
+#EXTINF:-1,Music-arya
 https://stream.volnorez.com/live-app/917320
-#EXTINF:-1,Станция 930103
-https://stream.volnorez.com/live-app/930103
-#EXTINF:-1,Станция 773023
-https://stream.volnorez.com/live-app/773023
-#EXTINF:-1,Станция 902017
-https://stream.volnorez.com/live-app/902017
-#EXTINF:-1,Станция 902458
-https://stream.volnorez.com/live-app/902458
-#EXTINF:-1,Станция 907814
-https://stream.volnorez.com/live-app/907814
-#EXTINF:-1,Станция 920923
-https://stream.volnorez.com/live-app/920923
-#EXTINF:-1,Станция 746596
-https://stream.volnorez.com/live-app/746596
-#EXTINF:-1,Станция 779526
-https://stream.volnorez.com/live-app/779526
-#EXTINF:-1,Станция 843862
-https://stream.volnorez.com/live-app/843862
-#EXTINF:-1,Станция 928420
-https://stream.volnorez.com/live-app/928420
-#EXTINF:-1,Станция 890107
-https://stream.volnorez.com/live-app/890107
-#EXTINF:-1,Станция 931114
-https://stream.volnorez.com/live-app/931114
-#EXTINF:-1,Станция 740527
-https://stream.volnorez.com/live-app/740527
-#EXTINF:-1,Станция 815228
-https://stream.volnorez.com/live-app/815228
-#EXTINF:-1,Станция 927499
-https://stream.volnorez.com/live-app/927499
-#EXTINF:-1,Станция 881825
-https://stream.volnorez.com/live-app/881825
-#EXTINF:-1,Станция 900894
-https://stream.volnorez.com/live-app/900894
-#EXTINF:-1,Станция 914352
-https://stream.volnorez.com/live-app/914352
-#EXTINF:-1,Станция 109661
+#EXTINF:-1,ШАНСОН над ВОЛГОЙ
 https://stream.volnorez.com/live-app/109661
-#EXTINF:-1,Станция 927352
-https://stream.volnorez.com/live-app/927352
-#EXTINF:-1,Станция 181103
-https://stream.volnorez.com/live-app/181103
-#EXTINF:-1,Станция 328851
-https://stream.volnorez.com/live-app/328851
-#EXTINF:-1,Станция 931402
-https://stream.volnorez.com/live-app/931402
-#EXTINF:-1,Станция 443504
-https://stream.volnorez.com/live-app/443504
-#EXTINF:-1,Станция 606325
-https://stream.volnorez.com/live-app/606325
-#EXTINF:-1,Станция 618602
-https://stream.volnorez.com/live-app/618602
-#EXTINF:-1,Станция 710550
-https://stream.volnorez.com/live-app/710550
-#EXTINF:-1,Станция 750320
-https://stream.volnorez.com/live-app/750320
-#EXTINF:-1,Станция 763788
-https://stream.volnorez.com/live-app/763788
-#EXTINF:-1,Станция 764707
-https://stream.volnorez.com/live-app/764707
-#EXTINF:-1,Станция 766436
-https://stream.volnorez.com/live-app/766436
-#EXTINF:-1,Станция 928435
-https://stream.volnorez.com/live-app/928435
-#EXTINF:-1,Станция 820112
-https://stream.volnorez.com/live-app/820112
-#EXTINF:-1,Станция 848183
-https://stream.volnorez.com/live-app/848183
-#EXTINF:-1,Станция 864455
-https://stream.volnorez.com/live-app/864455
-#EXTINF:-1,Станция 887738
-https://stream.volnorez.com/live-app/887738
-#EXTINF:-1,Станция 899117
+#EXTINF:-1,Лидер-радио
+https://stream.volnorez.com/live-app/900927
+#EXTINF:-1,Радио Ночь любви
+https://stream.volnorez.com/live-app/879375
+#EXTINF:-1,Melody of Rain fm
+https://stream.volnorez.com/live-app/886682
+#EXTINF:-1,Страна талантов
+https://stream.volnorez.com/live-app/879346
+#EXTINF:-1,B гостях у Бpюнеточки
+https://stream.volnorez.com/live-app/902458
+#EXTINF:-1,vipbars
+https://stream.volnorez.com/live-app/737306
+#EXTINF:-1,Venezia
+https://stream.volnorez.com/live-app/897415
+#EXTINF:-1,ПОЛЁТ ДУШИ
+https://stream.volnorez.com/live-app/904019
+#EXTINF:-1,Океан Плюс
+https://stream.volnorez.com/live-app/773023
+#EXTINF:-1,"Всё для всех"
+https://stream.volnorez.com/live-app/907814
+#EXTINF:-1,Неповторимое
+https://stream.volnorez.com/live-app/383025
+#EXTINF:-1,BEATNER FM
+https://stream.volnorez.com/live-app/902017
+#EXTINF:-1,СИНИЙ МОСТ радио
+https://stream.volnorez.com/live-app/928657
+#EXTINF:-1,ШИПЫ и РОЗЫ
+https://stream.volnorez.com/live-app/920923
+#EXTINF:-1,ЕСЕНИЯ
+https://stream.volnorez.com/live-app/860704
+#EXTINF:-1,oldb
 https://stream.volnorez.com/live-app/899117
-#EXTINF:-1,Станция 899295
+#EXTINF:-1,Тут 90-e
+https://stream.volnorez.com/live-app/837007
+#EXTINF:-1,ВСПЫШКА СОБЛАЗНА
+https://stream.volnorez.com/live-app/786493
+#EXTINF:-1,Забытые Сердца
+https://stream.volnorez.com/live-app/880881
+#EXTINF:-1,Четкое радио
+https://stream.volnorez.com/live-app/858035
+#EXTINF:-1,Радио ВИШНЯ
+https://stream.volnorez.com/live-app/928573
+#EXTINF:-1,Остров Азии!
+https://stream.volnorez.com/live-app/878521
+#EXTINF:-1,ДУШЕВНЫЙ МИР
+https://stream.volnorez.com/live-app/903055
+#EXTINF:-1,ВАЛЕРИЙ СЕМИН
+https://stream.volnorez.com/live-app/925735
+#EXTINF:-1,МАК-Онлайн Живое Радио Андрея Крупина
+https://stream.volnorez.com/live-app/843862
+#EXTINF:-1,OгNu Enuseя
+https://stream.volnorez.com/live-app/860837
+#EXTINF:-1,Минимум на максимум
+https://stream.volnorez.com/live-app/914556
+#EXTINF:-1,Макси хард
+https://stream.volnorez.com/live-app/914654
+#EXTINF:-1,Зелёная долина
+https://stream.volnorez.com/live-app/837242
+#EXTINF:-1,utopieFM
+https://stream.volnorez.com/live-app/864455
+#EXTINF:-1,Твоё Дыхание
+https://stream.volnorez.com/live-app/746596
+#EXTINF:-1,Радио Вертикаль
+https://stream.volnorez.com/live-app/159663
+#EXTINF:-1,videl radio
+https://stream.volnorez.com/live-app/931114
+#EXTINF:-1,Старая Птичка
+https://stream.volnorez.com/live-app/740527
+#EXTINF:-1,Любви дыхание
+https://stream.volnorez.com/live-app/815228
+#EXTINF:-1,KAPRIZ N
+https://stream.volnorez.com/live-app/817982
+#EXTINF:-1,Stereo-Radio
+https://stream.volnorez.com/live-app/839911
+#EXTINF:-1,ЛИС-радио
+https://stream.volnorez.com/live-app/927499
+#EXTINF:-1,Наш шепот ветра
+https://stream.volnorez.com/live-app/881825
+#EXTINF:-1,Типичный и новый рок
+https://stream.volnorez.com/live-app/900894
+#EXTINF:-1,Ioannikij
+https://stream.volnorez.com/live-app/914352
+#EXTINF:-1,ТОЛЛАЙН
+https://stream.volnorez.com/live-app/919483
+#EXTINF:-1,1mRadio
+https://stream.volnorez.com/live-app/154917
+#EXTINF:-1,DENTRO RADIO
+https://stream.volnorez.com/live-app/927352
+#EXTINF:-1,Snezhngorsk
+https://stream.volnorez.com/live-app/180765
+#EXTINF:-1,Patrikor
+https://stream.volnorez.com/live-app/930472
+#EXTINF:-1,НоКтЮрН
+https://stream.volnorez.com/live-app/328851
+#EXTINF:-1,Деревенская дискотека
+https://stream.volnorez.com/live-app/931402
+#EXTINF:-1,Новое Радио Новомосковск
+https://stream.volnorez.com/live-app/443473
+#EXTINF:-1,Фараония
+https://stream.volnorez.com/live-app/714577
+#EXTINF:-1,Радио Ляпота!!!
+https://stream.volnorez.com/live-app/752785
+#EXTINF:-1,Обитель интроверта
+https://stream.volnorez.com/live-app/766436
+#EXTINF:-1,LOVE_BREEZE
+https://stream.volnorez.com/live-app/780653
+#EXTINF:-1,Radio Dj Set
+https://stream.volnorez.com/live-app/786103
+#EXTINF:-1,Диез-Патриот
+https://stream.volnorez.com/live-app/796114
+#EXTINF:-1,Hak Man
+https://stream.volnorez.com/live-app/848183
+#EXTINF:-1,Хит FM Алексин
+https://stream.volnorez.com/live-app/853055
+#EXTINF:-1,chillout
+https://stream.volnorez.com/live-app/876262
+#EXTINF:-1,Vins01
+https://stream.volnorez.com/live-app/887738
+#EXTINF:-1,yuyufa-radio
 https://stream.volnorez.com/live-app/899295
-#EXTINF:-1,Станция 901850
-https://stream.volnorez.com/live-app/901850
-#EXTINF:-1,Станция 902654
+#EXTINF:-1,LAP-ka Fm
 https://stream.volnorez.com/live-app/902654
-#EXTINF:-1,Станция 908357
+#EXTINF:-1,Рохан FM
 https://stream.volnorez.com/live-app/908357
-#EXTINF:-1,Станция 920794
-https://stream.volnorez.com/live-app/920794
-#EXTINF:-1,Станция 921205
+#EXTINF:-1,Авторадио Алексин
+https://stream.volnorez.com/live-app/916369
+#EXTINF:-1,ОКТЯБРЬ
+https://stream.volnorez.com/live-app/916876
+#EXTINF:-1,EchO GaLaKTiKi
 https://stream.volnorez.com/live-app/921205
-#EXTINF:-1,Станция 922822
+#EXTINF:-1,Radio NIGHTLIFE
 https://stream.volnorez.com/live-app/922822
-#EXTINF:-1,Станция 925063
-https://stream.volnorez.com/live-app/925063
+#EXTINF:-1,RW-радио
+https://stream.volnorez.com/live-app/924127

@@ -4,6 +4,7 @@
 import array
 import ctypes
 import hashlib
+import html
 import http.client
 import json
 import os
@@ -4179,13 +4180,17 @@ class MusicBot(TeamTalk5.TeamTalk):
         for i in range(0, len(ids), 12):
             batch = ids[i:i + 12]
             q = urllib.parse.urlencode({"fragment": "more", "ids": ",".join(map(str, batch)), "lang": "ru"})
-            h = self._voln_http("https://volnorez.com/radio?" + q, timeout=25)
+            raw = self._voln_http("https://volnorez.com/radio?" + q, timeout=25)
+            try:
+                h = json.loads(raw).get("html", "") if raw else ""
+            except Exception:
+                h = raw
             for m in art.finditer(h):
                 sid = int(m.group(1))
                 t = title.search(m.group(2))
                 l = lis.search(m.group(2))
                 meta[str(sid)] = {
-                    "title": (t.group(1).strip() if t else ""),
+                    "title": html.unescape(t.group(1)).strip() if t else "",
                     "listeners": (int(l.group(1)) if l and l.group(1).isdigit() else None),
                 }
             time.sleep(0.1)
