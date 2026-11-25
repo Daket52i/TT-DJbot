@@ -97,8 +97,12 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 mkdir -p "$INSTALL_DIR"
 cp -r "$SCRIPT_DIR"/bot.py "$INSTALL_DIR/"
 cp -r "$SCRIPT_DIR"/tt_register.py "$INSTALL_DIR/" 2>/dev/null || true
+cp -r "$SCRIPT_DIR"/icy_metadata.py "$INSTALL_DIR/" 2>/dev/null || true
+cp -r "$SCRIPT_DIR"/volnorez_metadata.py "$INSTALL_DIR/" 2>/dev/null || true
+cp -r "$SCRIPT_DIR"/tv_epg.py "$INSTALL_DIR/" 2>/dev/null || true
 cp -r "$SCRIPT_DIR"/config_default.json "$INSTALL_DIR/"
 cp -r "$SCRIPT_DIR"/radio "$INSTALL_DIR/" 2>/dev/null || true
+cp -r "$SCRIPT_DIR"/tv "$INSTALL_DIR/" 2>/dev/null || true
 cp -r "$SCRIPT_DIR"/geo "$INSTALL_DIR/" 2>/dev/null || true
 cp -r "$SCRIPT_DIR"/sdk "$INSTALL_DIR/" 2>/dev/null || true
 

@@ -1,0 +1,67 @@
+#EXTM3U
+#EXTINF:-1,Первый канал
+http://31.148.5.241/kanal_1/index.m3u8
+#EXTINF:-1,Россия 1
+http://31.148.5.241/kanal_2/index.m3u8
+#EXTINF:-1,Матч! Ультра
+http://31.148.5.241/kanal_3/index.m3u8
+#EXTINF:-1,НТВ
+http://31.148.5.241/kanal_4/index.m3u8
+#EXTINF:-1,Пятый канал
+http://31.148.5.241/kanal_5/index.m3u8
+#EXTINF:-1,Россия К
+http://31.148.5.241/kanal_6/index.m3u8
+#EXTINF:-1,Россия 24
+http://31.148.5.241/kanal_7/index.m3u8
+#EXTINF:-1,Карусель
+http://31.148.5.241/kanal_8/index.m3u8
+#EXTINF:-1,ОТР
+http://31.148.5.241/kanal_9/index.m3u8
+#EXTINF:-1,ТВ Центр
+http://31.148.5.241/kanal_10/index.m3u8
+#EXTINF:-1,РЕН ТВ
+http://31.148.5.241/kanal_11/index.m3u8
+#EXTINF:-1,Спас
+http://31.148.5.241/kanal_12/index.m3u8
+#EXTINF:-1,СТС
+http://31.148.5.241/kanal_13/index.m3u8
+#EXTINF:-1,Домашний
+http://31.148.5.241/kanal_14/index.m3u8
+#EXTINF:-1,ТВ-3
+http://31.148.5.241/kanal_15/index.m3u8
+#EXTINF:-1,Пятница!
+http://31.148.5.241/kanal_16/index.m3u8
+#EXTINF:-1,Звезда
+http://31.148.5.241/kanal_17/index.m3u8
+#EXTINF:-1,Мир
+http://31.148.5.241/kanal_18/index.m3u8
+#EXTINF:-1,ТНТ
+http://31.148.5.241/kanal_19/index.m3u8
+#EXTINF:-1,Муз-ТВ
+http://31.148.5.241/kanal_20/index.m3u8
+#EXTINF:-1,2x2
+http://176.118.197.101/2x2/index.m3u8
+#EXTINF:-1,Че!
+http://176.118.197.101/Che/index.m3u8
+#EXTINF:-1,Карусель +4
+http://185.37.150.46/Karusel/index.m3u8
+#EXTINF:-1,Мир 24
+http://hls.mirtv.cdnvideo.ru/mirtv-parampublish/mir24_2500/playlist.m3u8
+#EXTINF:-1,360°
+https://cdn-evacoder-tv.facecast.io/evacoder_hls_hi/CkxfR1xNUAJwTgtXTBZTAJli/index.m3u8
+#EXTINF:-1,Эфир ТВ
+http://tele2dvrnat01-02.cdnvideo.ru/stream/TatTVR_efir_d7b0c774f668d0652d2f435f03f2ef8a/hls/1024x576@1272/playlist.m3u8
+#EXTINF:-1,1HD Music
+http://176.118.197.101/1HD/index.m3u8
+#EXTINF:-1,BRIDGE TV
+http://178.134.1.158:8081/BRIDGE/index.m3u8
+#EXTINF:-1,BRIDGE Rock
+http://178.134.1.158:8081/BRIDGEROCK/index.m3u8
+#EXTINF:-1,Ностальгия
+http://176.118.197.101/Nostalgiya/index.m3u8
+#EXTINF:-1,Мир сериала
+http://176.118.197.101/MirSeriala/index.m3u8
+#EXTINF:-1,Музыка Первого
+http://88.212.15.50/live/test_muzyka_pervogo/playlist.m3u8
+#EXTINF:-1,Бобёр
+http://88.212.15.50/live/test_bober/playlist.m3u8

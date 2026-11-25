@@ -34,6 +34,7 @@ from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
 from icy_metadata import IcyMetadataReader
 from volnorez_metadata import VolnorezMetadataReader
+from tv_epg import TvEpg, TvStreamRelay, probe_tv_url_blocked
 
 from ctypes import byref
 
@@ -444,7 +445,7 @@ PLAYLIST_LIMIT = int(_cfg("runtime.playlist_limit", None, 5000))
 SEARCH_LIMIT = max(1, int(_cfg("runtime.search_limit", None, 700) or 700))
 
 TV_DIR = os.path.join(BASE_DIR, "tv")
-TV_VIDEO_BITRATE = max(64, int(_cfg("tv.video_bitrate", None, 512) or 512))
+TV_VIDEO_BITRATE = max(64, int(_cfg("tv.video_bitrate", None, 850) or 850))
 TV_LIST_PAGE = max(5, int(_cfg("tv.list_page", None, 20) or 20))
 RADIO_LIST_PAGE = max(5, int(_cfg("radio.list_page", None, 15) or 15))
 VOLNOREZ_FILE = os.path.join(BASE_DIR, "radio", "Volnorez.m3u")
@@ -452,13 +453,12 @@ VOLN_CATALOG_FILE = os.path.join(CACHE_DIR, "voln_catalog.json")
 VOLN_REFRESH_SEC = 1800
 _VOLN_LIVE_APP = re.compile(r"/live-app/(\d+)")
 TV_PRIORITY = (
-    "Первый канал (Казань)", "Россия 1 (Казань)", "НТВ (Казань)",
-    "ТНВ Татарстан", "ТНТ (Казань)", "СТС (Казань)", "ТВ3 (Казань)",
-    "Пятый канал (Казань)", "Рен ТВ (Казань)", "Россия 24 (Казань)",
-    "ТНВ Планета", "Шаян ТВ", "Татарстан 24", "Майдан ТВ",
-    "Домашний (Казань)", "Звезда (Казань)", "Карусель (Казань)",
-    "ОТР (Казань)", "Пятница! (Казань)", "ТВЦ (Казань)", "Че! (Казань)",
-    "Ю (Казань)", "Эфир ТВ",
+    "Первый канал", "Россия 1", "НТВ", "ТНТ", "СТС",
+    "Пятница!", "Пятый канал", "ТВ-3", "Домашний", "Звезда",
+    "РЕН ТВ", "ТВ Центр", "Карусель", "Россия К", "Россия 24",
+    "ОТР", "Спас", "Мир", "Муз-ТВ", "Матч! Ультра",
+    "2x2", "Че!", "Мир 24", "360°", "Эфир ТВ",
+    "1HD Music", "BRIDGE TV", "BRIDGE Rock", "Ностальгия", "Мир сериала",
 )
 
 # Voice transmission: raw PCM fed to TT_InsertAudioBlock as STREAMTYPE_VOICE.
@@ -608,6 +608,10 @@ class MusicBot(TeamTalk5.TeamTalk):
         self._tv_started_at = 0.0
         self._tv_grace_until = 0.0
         self._tv_run = 0
+        self._tv_relay = None
+        self._tv_epg_now = None
+        self._tv_epg = TvEpg(CACHE_DIR, log_fn=log)
+        self._tv_epg.ensure_loaded_async()
         self.nickname = NICKNAME
         self.status_msg = ""
         try:
@@ -2856,10 +2860,11 @@ class MusicBot(TeamTalk5.TeamTalk):
         return re.sub(r"\s+", " ", (title or "").lower().replace("ё", "е")).strip()
 
     def _load_tv(self):
-        """Load TV playlists; duplicate titles keep the last (fallback) URL."""
+        """Load TV playlists; filter out known geo-blocked stubs; top playlist wins."""
         channels = {}
+        blocked_hosts = ("rt-vlg-kzn-htlive.cdn.ngenix.net", "zabava-block", "mcquack.net")
         if os.path.isdir(TV_DIR):
-            for fn in sorted(os.listdir(TV_DIR)):
+            for fn in sorted(os.listdir(TV_DIR), reverse=True):
                 if not fn.lower().endswith((".m3u", ".m3u8")):
                     continue
                 path = os.path.join(TV_DIR, fn)
@@ -2871,10 +2876,15 @@ class MusicBot(TeamTalk5.TeamTalk):
                             if not ln:
                                 continue
                             if ln.upper().startswith("#EXTINF"):
-                                m = re.search(r",\s*(.+?)\s*$", ln)
-                                if m and m.group(1).strip():
-                                    title = m.group(1).strip()
+                                raw_t = ln.rsplit(",", 1)[-1].strip()
+                                if raw_t:
+                                    title = raw_t
+                            elif ln.startswith("#"):
+                                continue
                             elif ln.startswith(("http://", "https://")):
+                                if any(b in ln for b in blocked_hosts):
+                                    title = os.path.splitext(fn)[0]
+                                    continue
                                 key = self._tv_norm(title)
                                 if key:
                                     channels[key] = (title, ln)
@@ -2952,6 +2962,20 @@ class MusicBot(TeamTalk5.TeamTalk):
             else:
                 self._send("ТВ не включено.")
             return
+        if low in ("epg", "now", "программа", "сейчас"):
+            if self._tv_active or self._tv_starting:
+                ch = self._tv_title or ""
+                info = self._tv_epg.get_now(ch)
+                if info:
+                    lines = ["📺 %s" % ch, "Сейчас: %s (%s–%s)" % (info["title"], info["start"], info["stop"])]
+                    if info.get("next_title"):
+                        lines.append("Далее в %s: %s" % (info["next_start"], info["next_title"]))
+                    self._send("\n".join(lines))
+                else:
+                    self._send("📺 %s — телепрограмма для этого канала недоступна." % ch)
+            else:
+                self._send("ТВ сейчас не включено. Включи канал: tv <номер>.")
+            return
         if low in ("help", "?", "справка"):
             self._send("\n".join(self._tv_list_lines(1)))
             return
@@ -3005,26 +3029,53 @@ class MusicBot(TeamTalk5.TeamTalk):
         self._tv_fallback = False
         self._tv_url = url
         self._tv_title = title
+        self._tv_epg_now = None
         self._tv_started_at = time.time()
         self._tv_run += 1
         run = self._tv_run
-        self._send("Включаю ТВ: %s (видео и звук)…" % title)
-        self._set_status("TV: %s" % title)
+        blocked, why = probe_tv_url_blocked(url)
+        if blocked:
+            log("tv preflight blocked %s: %s" % (title, why))
+            self._tv_starting = False
+            self._tv_url = None
+            self._tv_title = None
+            self._send("Канал «%s» сейчас недоступен (%s). Попробуй другой из /tv." % (title, why))
+            return
+        epg_info = self._tv_epg.get_now(title)
+        self._tv_epg_now = epg_info
+        if epg_info:
+            self._send("Включаю ТВ: %s (видео и звук)…\nСейчас идёт: %s (%s–%s)" % (
+                title, epg_info["title"], epg_info["start"], epg_info["stop"]))
+            self._set_status("📺 %s: %s (%s–%s)" % (
+                title, epg_info["title"][:60], epg_info["start"], epg_info["stop"]))
+        else:
+            self._send("Включаю ТВ: %s (видео и звук)…" % title)
+            self._set_status("📺 %s" % title)
         ok = False
         started = time.time()
+        stream_url = url
+        try:
+            relay = TvStreamRelay(url, log_fn=log)
+            stream_url = relay.start()
+            self._tv_relay = relay
+        except Exception as e:
+            log("tv relay init err (using direct url): %s" % str(e)[:150])
+            stream_url = url
         try:
             playback = self._tv_playback()
-            ok = self.startStreamingMediaFileToChannelEx(url, playback, self._tv_codec())
+            ok = self.startStreamingMediaFileToChannelEx(stream_url, playback, self._tv_codec())
         except Exception as e:
             log("tv start err: %s" % str(e)[:200])
         log("tv start returned %s in %.1fs" % (ok, time.time() - started))
         if not ok:
             log("tv start rejected: %s" % title)
             url, title = self._tv_url, self._tv_title
+            self._stop_tv_relay()
             self._tv_active = False
             self._tv_starting = False
             self._tv_url = None
             self._tv_title = None
+            self._tv_epg_now = None
             self.current = None
             self._set_status(self.status_msg)
             self._send("Видеопоток не запустился. Включаю только звук.")
@@ -3033,13 +3084,42 @@ class MusicBot(TeamTalk5.TeamTalk):
             return
         self.playing = True
         self.current = (url, title)
-        self._tv_grace_until = time.time() + 2.0
+        self._tv_grace_until = time.time() + 4.0
         threading.Thread(target=self._tv_watchdog, args=(title, run), daemon=True).start()
         threading.Thread(target=self._tv_stats_log, args=(title, run), daemon=True).start()
+        threading.Thread(target=self._tv_epg_loop, args=(title, run), daemon=True).start()
+
+    def _stop_tv_relay(self):
+        relay = self._tv_relay
+        self._tv_relay = None
+        if relay is not None:
+            try:
+                relay.stop()
+            except Exception as e:
+                log("tv relay stop err: %s" % str(e)[:120])
+
+    def _tv_epg_loop(self, title, run):
+        """Periodically refresh bot status with current TV programme from XMLTV EPG."""
+        first = True
+        while self._tv_run == run and (self._tv_active or self._tv_starting) and self._tv_title == title:
+            time.sleep(6 if first else 60)
+            first = False
+            if self._tv_run != run or not (self._tv_active or self._tv_starting) or self._tv_title != title:
+                break
+            try:
+                info = self._tv_epg.get_now(title)
+                self._tv_epg_now = info
+                if info:
+                    self._set_status("📺 %s: %s (%s–%s)" % (
+                        title, info["title"][:60], info["start"], info["stop"]))
+                else:
+                    self._set_status("📺 %s" % title)
+            except Exception as e:
+                log("tv epg loop err: %s" % str(e)[:120])
 
     def _tv_watchdog(self, title, run):
         """If the media-file stream hasn't reached MFS_STARTED, fall back to audio."""
-        time.sleep(12)
+        time.sleep(16)
         if self._tv_run == run and self._tv_starting and self._tv_title == title:
             self.api_q.put(("tv_timeout", title))
 
@@ -3057,22 +3137,26 @@ class MusicBot(TeamTalk5.TeamTalk):
 
     def _stop_tv(self):
         if not (self._tv_active or self._tv_starting):
+            self._stop_tv_relay()
             return
         self._tv_active = False
         self._tv_starting = False
         self._tv_url = None
         self._tv_title = None
+        self._tv_epg_now = None
         self._tv_started_at = 0.0
         self._tv_run += 1
         try:
             self.stopStreamingMediaFileToChannel()
         except Exception as e:
             log("tv stop err: %s" % str(e)[:150])
+        self._stop_tv_relay()
 
     def _tv_finished(self, reason, stop_stream=False):
         log("tv finished event: reason=%s active=%s starting=%s title=%r" % (
             reason, self._tv_active, self._tv_starting, self._tv_title))
         if not (self._tv_active or self._tv_starting):
+            self._stop_tv_relay()
             return
         url, title = self._tv_url, self._tv_title
         if stop_stream:
@@ -3080,10 +3164,12 @@ class MusicBot(TeamTalk5.TeamTalk):
                 self.stopStreamingMediaFileToChannel()
             except Exception as e:
                 log("tv stop err: %s" % str(e)[:120])
+        self._stop_tv_relay()
         self._tv_active = False
         self._tv_starting = False
         self._tv_url = None
         self._tv_title = None
+        self._tv_epg_now = None
         self._tv_started_at = 0.0
         self._tv_run += 1
         self.playing = False
@@ -4301,6 +4387,11 @@ class MusicBot(TeamTalk5.TeamTalk):
     def _status_cmd(self):
         if self._tv_active or self._tv_starting:
             lines = ["Сейчас ТВ: %s" % (self._tv_title or "…")]
+            info = self._tv_epg_now or (self._tv_epg.get_now(self._tv_title or "") if self._tv_title else None)
+            if info:
+                lines.append("Передача: %s (%s–%s)" % (info["title"], info["start"], info["stop"]))
+                if info.get("next_title"):
+                    lines.append("Далее в %s: %s" % (info["next_start"], info["next_title"]))
             if self._tv_starting:
                 lines.append("Запуск видеопотока…")
             else:
